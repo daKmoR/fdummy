@@ -1,0 +1,46 @@
+/* -----------------------------------------------------------------------------------------------------------------
+	YOUR site layout
+----------------------------------------------------------------------------------------------------------------- */
+	.layout2cols > .col1  { width: 209px; background: #e0dfe0; }
+	.layout2cols > .col2  {	width: 750px;	}
+	/* you need to define this also in screen_ie6.css */
+	
+	.layout3cols > .col1, .layout3cols > .col3  { width: 20%; }
+	.layout3cols > .col2 { width: 60%; }
+
+/* -----------------------------------------------------------------------------------------------------------------
+	YOUR everything else
+----------------------------------------------------------------------------------------------------------------- */
+	body { background: #eaeaea; color: #000; font-family: Arial, Helvetica, sans-serif; font-size: 14px; }
+	a { color: #fe3b01; text-decoration: none; }
+		a:hover { color: #bd1919; text-decoration: underline; }
+	
+	#wrap { background: #fff; }
+	
+	#header { height: 153px; position: relative; overflow: hidden; }
+		#headerMenu { position: absolute; bottom: 0; width: 100%; line-height: 32px; padding-left: 9px; border-top: 1px solid #000; border-bottom: 1px solid #000; }
+			#headerMenu ul { margin: 0; padding: 0; list-style: none; }
+				#headerMenu li { float: left; margin: 0 0 0 10px; }
+				/* 2nd level */
+					#subMenusContainer { display: block; position: absolute; top: 0; left: -12px; width: 100%; height: 0; overflow: visible; z-index: 1000000000; }
+					.smOW { display: none; position: absolute; overflow: hidden; }
+					#header ul ul, #subMenusContainer ul { padding: 10px 0 5px 0; list-style: none; background: #fff; border-top: 1px solid #000; border-bottom: 1px solid #000; }
+					#header ul ul { position: absolute; display: none; z-index: 9999; }
+					#header ul ul li, #subMenusContainer ul li { float: none; margin: 0; padding: 0; }
+					#header ul ul li a, #subMenusContainer ul li a { display: block; line-height: 25px; padding: 0 12px; text-decoration: none; text-indent: 0; }
+
+
+		#homeLink { display: block; height: 40px; text-decoration: none; }
+	
+	#menu a { color: #666; }
+		#menu li.active > a { font-weight: bold; }
+	
+	#footer  { padding: 9px; border-top: 1px solid #000; border-bottom: 1px solid #000; }
+		#footerMenu { float: right; }
+		#footerText { float: left; }
+
+	#contentMain { padding: 10px 0; }
+	
+	.breadcrumb { border-top: 1px solid #dcdcdc; padding: 1px 0 0 10px; font-size: 11px; color: #aaa; margin-top: 5px; }
+		.breadcrumb a { color: #aaa; text-decoration: none; }
+		.breadcrumb a:hover { color: #000; text-decoration: underline; }

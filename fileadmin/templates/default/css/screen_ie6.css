@@ -1,0 +1,44 @@
+
+	.layout2cols .col1 { 
+		width: expression(/layout2cols/.test(this.parentNode.className) ? "209px" : "auto"); 
+		border-right: expression(/layout2cols/.test(this.parentNode.className) ? "1px solid #dcdcdc" : "none"); 
+	}
+	.layout2cols .col2 { width: expression(/layout2cols/.test(this.parentNode.className) ? "750px" : "auto"); }
+	
+	.layout3cols > .col1, .layout3cols > .col3  { width: expression(/layout3cols/.test(this.parentNode.className) ? "20%" : "auto"); }
+	.layout3cols > .col2 { width: expression(/layout3cols/.test(this.parentNode.className) ? "60%" : "auto"); }
+	
+	
+/* -----------------------------------------------------------------------------------------------------------------
+	default fixes - do not edit below
+----------------------------------------------------------------------------------------------------------------- */	
+	
+	/* Clearing floats without extra markup - Based on How To Clear Floats Without Structural Markup by PiE
+	   [http://www.positioniseverything.net/easyclearing.html] */
+	.clearfix { height: 1%; }
+	.colmask { height: 1%; }
+
+	/* |-------------------------50%-------------------------|-------------------------50%-------------------------| */
+	.p50x50 .col1, .p50x50 .col2 { width: expression(/p50x50/.test(this.parentNode.className) ? "50%" : "auto"); }	
+	/* |----------20%----------|----------------------------------------80%----------------------------------------| */
+	.p20x80 .col1 { width: expression(/p20x80/.test(this.parentNode.className) ? "20%" : "auto"); }
+	.p20x80 .col2 { width: expression(/p20x80/.test(this.parentNode.className) ? "80%" : "auto"); }
+	/* |------------25%------------|--------------------------------------75%--------------------------------------| */
+	.p25x75 .col1 { width: expression(/p25x75/.test(this.parentNode.className) ? "25%" : "auto"); }
+	.p25x75 .col2 { width: expression(/p25x75/.test(this.parentNode.className) ? "75%" : "auto"); }
+	/* |----------------------------------------80%----------------------------------------|----------20%----------| */
+	.p80x20 .col1 { width: expression(/p80x20/.test(this.parentNode.className) ? "80%" : "auto"); }
+	.p80x20 .col2 { width: expression(/p80x20/.test(this.parentNode.className) ? "20%" : "auto"); }
+	/* |---------------30%---------------|-----------------------------------70%-----------------------------------| */
+	.p30x70 .col1 { width: expression(/p30x70/.test(this.parentNode.className) ? "30%" : "auto"); }
+	.p30x70 .col2 { width: expression(/p30x70/.test(this.parentNode.className) ? "70%" : "auto"); }
+	/* |-----------------------------------70%-----------------------------------|---------------30%---------------| */
+	.p70x30 .col1 { width: expression(/p70x30/.test(this.parentNode.className) ? "70%" : "auto"); }
+	.p70x30 .col2 { width: expression(/p70x30/.test(this.parentNode.className) ? "30%" : "auto"); }
+	/* |----------------33%----------------|----------------33%----------------|----------------33%----------------|  */
+	.p33x33x33 .col1, .p33x33x33 .col2, .p33x33x33 .col3 { width: expression(/p33x33x33/.test(this.parentNode.className) ? "33.35%" : "auto"); }
+	/* |------------25%------------|-------------------------50%-------------------------|------------25%------------|  */
+	.p25x50x25 .col1, .p25x50x25 .col3 { width: expression(/p25x50x25/.test(this.parentNode.className) ? "25%" : "auto"); }
+	.p25x50x25 .col2 { width: expression(/p25x50x25/.test(this.parentNode.className) ? "49.9%" : "auto"); }	
+	/* |------------25%------------|------------25%------------|------------25%------------|------------25%------------| */
+	.p25x25x25x25 .col1, .p25x25x25x25 .col2, .p25x25x25x25 .col3, .p25x25x25x25 .col4 { width: expression(/p25x25x25x25/.test(this.parentNode.className) ? "24.99%" : "auto"); }

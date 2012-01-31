@@ -1,0 +1,3 @@
+<FilesMatch "\.(sh|tmpl|ts|txt|xml)$">
+	Deny from All
+</FilesMatch>

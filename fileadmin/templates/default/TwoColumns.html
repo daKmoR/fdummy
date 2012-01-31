@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xml:lang="de" lang="de" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+	<meta charset="utf-8" />
+
+	<link rel="stylesheet" href="css/base.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="css/screen.css" type="text/css" media="screen" />
+	<!--[if IE 8]> <link rel="stylesheet" href="css/screen_ie8.css" type="text/css" media="screen" /> <![endif]-->
+	<!--[if IE 7]> <link rel="stylesheet" href="css/screen_ie7.css" type="text/css" media="screen" /> <![endif]-->
+
+</head>
+<body>
+	<div id="wrap">
+
+		<div id="header">
+			<f:cObject typoscriptObjectPath="lib.header" />
+		</div>
+		
+		<div class="colmask equal layout2cols">
+			
+			<div class="col1">
+				<div class="content">
+					<f:cObject typoscriptObjectPath="lib.contentLeft" />
+				</div>
+			</div>
+			
+			<div class="col2">
+				<div class="content" id="contentMain">
+					<f:cObject typoscriptObjectPath="lib.content" />
+				</div>
+			</div>
+			
+		</div>
+		
+		<div id="footer">
+			<f:cObject typoscriptObjectPath="lib.footer" />
+		</div>
+		
+	</div> <!-- /wrap -->
+</body>
