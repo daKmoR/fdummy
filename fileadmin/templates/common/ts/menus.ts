@@ -199,7 +199,7 @@ menus.footer {
 	1 = TMENU
 	1 {
 		noBlur = 1
-		NO.allWrap = | &nbsp; &#124; &nbsp; |*||*| |
+		NO.allWrap = | &#xA0; &#124; &#xA0; |*||*| |
 		NO.stdWrap.htmlSpecialChars = 1
 	}
 }
@@ -214,7 +214,7 @@ menus.breadcrumb {
 	1 = TMENU
 	1 {
 		noBlur = 1
-		NO.allWrap = | &nbsp; &gt; &nbsp; |*||*| |
+		NO.allWrap = | &#xA0; &gt; &#xA0; |*||*| |
 		NO.stdWrap.htmlSpecialChars = 1
 		NO.stdWrap.crop = 40 | ... | 1
 

@@ -183,7 +183,7 @@ page {
 			default.value = fileadmin/templates/default/TwoColumns.html
 			# template file for backend-layout with ID 2
 			2 = TEXT
-			2.value = fileadmin/templates/default/layouts/ThreeColumns.html
+			2.value = fileadmin/templates/default/ThreeColumns.html
 		}
 	}
 }

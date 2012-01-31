@@ -1,61 +1,33 @@
-<!DOCTYPE html 
-	PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
-	<head>
-		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-		<link rel="stylesheet" href="css/base.css" type="text/css" media="screen" />
-		<link rel="stylesheet" href="css/screen.css" type="text/css" media="screen" />
+	<div id="wrap">
 
-		<!--[if IE 8]>
-			<link rel="stylesheet" href="css/screen_ie8.css" type="text/css" media="screen" />
-		<![endif]-->
+		<div id="header">
+			<f:cObject typoscriptObjectPath="lib.header" />
+		</div>
 		
-		<!--[if IE 7]> 
-			<link rel="stylesheet" href="css/screen_ie7.css" type="text/css" media="screen" />
-		<![endif]-->
-
-		<!--[if lte IE 6]>
-			<link rel="stylesheet" href="css/screen_ie6.css" type="text/css" media="screen" />
-		<![endif]-->
-		
-		<title>Default Template</title>
-	</head>
-	<body>
-	
-		<div id="wrap">
-		
-			<div id="header">
-				header
+		<div class="colmask equal layout3cols">
+			
+			<div class="col1">
+				<div class="content">
+					<f:cObject typoscriptObjectPath="lib.contentLeft" />
+				</div>
 			</div>
 			
-			<div class="colmask equal layout3cols">
-				
-				<div class="col1">
-					<div class="content">
-						col1: left
-					</div>
+			<div class="col2">
+				<div class="content" id="contentMain">
+					<f:cObject typoscriptObjectPath="lib.content" />
 				</div>
-				
-				<div class="col2">
-					<div class="content" id="contentMain">
-						col2: content
-					</div>
-				</div>
-				
-				<div class="col3">
-					<div class="content">
-						col3: right
-					</div>
-				</div>
-				
 			</div>
 			
-			<div id="footer">
-				footer
+			<div class="col3">
+				<div class="content">
+					<f:cObject typoscriptObjectPath="lib.contentRight" />
+				</div>
 			</div>
 			
-		</div> <!-- /wrap -->
+		</div>
 		
-	</body>
-</html>
+		<div id="footer">
+			<f:cObject typoscriptObjectPath="lib.footer" />
+		</div>
+		
+	</div> <!-- /wrap -->

@@ -49,27 +49,32 @@ lib.contentLeft {
 	10.entryLevel = 1
 	10.1.wrap = <ul id="menu">|</ul>
 	50 < styles.content.get
-	50.select.where = colPos = 1
+	50.select.where = colPos = 2
 	# get first content from parentpage up to rootpage # use additional slide.collect = -1 to get all content
 	50.slide = -1
 }
 
 lib.contentLeft.110 = TEXT
-lib.contentLeft.110.value = &nbsp;
+lib.contentLeft.110.value = &#xA0;
 
 ## Content #########################################################################################
 lib.content = COA
 lib.content {
 	50 < styles.content.get
-	50.select.where = colPos = 2
+	50.select.where = colPos = 1
 }
 
 lib.content.110 = TEXT
-lib.content.110.value = &nbsp;
+lib.content.110.value = &#xA0;
 
 ## Right Content ###################################################################################
+lib.contentRight = COA
+lib.contentRight {
+	50 < styles.content.get
+	50.select.where = colPos = 3
+}
 lib.contentRight.110 = TEXT
-lib.contentRight.110.value = &nbsp;
+lib.contentRight.110.value = &#xA0;
 
 ## Footer ##########################################################################################
 lib.footer = COA
@@ -82,7 +87,7 @@ lib.footer {
 	20 = TEXT
 	20.value = <br class="clear" />
 	50 < styles.content.get
-	50.select.where = colPos = 3
+	50.select.where = colPos = 5
 }
 
 ####################################################################################################
