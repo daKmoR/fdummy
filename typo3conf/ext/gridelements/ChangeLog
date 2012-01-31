@@ -1,0 +1,77 @@
+1.2.3	Jo Hasenau  <info@cybercraft.de>
+
+	* Fixed: Issue #33319 by reverting the particular file to version 1.1.0
+
+1.2.2	Jo Hasenau  <info@cybercraft.de>
+
+	* Fixed: Issue #33301 getLL has been replaced with a non existing function name
+
+1.2.1	Jo Hasenau  <info@cybercraft.de>
+
+	* Fixed: Empty columns show their numbers in the FE
+
+1.2.0	Jo Hasenau  <info@cybercraft.de>, Rocco Georgi <rocco@pavingways.com>, Arno Dudek <webmaster@adgrafik.at>, Julian Kleinhans
+
+	* Added: Issue #32835 Missing language overlay and versioning preview support
+	* Fixed: Removal of unused variables and code cleanup
+	* Fixed: Sorting problem with nested grid tables that don't use ascending column order
+	* Fixed: Issue #32241 bug in class.tx_gridelements_tcemainhook.php
+	* Fixed: Issue #32355 Grid columns lost
+	* Fixed: Issue #31804 Error while saving container
+	* Added: Issue #30830 Localized column name
+	* Fixed: Issue #30923 Wrong column wrapping
+	* Added: Paste reference after for click menus
+	* Added: Issue #32510 Parent data access
+	* Added: Paste reference into for page and grid columns
+	* Added: Usage of large icons for the drag in wizard overlays
+
+1.1.0	2011-11-07 Jo Hasenau  <info@cybercraft.de>, Rocco Georgi <rocco@pavingways.com>
+
+	* Fixed: $BACK_PATH issue with symlinked filesystem, now there's a $BACK_PATH_ABS variable - only used for PHP requires
+	* Fixed: backend layout wizard was linked to typo3/ext for some reason, path edited to use t3lib_extMgm::extRelPath($_EXTKEY)
+	* Fixed: handling of "unused elements" in colPos -2 is wrong
+	* Fixed: number of child elements is not updated while creating new children
+	* Added: server time for future reload-less DnD (page edit time will be compared against this)
+	* Added: templates for future reload-less DnD of new content elements
+	* Added: options to switch reloads and templates off for future reload-less DnD
+	* Added: exclude current parent of dragged element from targets (drop now has no effect/does not reload)
+	
+1.0.0	2011-10-10 Jo Hasenau  <info@cybercraft.de>, Rocco Georgi <rocco@pavingways.com>
+
+	* Fixed different bugs with D&D in IE8
+	* Fixed the handling of the layout wizard BACK_PATH for global and local installs of the extension
+	* Fixed bug: Dragging in of new elements after elements outside of grid containers does not work
+
+0.6.0	2011-10-09 Jo Hasenau  <info@cybercraft.de>
+
+	* Drag In of new content elements complete
+	* Just activate the drag in wizard by clicking on the "create new content element" icon on top of the page
+
+0.5.0	2011-10-09 Jo Hasenau  <info@cybercraft.de>
+
+	* lots of improvements to the D&D feature
+	* Drag & Drop works properly now including copying with CTRL-key pressed
+	* Grid containers are updated and logged as well during actions of a child element between one or two container(s)
+	* Basic concept for Drag In of new elements is already in the code base but still deactivated
+	* Still some cosmetical things to do
+
+
+0.4.0	2011-09-19 Rocco Georgi <rocco@pavingways.com>
+
+	* added basic JS for drag-and-drop
+
+0.3.0	2011-09-16 Jo Hasenau  <info@cybercraft.de>
+
+	* Just a double upload during the security fix phase
+
+0.2.0	2011-09-06 Jo Hasenau  <info@cybercraft.de>
+
+	* Security fix
+
+0.1.0 	2011-09-06 Jo Hasenau  <info@cybercraft.de>
+
+	* Initial upload. Grid view for CE works completely.
+	* D&D, FE output via TS/plugin and manual still pending.
+	* Can be installed together with TV but will disable some of the TV hooks, which is the reason for the message during the install.
+	* So you can still migrate from TV to the new structures before removing TV.
+

@@ -1,0 +1,29 @@
+temp.gridelements.defaultGridSetup { // stdWrap functions being applied to each element
+	template = EXT:gridelements/res/template/gridelements.html
+	columns {
+		default {
+			renderObj = COA
+			renderObj {
+				10 = LOAD_REGISTER
+				20 =< tt_content
+				30 = RESTORE_REGISTER
+			}
+		}
+	}
+}
+
+tt_content.gridelements_pi1 >
+tt_content.gridelements_pi1 = COA
+tt_content.gridelements_pi1 {
+	#10 =< lib.stdheader
+	20 = COA
+	20 {
+		10 = USER
+		10 {
+			userFunc = tx_gridelements_pi1->main
+			setup {
+				default < temp.gridelements.defaultGridSetup
+			}
+		}
+	}
+}
