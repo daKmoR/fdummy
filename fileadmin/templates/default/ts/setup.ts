@@ -50,6 +50,8 @@ lib.contentLeft {
 	10.1.wrap = <ul id="menu">|</ul>
 	50 < styles.content.get
 	50.select.where = colPos = 1
+	# get first content from parentpage up to rootpage # use additional slide.collect = -1 to get all content
+	50.slide = -1
 }
 
 lib.contentLeft.110 = TEXT

@@ -26,9 +26,9 @@ TCEFORM {
 
 ## new Content Element wizard ############################################################
 # use tabs
-templavoila.wizards.newContentElement.renderMode = tabs
+mod.wizards.newContentElement.renderMode = tabs
 # only show text & textpic
-templavoila.wizards.newContentElement.wizardItems.common.show = text,textpic,image
+mod.wizards.newContentElement.wizardItems.common.show = text,textpic,image
 
 # Pages will NOT have "(copy)" appended:
 TCEMAIN.table.pages.disablePrependAtCopy = 1
