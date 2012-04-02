@@ -1,0 +1,24 @@
+plugin.tx_xform {
+	view {
+		templateRootPath = EXT:xform/Resources/Private/Templates/
+		partialRootPath = EXT:xform/Resources/Private/Partials/
+		layoutRootPath = EXT:xform/Resources/Private/Layouts/
+	}
+	persistence {
+		storagePid = 
+	}
+	settings {
+		class = Tx_Xform_Domain_Model_Message
+		sendEmail {
+			toClient {
+				fromEmailProperty = getEmail
+				fromNameProperty = getName
+				toEmailProperty = getEmailClient
+				toNameProperty = getNameClient
+			}
+		}
+	}
+}
+
+plugin.tx_xform._CSS_DEFAULT_STYLE (
+)

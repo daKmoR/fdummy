@@ -3,9 +3,7 @@
 [globalVar = TSFE:beUserLogin > 0]
 	config.no_cache = 1
 [else]
-	config {
-		disablePrefixComment = 1
-	}
+	config.disablePrefixComment = 1
 [global]
 
 ## Language ########################################################################################
@@ -161,7 +159,7 @@ tt_content.mailform.20 {
 }
 
 ## Default page ####################################################################################
-# creates default Page Type rendered with TemplaVoila
+# creates default Page Type rendered with Fluidtemplate
 page = PAGE
 page {
 	typeNum = 0

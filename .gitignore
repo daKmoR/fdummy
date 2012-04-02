@@ -10,7 +10,10 @@ typo3temp/*.*
 typo3temp/**/*
 !typo3temp/*/index.html
 !typo3temp/**/index.html
+
 /awstats-icon
 /icon
 /php5.fcgi
 /stats
+/.idea
+/.rsync_cache
