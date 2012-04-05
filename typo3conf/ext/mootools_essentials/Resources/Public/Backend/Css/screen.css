@@ -1,0 +1,8 @@
+h3 { margin: 0; }
+
+
+.packages {}
+	.package { width: 320px; height: 105px; float: left; background: #fff; padding: 10px; margin: 7px;  border: 1px solid #000; }
+		.author, .author a { font-size: 10px; color: #aaa; }
+		.author { padding-left: 20px; }
+		.description { margin-top: 5px; }

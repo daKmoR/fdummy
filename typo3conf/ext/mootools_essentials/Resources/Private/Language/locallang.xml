@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the MooTools Essentials extension in the FRONTEND</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_mootoolsessentials_domain_model_behavior">Behavior</label>
+			<label index="tx_mootoolsessentials_domain_model_behavior.name">name</label>
+			<label index="tx_mootoolsessentials_domain_model_behavior.description">description</label>
+			<label index="tx_mootoolsessentials_domain_model_packager">Packager</label>
+		</languageKey>
+	</data>
+</T3locallang>

@@ -1,0 +1,38 @@
+# plugin configuration
+plugin.tx_mootoolsessentials {
+	settings {
+		manifests {
+			Core = EXT:mootools_essentials/Resources/Public/Manifests/Core/
+			More = EXT:mootools_essentials/Resources/Public/Manifests/More/
+			Behavior = EXT:mootools_essentials/Resources/Public/Manifests/Behavior/
+			MoreBehaviors = EXT:mootools_essentials/Resources/Public/Manifests/MoreBehaviors/
+		}
+		load {
+			files {
+				# place your "files" to load here - [left part is irrelevant but needs to be unique] for example
+				# CoreRequest = Core/Request
+				# 10 = More/Fx.Accordion
+			}
+			componentes {
+
+			}
+		}
+	}
+}
+
+# Module configuration
+module.tx_mootoolsessentials {
+	view {
+		templateRootPath = EXT:mootools_essentials/Resources/Private/Backend/Templates/
+		partialRootPath = EXT:mootools_essentials/Resources/Private/Backend/Partials/
+		layoutRootPath = EXT:mootools_essentials/Resources/Private/Backend/Layouts/
+	}
+	settings < plugin.tx_mootoolsessentials.settings
+}
+
+page.483 = USER
+page.483 {
+	userFunc = tx_extbase_core_bootstrap->run
+	extensionName = MootoolsEssentials
+	pluginName = Loader
+}
