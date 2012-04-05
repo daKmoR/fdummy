@@ -1,11 +1,3 @@
-## Cache & Debug ###################################################################################
-# disable cache if any typo3 be-user is logged in, otherwise remove debug-comments
-[globalVar = TSFE:beUserLogin > 0]
-	config.no_cache = 1
-[else]
-	config.disablePrefixComment = 1
-[global]
-
 ## Language ########################################################################################
 config {
 	# only append the language value if not the default language
@@ -40,6 +32,10 @@ config {
 	doctype = html5
 	xhtmlDoctype = xhtml_strict
 	removeDefaultJS = external
+	concatenateCss = 1
+	# compressCss = 1
+	concatenateJs = 1
+	# compressJs = 1
 }
 
 # get meta tags by default from the page with the uid 1
@@ -216,3 +212,17 @@ tt_content.image.20.1.imageLinkWrap {
 }
 
 <INCLUDE_TYPOSCRIPT: source="FILE: fileadmin/templates/common/ts/menus.ts">
+
+## Cache & Debug ###################################################################################
+# disable cache if any typo3 be-user is logged in, otherwise remove debug-comments
+[globalVar = TSFE:beUserLogin > 0]
+	config {
+		no_cache = 1
+		concatenateCss = 0
+		# compressCss = 0
+		concatenateJs = 0
+		# compressJs = 0
+	}
+[else]
+	config.disablePrefixComment = 1
+[global]
