@@ -153,5 +153,18 @@ class Tx_MootoolsEssentials_Domain_Model_Package {
 		return $this->path;
 	}
 
+	/**
+	 * @return string
+	 */
+	public function getCssFile() {
+		preg_match_all('/\[CSS:(.*?)\]/', $this->getDescription(), $matches);
+		if (strlen($matches[1][0]) > 0) {
+			$path = substr($matches[1][0], strpos($matches[1][0], '/')+1);
+			$manifest = substr($matches[1][0], 0, strpos($matches[1][0], '/'));
+			return array('manifest' => $manifest, 'path' => $path);
+		}
+		return '';
+	}
+
 }
 ?>

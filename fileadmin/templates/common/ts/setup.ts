@@ -24,8 +24,10 @@ config {
 	htmlTag_langKey = de
 	locale_all = de_AT.UTF-8
 }
+
 plugin.tx_indexedsearch._DEFAULT_PI_VARS.lang = 0
 plugin.tx_pagenotfoundhandler.operator = ODER
+plugin.tx_mootoolsessentials.settings.language = de-DE
 
 ## Anti-Spam #######################################################################################
 config {

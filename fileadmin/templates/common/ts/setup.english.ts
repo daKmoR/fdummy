@@ -9,4 +9,5 @@
 	}
 	plugin.tx_indexedsearch._DEFAULT_PI_VARS.lang = 1
 	plugin.tx_pagenotfoundhandler.operator = OR
+	plugin.tx_mootoolsessentials.settings.language = en-US
 [global]

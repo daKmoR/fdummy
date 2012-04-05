@@ -15,4 +15,5 @@ config {
 		htmlTag_langKey = de
 		locale_all = de_AT.UTF-8
 	}
+	plugin.tx_mootoolsessentials.settings.language = de-DE
 [global]

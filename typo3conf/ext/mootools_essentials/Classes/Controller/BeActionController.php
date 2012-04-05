@@ -52,8 +52,11 @@ class Tx_MootoolsEssentials_Controller_BeActionController extends Tx_Extbase_MVC
 		parent::callActionMethod();
 
 		if (TYPO3_MODE === 'BE') {
-			// calling it after parent::callActionMethod won't allow for addJsFooter Stuff; before only allow addJsFooter Stuff :/
-			// so let's call it after, so you can use addCssFile(...)
+			$loader = t3lib_div::makeInstance('Tx_MootoolsEssentials_Controller_LoadController');
+			$loader->load($this->settings);
+
+			// calling the loader after parent::callActionMethod won't allow for addJsFooter Stuff; before only allow addJsFooter Stuff :/
+			// so let's call it before and after :/
 			$pageHeader = $this->template->startpage('title', false);
 
 			// startpage does reset inlineFooterJs :/ so we have to do the loading later

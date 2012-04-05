@@ -5,7 +5,7 @@ plugin.tx_mootoolsessentials {
 			Core = EXT:mootools_essentials/Resources/Public/Manifests/Core/
 			More = EXT:mootools_essentials/Resources/Public/Manifests/More/
 			Behavior = EXT:mootools_essentials/Resources/Public/Manifests/Behavior/
-			MoreBehaviors = EXT:mootools_essentials/Resources/Public/Manifests/MoreBehaviors/
+			More-Behaviors = EXT:mootools_essentials/Resources/Public/Manifests/MoreBehaviors/
 		}
 		load {
 			files {
@@ -17,6 +17,7 @@ plugin.tx_mootoolsessentials {
 
 			}
 		}
+		language = en-US
 	}
 }
 

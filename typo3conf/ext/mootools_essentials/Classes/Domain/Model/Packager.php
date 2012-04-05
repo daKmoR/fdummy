@@ -72,9 +72,20 @@ class Tx_MootoolsEssentials_Domain_Model_Packager extends Packager implements t3
 		return $this->complete_files($files);
 	}
 
+	public function getCompletePackages($files = NULL) {
+		$files = $files ? $files : $this->getFiles();
+		$files = array_unique($files);
+		$results = array();
+		$keys = $this->complete_files($files);
+		foreach ($keys as $key) {
+			$results[] = $this->packageNameToObject($key);
+		}
+		return $results;
+	}
+
 	public function getFilePath($file) {
 		$path = $this->get_file_path($file);
-		$path = substr($path, strpos($path, 'typo3conf/ext/mootools_essentials'));
+		$path = substr($path, strpos($path, 'typo3conf/ext'));
 		$path = (TYPO3_MODE === 'BE') ? '../' . $path : $path;
 		return $path;
 	}

@@ -71,26 +71,51 @@ class Tx_MootoolsEssentials_Controller_LoadController extends Tx_Extbase_MVC_Con
 	public function load($settings) {
 		$this->loadManifests($settings);
 		$this->packager->addFiles($settings['load']['files']);
-		$files = $this->packager->getCompleteFiles();
+		$files = $this->packager->getCompletePackages();
 
 		$renderer = t3lib_div::makeInstance('t3lib_PageRenderer');
 		foreach ($files as $file) {
-			$renderer->addJsFooterLibrary($file, $this->packager->getFilePath($file));
+			$renderer->addJsFooterLibrary($file->getKey(), $file->getPath($file));
+			$cssFileArray = $file->getCssFile();
+
+			$path = $settings['manifests'][$cssFileArray['manifest']] . $cssFileArray['path'];
+			if ($path !== '') {
+				$path = t3lib_div::getFileAbsFileName($path);
+				$path = substr($path, strpos($path, 'typo3conf/ext'));
+				$path = (TYPO3_MODE === 'BE') ? '../' . $path : $path;
+				$renderer->addCssFile($path);
+			}
 		}
 
-		$renderer->addJsFooterInlineCode('mootoolsLanguage', "Locale.use('de-DE');");
+		if ($settings['language'] !== 'en-US' && $settings['language'] !== '') {
+			$renderer->addJsFooterInlineCode('mootoolsLanguage', "Locale.use('" . $settings['language'] . "');");
+		}
 
-		if (in_array('Behavior/Behavior', $files)) {
-			if (in_array('Behavior/Delegator', $files)) {
+		if ($this->hasPackage('Behavior/Behavior', $files)) {
+			if ($this->hasPackage('Behavior/Delegator', $files)) {
 				$renderer->addJsFooterInlineCode('behaviorAndDelegatorAtBottom', "var myBehavior = new Behavior().apply(document.body);	var myDelegator = new Delegator({getBehavior: function(){ return myBehavior; }}).attach(document.body);");
 			} else {
 				$renderer->addJsFooterInlineCode('behaviorAtBottom', "var myBehavior = new Behavior().apply(document.body);");
 			}
 		} else {
-			if (in_array('Behavior/Delegator', $files)) {
+			if ($this->hasPackage('Behavior/Delegator', $files)) {
 				$renderer->addJsFooterInlineCode('delegatorAtBottom', "var myDelegator = new Delegator().attach(document.body);");
 			}
 		}
+	}
+	
+	/**
+	 * @param string $search
+	 * @param array $packages
+	 * @return bool
+	 */
+	public function hasPackage($search, $packages) {
+		foreach($packages as $package) {
+			if ($package->getKey() === $search) {
+				return TRUE;
+			}
+		}
+		return FALSE;
 	}
 
 }
