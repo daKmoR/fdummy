@@ -77,13 +77,13 @@ class tx_gridelements_layoutsetup implements t3lib_Singleton {
 	 * fetches all available columns for a certain grid container
 	 *
 	 * @param string $layoutId: The selected backend layout of the grid container
-	 * @return CSV The columns available for the selected layout as CSV list
+	 * @return array $availableColumns: first key is 'CSV' The columns available for the selected layout as CSV list and the allowed elements for each of the columns
 	 */
 	public function getLayoutColumns($layoutId) {
-		$availableColumns = '';
+		$availableColumns = array();
 		if (isset($this->layoutSetup[$layoutId])) {
 
-			$availableColumns = '-2,-1';
+			$availableColumns['CSV'] = '-2,-1';
 			$setup = $this->layoutSetup[$layoutId];
 
 			if (isset($setup['config']) && $setup['config']) {
@@ -93,14 +93,14 @@ class tx_gridelements_layoutsetup implements t3lib_Singleton {
 					foreach ($setup['config']['rows.'] as $row) {
 						if (isset($row['columns.']) && is_array($row['columns.'])) {
 							foreach ($row['columns.'] as $column) {
-								$availableColumns .= ','. $column['colPos'];
+								$availableColumns['CSV'] .= ','. $column['colPos'];
+								$availableColumns[$column['colPos']] = $column['allowed'] ? $column['allowed'] : '*';
 							}
 						}
 					}
 				}
 			}
 		}
-
 		return $availableColumns;
 	}
 
@@ -234,7 +234,7 @@ class tx_gridelements_layoutsetup implements t3lib_Singleton {
 							$icon = str_replace(PATH_site, '../', t3lib_div::getFileAbsFileName($icon));
 						}
 					}
-					$item['icons'] = $icons;
+					$item['icon'] = $icons;
 				}
 
 				// remove tailing dot of config

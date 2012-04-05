@@ -60,16 +60,16 @@ $tempColumns = array(
 		'config' => array(
 			'type' => 'inline',
 			'appearance' => array(
-				'newRecordLinkPosition' => 'top',
+				'levelLinksPosition' => 'none',
 				'showPossibleLocalizationRecords' => true,
 				'showRemovedLocalizationRecords' => true,
 				'showAllLocalizationLink' => true,
 				'showSynchronizationLink' => true,
 				'enabledControls' => array(
 					'info' => true,
-					'new' => true,
-					'dragdrop' => true,
-					'sort' => true,
+					'new' => false,
+					'dragdrop' => false,
+					'sort' => false,
 					'hide' => true,
 					'delete' => true,
 					'localize' => true,
@@ -138,7 +138,6 @@ $TCA['tt_content']['ctrl']['typeicon_classes']['gridelements_pi1'] = 'tcarecords
 $TCA['tt_content']['ctrl']['typeicon_classes']['gridelements-pi1'] = 'tcarecords-tx_gridelements_backend_layout-default';
 $TCA['tt_content']['types'][$_EXTKEY . '_pi1']['showitem'] = $TCA['tt_content']['types']['text']['showitem'];
 
-$TCA['tt_content']['columns']['colPos']['config']['items'][] = array('LLL:EXT:gridelements/locallang_db.xml:tt_content.tx_gridelements_container', '-1');
 $TCA['tt_content']['columns']['colPos']['config']['itemsProcFunc'] = 'EXT:gridelements/lib/class.tx_gridelements_colposlist.php:tx_gridelements_colposlist->itemsProcFunc';
 $TCA['tt_content']['columns']['pi_flexform']['config']['ds']['*,gridelements_pi1'] = '';
 
@@ -167,7 +166,7 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['move
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tceforms.php']['getSingleFieldClass'][] = 'EXT:gridelements/lib/class.tx_gridelements_tceformshook.php:tx_gridelements_TCEformsHook';
 
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['typo3/class.db_list.inc']['makeQueryArray'][] = 'EXT:gridelements/lib/class.tx_gridelements_dblisthook.php:tx_gridelements_dbListHook';
-
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['typo3/class.db_list_extra.inc']['actions'][] = 'EXT:gridelements/lib/class.tx_gridelements_dblistactionshook.php:tx_gridelements_dbListActionsHook';
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tx_templavoila_api']['apiIsRunningTCEmain'] = TRUE;
 
 

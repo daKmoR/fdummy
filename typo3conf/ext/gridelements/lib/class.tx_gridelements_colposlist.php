@@ -44,11 +44,11 @@ class tx_gridelements_colPosList {
 
 		if ($layout && $layout['__items']) {
 			$items = $layout['__items'];
-			$items[] = array(
-				$GLOBALS['LANG']->sL('LLL:EXT:gridelements/locallang_db.xml:tt_content.tx_gridelements_container'),
-				'-1'
-			);
 		}
+		$items[] = array(
+			$GLOBALS['LANG']->sL('LLL:EXT:gridelements/locallang_db.xml:tt_content.tx_gridelements_container'),
+			'-1'
+		);
 		return $items;
 	}
 

@@ -246,47 +246,51 @@ class tx_gridelements_drawItemHook implements tx_cms_layout_tt_content_drawItemH
 
 						foreach ($items as $itemRow) {
 
-							if (intval($itemRow['colPos']) < 255 && intval($itemRow['colPos']) > -1) {
-								// update query for a "soft" migration from TV style to Grid View
-								$GLOBALS['TYPO3_DB']->exec_UPDATEquery(
-									'tt_content',
-									'uid=' . $itemRow['uid'],
-									array(
-									     'colPos' => -1,
-									)
-								);
+							if(is_array($itemRow)) {
+
+								if (intval($itemRow['colPos']) < 255 && intval($itemRow['colPos']) > -1) {
+									// update query for a "soft" migration from TV style to Grid View
+									$GLOBALS['TYPO3_DB']->exec_UPDATEquery(
+										'tt_content',
+										'uid=' . $itemRow['uid'],
+										array(
+										     'colPos' => -1,
+										)
+									);
+								}
+								$singleElementHTML = $parentObject->tt_content_drawHeader(
+									$itemRow,
+									$parentObject->tt_contentConfig['showInfo']
+										? 15
+										: 5,
+									$parentObject->defLangBinding && $parentObject->lP > 0,
+									TRUE);
+
+								$isRTE = $parentObject->RTE && $parentObject->isRTEforField('tt_content', $itemRow, 'bodytext');
+								$singleElementHTML .= '<div ' .
+								                      ($itemRow['_ORIG_uid']
+									                      ? ' class="ver-element"'
+									                      : '') .
+								                      '>' .
+								                      $parentObject->tt_content_drawItem($itemRow, $isRTE) .
+								                      '</div>';
+
+								// NOTE: this is the end tag for <div class="t3-page-ce-body">
+								// because of bad (historic) conception, starting tag has to be placed inside tt_content_drawHeader()
+								$singleElementHTML .= '</div>';
+
+								$statusHidden = $parentObject->isDisabled('tt_content', $itemRow)
+									? ' t3-page-ce-hidden'
+									: '';
+
+								$gridContent[$colPos] .= '<div class="t3-page-ce' . $statusHidden . '">' .
+								                         $singleElementHTML .
+								                         '</div>';
+								$editUidList[$colPos] .= $editUidList[$colPos]
+									? ',' . $itemRow['uid']
+									: $itemRow['uid'];
 							}
-							$singleElementHTML = $parentObject->tt_content_drawHeader(
-								$itemRow,
-								$parentObject->tt_contentConfig['showInfo']
-									? 15
-									: 5,
-								$parentObject->defLangBinding && $parentObject->lP > 0,
-								TRUE);
 
-							$isRTE = $parentObject->RTE && $parentObject->isRTEforField('tt_content', $itemRow, 'bodytext');
-							$singleElementHTML .= '<div ' .
-							                      ($itemRow['_ORIG_uid']
-								                      ? ' class="ver-element"'
-								                      : '') .
-							                      '>' .
-							                      $parentObject->tt_content_drawItem($itemRow, $isRTE) .
-							                      '</div>';
-
-							// NOTE: this is the end tag for <div class="t3-page-ce-body">
-							// because of bad (historic) conception, starting tag has to be placed inside tt_content_drawHeader()
-							$singleElementHTML .= '</div>';
-
-							$statusHidden = $parentObject->isDisabled('tt_content', $itemRow)
-								? ' t3-page-ce-hidden'
-								: '';
-
-							$gridContent[$colPos] .= '<div class="t3-page-ce' . $statusHidden . '">' .
-							                         $singleElementHTML .
-							                         '</div>';
-							$editUidList[$colPos] .= $editUidList[$colPos]
-								? ',' . $itemRow['uid']
-								: $itemRow['uid'];
 						}
 
 					}
@@ -375,7 +379,7 @@ class tx_gridelements_drawItemHook implements tx_cms_layout_tt_content_drawItemH
 							         ? ' t3-gridCell-height' . $rowSpan
 							         : '') . '">';
 
-						$grid .= $head[$columnKey] . $gridContent[$columnKey];
+						$grid .= ($GLOBALS['BE_USER']->uc['hideColumnHeaders'] ? '' : $head[$columnKey]) . $gridContent[$columnKey];
 						$grid .= '</td>';
 					}
 
@@ -389,6 +393,7 @@ class tx_gridelements_drawItemHook implements tx_cms_layout_tt_content_drawItemH
 				$itemContent = '<div class="t3-gridContainer">';
 				$itemContent .= '<table border="0" cellspacing="1" cellpadding="4" width="100%" height="100%" class="t3-page-columns t3-gridTable">';
 				$itemContent .= '<tr><td valign="top" class="t3-gridCell t3-page-column t3-page-column-0">' . $gridContent[0] . '</td></tr>';
+				$itemContent .= '</table>';
 			}
 			if(count($piFlexformValues)) {
 				$itemContent .= '<table border="0" cellspacing="1" cellpadding="4" class="t3-page-additional-gridInfo">';

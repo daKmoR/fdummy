@@ -17,11 +17,11 @@ class tx_gridelements_addjavascript {
 	 * @return	void
 	 */
 	public function addJS($parameters, &$pageRenderer) {
-
+		
 		$formprotection = t3lib_formprotection_Factory::get();
-
+		
 		if (count($parameters['jsFiles'])) {
-
+			
 			if (method_exists($GLOBALS['SOBE']->doc, 'issueCommand')) {
 				/** @var t3lib_clipboard $clipObj  */
 				$clipObj = t3lib_div::makeInstance('t3lib_clipboard');		// Start clipboard
@@ -30,24 +30,19 @@ class tx_gridelements_addjavascript {
 				$clipBoardHasContent = false;
 
 				if(isset($clipObj->clipData['normal']['el']) && strpos(key($clipObj->clipData['normal']['el']), 'tt_content') !== false) {
-
 					$pasteURL = str_replace('&amp;', '&', $clipObj->pasteUrl('tt_content', 'DD_PASTE_UID', 0));
-
 					if (isset($clipObj->clipData['normal']['mode'])) {
 						$clipBoardHasContent = 'copy';
 					} else {
 						$clipBoardHasContent = 'move';
 					}
-
 				}
-
+				
 				$moveParams = '&cmd[tt_content][DD_DRAG_UID][move]=DD_DROP_UID';
 				$moveURL = str_replace('&amp;', '&', htmlspecialchars($GLOBALS['SOBE']->doc->issueCommand($moveParams, 1)));
 				$copyParams = '&cmd[tt_content][DD_DRAG_UID][copy]=DD_DROP_UID&DDcopy=1';
 				$copyURL = str_replace('&amp;', '&', htmlspecialchars($GLOBALS['SOBE']->doc->issueCommand($copyParams, 1)));
-
-//				t3lib_utility_Debug::debug($moveURL);
-
+				
 				// add JavaScript library
 				$pageRenderer->addJsFile(
 					$GLOBALS['BACK_PATH'] . t3lib_extMgm::extRelPath('gridelements') . 'res/js/GridElementsDD.js',
@@ -56,21 +51,32 @@ class tx_gridelements_addjavascript {
 					$forceOnTop = FALSE,
 					$allWrap = ''
 				);
-
+				
 				if (!$pageRenderer->getCharSet()) {
 					$pageRenderer->setCharSet($GLOBALS['LANG']->charSet ? $GLOBALS['LANG']->charSet : 'utf-8');
 				}
-
+				
 				$pageRenderer->addInlineLanguageLabelFile('EXT:gridelements/locallang_db.xml');
-
-
+				
 				if(is_array($clipObj->clipData['normal']['el'])) {
 				    $arrCBKeys = array_keys($clipObj->clipData['normal']['el']);
 				    $intFirstCBEl = str_replace('tt_content|', '', $arrCBKeys[0]);
 				}
-
+				
 				// add Ext.onReady() code from file
 				$pageRenderer->addExtOnReadyCode(
+					// add some more JS here
+					"
+						top.pasteURL = '" . $pasteURL . "';
+						top.moveURL = '" . $moveURL . "';
+						top.copyURL = '" . $copyURL . "';
+						top.pasteTpl = top.copyURL.replace('DDcopy=1', 'reference=DD_REFYN').replace('&redirect=1', '');
+						top.DDtceActionToken = '" . $formprotection->generateToken('tceAction') . "';
+						top.DDtoken = '" . $formprotection->generateToken('editRecord') . "';
+						top.DDpid = '" . intval(t3lib_div::_GP('id')) . "';
+						top.DDclipboardfilled = '" . ($clipBoardHasContent ? $clipBoardHasContent : 'false') . "';
+						top.DDclipboardElId = '" . $intFirstCBEl . "';
+					" . 
 					// replace placeholder for detail info on draggables
 					str_replace(
 						array(
@@ -93,19 +99,8 @@ class tx_gridelements_addjavascript {
 							t3lib_extMgm::extPath('gridelements') . 'res/js/GridElementsDD_onReady.js'
 						)
 					)
-
-					// add some more JS here
-					. "
-						top.pasteURL = '" . $pasteURL . "';
-						top.moveURL = '" . $moveURL . "';
-						top.copyURL = '" . $copyURL . "';
-						top.pasteTpl = top.copyURL.replace('DDcopy=1', 'reference=DD_REFYN').replace('&redirect=1', '');
-						top.DDtceActionToken = '" . $formprotection->generateToken('tceAction') . "';
-						top.DDtoken = '" . $formprotection->generateToken('editRecord') . "';
-						top.DDpid = '" . intval(t3lib_div::_GP('id')) . "';
-						top.DDclipboardfilled = '" . ($clipBoardHasContent ? $clipBoardHasContent : 'false') . "';
-						top.DDclipboardElId = '" . $intFirstCBEl . "';
-					",
+					
+,
 					true
 				);
 			}

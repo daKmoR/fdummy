@@ -2,12 +2,7 @@
  * drag-and-drop library for content elements
  * requires ExtJS
  * 
- * todos:
- * - FEATURE: show detail infos overlay
- * - BUG: switching from non-layout (default) to a layout drops all colpos values/sets them to -2
- * - FEATURE: reload-less DnD: on ajax: compare page lastchange to current page "age" (pageRenderTime inserted by onReady injector)
-
- * - 
+ * - FEATURE: reload-less DnD: compare page lastchange to current page "age" on ajax (pageRenderTime inserted by onReady injector)
  */
 GridElementsDD = function() {
 	var
@@ -18,6 +13,7 @@ GridElementsDD = function() {
 		defaultTemplate = '<div class="x-dd-defaulttpl">Missing Content Template</div>',
 		
 		// basic setup for all drag elements (existing content elements that can be dragged around)
+
 		dragBehaviorDragelements = {
 			// the current class
 			dragClass: null,
@@ -31,6 +27,12 @@ GridElementsDD = function() {
 			// called whenever dragging starts (mousedown for a little while)
 			b4StartDrag: function() {
 				
+				Ext.dd.ScrollManager.register('typo3-docbody');
+
+				Ext.dd.ScrollManager.frequency = 50;
+				Ext.dd.ScrollManager.increment = 20;
+				Ext.dd.ScrollManager.animate = false;
+
 				// reset all top. properties set below
 				top.originalfirstDroptarget = null;
 				top.originalPositionDropTargetId = null;
@@ -45,7 +47,13 @@ GridElementsDD = function() {
 				if(!this.el) {
 					this.el = Ext.get(this.getEl());
 				}
-				
+				if(!this.scrollBody) {
+					this.scrollBody = Ext.get('typo3-docbody');
+				}
+
+				top.startScrollTop = this.scrollBody.dom.scrollTop;
+				top.startScrollLeft = this.scrollBody.dom.scrollLeft;
+
 				// is this a new or an existing element?
 				var dragEl = Ext.get(this.el);
 				if(dragEl.select('div.t3-page-ce-type a span').elements.length > 0) {
@@ -55,7 +63,7 @@ GridElementsDD = function() {
 					// this can be a dropzone or an element with a dropzone
 					// the check is on all x-dd-droptargetgroup-XYZ classes of the current element and if there's a match the matching drop-zone is memorized
 					// make extNewEl a dropzone too - one for each contained class!
-					var currentClasses = dragEl.dom.className.split(' ');
+					/*var currentClasses = dragEl.dom.className.split(' ');
 					
 					// look for x-dd-droptargetgroup-XYZ class
 					for(var i in currentClasses) {
@@ -66,19 +74,19 @@ GridElementsDD = function() {
 						
 						if(/x-dd-droptargetgroup-/.test(currentClasses[i]) === true) {
 							var prevEl = dragEl.prev();
-							if(prevEl.hasClass(currentClasses[i])){
+							if(prevEl != null && prevEl.hasClass(currentClasses[i])) {
 								var 
 									firstDroptarget = prevEl.select('.x-dd-droptargetarea').elements[0],
 									containedDroptarget = Ext.get(firstDroptarget.id).select('.x-dd-droptargetarea').elements[0];
 								
 								top.originalfirstDroptarget = firstDroptarget.id;
-								if(containedDroptarget){
+								if(containedDroptarget) {
 									top.originalPositionDropTargetId = containedDroptarget.id;
 								}
 								//console.log('drop targets: ', top.originalfirstDroptarget, top.originalPositionDropTargetId);
 							}
 						}
-					}
+					}*/
 				} else {
 					top.elementUID = 'NEW';
 				}
@@ -171,7 +179,6 @@ GridElementsDD = function() {
 					}
 				});
 			},
-			
 			// called when the drag element is dragged over the a drop target with the same ddgroup
 			onDragEnter: function(evtObj, targetElId) {
 				// colorize the drag target if the drag node's parent is not the same as the drop target
@@ -195,7 +202,10 @@ GridElementsDD = function() {
 					Ext.get(targetElId).addClass('x-dd-overdroparea');
 				}
 			},
-			
+			onDrag: function(evtObj, targetElId) {
+				this.el.dom.style.left = evtObj.xy[0] - this.originalXY[0] + this.scrollBody.dom.scrollLeft - top.startScrollLeft + 'px';
+				this.el.dom.style.top = evtObj.xy[1] - this.originalXY[1] + this.scrollBody.dom.scrollTop - top.startScrollTop  + 'px';
+			},
 			// called when element is dragged out of a dropzone with the same ddgroup
 			onDragOut: function(evtObj, targetElId) {
 				// remove "over" class from drop target
@@ -261,7 +271,7 @@ GridElementsDD = function() {
 					// the rest of the action URL works the same way for both actions
 					actionURL = actionURL.replace(/DD_DROP_UID/g, '-' + top.targetUID);
 					actionURL = actionURL.replace('../../../', top.TS.PATH_typo3);
-					
+
 					// we don't need the redirect URL, since we will do a reload after the Ajax action
 					// so a redirect within the Ajax action would be too much server load here
 					actionURL = actionURL.replace('&redirect=1', '');
@@ -272,7 +282,7 @@ GridElementsDD = function() {
 					Ext.Ajax.request({
 						url: actionURL,
 						success: function( result, request ) {
-							if(GridElementsDD.baseConf.doReloadsAfterDrops){
+							if(GridElementsDD.baseConf.doReloadsAfterDrops) {
 								// reload page to verify/show updates
 								self.location.reload();
 							}else{
@@ -281,7 +291,7 @@ GridElementsDD = function() {
 							}
 						},
 						failure: function( result, request ) {
-							if(GridElementsDD.baseConf.doReloadsAfterDrops){
+							if(GridElementsDD.baseConf.doReloadsAfterDrops) {
 								// reload page to verify/show updates
 								self.location.reload();
 							}else{
@@ -326,7 +336,9 @@ GridElementsDD = function() {
 						callback: function() {
 							// remove the position attribute
 							this.el.dom.style.position = '';
-							
+							this.el.dom.style.left = '';
+							this.el.dom.style.top = '';
+
 							if(this.isDraggable) {
 								// replace content with original draggerContent
 								this.el.dom.innerHTML = this.draggerContent;
@@ -360,6 +372,8 @@ GridElementsDD = function() {
 		// copy dragBehaviorDragelements onto dragBehaviorDraggables
 		dragBehaviorDraggables = Ext.apply({}, dragBehaviorDragelements);
 	
+	// end var
+	
 	// overwrite dragBehaviorDraggables specials
 	dragBehaviorDraggables.isDraggable = true;
 	dragBehaviorDraggables.onDragDrop = function(evtObj, targetElId) {
@@ -381,9 +395,10 @@ GridElementsDD = function() {
 			// assign drag element group
 			var	dragElementNow = new Ext.dd.DD(Ext.get(extNewEl), 'droptargets-' + this.dragClass, {
 				isTarget: false,
-				scroll: true
+				scroll: false,
+				maintainOffset: false
 			});
-			
+
 			/*
 			// assign an ID to contained H4
 			var tempH4El = Ext.get(extNewEl.select('h4').elements[0]);
@@ -463,7 +478,7 @@ GridElementsDD = function() {
 				},
 				method: 'GET',
 				success: function( result, request ) {
-					if(GridElementsDD.baseConf.doReloadsAfterDrops){
+					if(GridElementsDD.baseConf.doReloadsAfterDrops) {
 						// reload page to verify/show updates
 						self.location.reload();
 					}else{
@@ -472,7 +487,7 @@ GridElementsDD = function() {
 					}
 				},
 				failure: function( result, request ) {
-					if(GridElementsDD.baseConf.doReloadsAfterDrops){
+					if(GridElementsDD.baseConf.doReloadsAfterDrops) {
 						// reload page to verify/show updates
 						self.location.reload();
 					}else{
@@ -554,9 +569,10 @@ GridElementsDD = function() {
 						// add Ext.dd.DD class to element with matching IDs
 						var dragElementNow = new Ext.dd.DD(elementNow, 'droptargets-' + matchingClass, {
 							isTarget: false,
-							scroll: true
+							scroll: false,
+							maintainOffset: false
 						});
-						
+
 						// restrict drag handle to h4 within
 						dragElementNow.setHandleElId(Ext.get(extElNow.select('h4').elements[0]).id);
 						
@@ -602,10 +618,6 @@ GridElementsDD = function() {
 					}
 				}
 			});
-			
-			if(top.DDclipboardfilled && top.DDclipboardElId) {
-				GridElementsDD.addPasteAndRefIcons(top.DDclipboardElId);
-			}
 			
 			this.isInitialized = true;
 		},
@@ -657,16 +669,17 @@ GridElementsDD = function() {
 					matchingClass = currentClasses[h].split('-')[3];
 					
 					// use matchingClass for dragBehaviorDraggables.useTpl if not found before
-					if(dragBehaviorDraggables.useTpl === null){
+					if(dragBehaviorDraggables.useTpl === null) {
 						dragBehaviorDraggables.useTpl = matchingClass;
 					}
 					
 					// add Ext.dd.DD class to element with matching IDs
 					var draggerNow = new Ext.dd.DD(currentEl, 'droptargets-' + matchingClass, {
 						isTarget: false,
-						scroll: true
+						scroll: false,
+						maintainOffset: false
 					});
-					
+
 					// apply the overrides object to the newly created instance of DD
 					dragBehaviorDraggables.dragClass = matchingClass;
 					Ext.apply(draggerNow, dragBehaviorDraggables);
@@ -680,36 +693,27 @@ GridElementsDD = function() {
 			GridElementsDD.copyItemUids[intItemUid] = true;
 		},
 		
-		handleCopyItem: function(copyItemUid) {
-			//console.log('GridElementsDD.handleCopyItem() reached, copyItemUid = ' + copyItemUid);
-			// remove element ID from processable stack
-			GridElementsDD.copyItemUids[copyItemUid] = false;
-			
-			/*
-			// get clipboard item from server
-			var clipboardItemURL = GridElementsDD.baseConf.extBaseUrl + 'lib/getclipboarditem.php';
-			console.log(clipboardItemURL);
-			
-			// get item from clipboard, copyItemUid can be used to verify it's the correct one
-			Ext.Ajax.request({
-				url: clipboardItemURL,
-				success: function(result, request) {
-					console.log('Ext.Ajax.request success', result, request);
-				},
-				failure: function(result, request) {
-					console.log('Ext.Ajax.request failure', result, request);
-				}
-			});
-			*/
-			
+		handleClipboardItem: function(clipboardItemUid, params) {
+
+			// set top vars so they're instantly available in reloaded frames
+			if(params.search(/setCopyMode.+/) != -1) {
+				top.DDclipboardfilled = (top.DDclipboardfilled == "copy" && top.DDclipboardElId == clipboardItemUid) ? "" : "copy";
+			} else {
+				top.DDclipboardfilled = (top.DDclipboardfilled == "move" && top.DDclipboardElId == clipboardItemUid) ? "" : "move";
+			}
+
+			top.DDclipboardElId = top.DDclipboardfilled ? clipboardItemUid : 0;
+
+			// remove and re-add insert icons
 			GridElementsDD.removePasteAndRefIcons();
-			
-			GridElementsDD.addPasteAndRefIcons(copyItemUid);
+			if(top.DDclipboardfilled) {
+				GridElementsDD.addPasteAndRefIcons(clipboardItemUid);
+			}
 			
 		},
 		
 		removePasteAndRefIcons: function() {
-			console.log('removePasteAndRefIcons reached');
+			// console.log('removePasteAndRefIcons reached');
 			// remove all existing paste-copy icons
 			var pasteIcons = Ext.select('.t3-icon-dd-paste-copy-into').elements;
 			Ext.each(pasteIcons, function(iconEl) {
@@ -723,8 +727,8 @@ GridElementsDD = function() {
 			});
 		},
 		
-		addPasteAndRefIcons: function(copyItemUid) {
-			console.log('addPasteAndRefIcons reached');
+		addPasteAndRefIcons: function(clipboardItemUid) {
+			// console.log('addPasteAndRefIcons reached');
 			// add paste icons to column headers
 			colHeader = Ext.select('.t3-page-colHeader').elements;
 			Ext.each(colHeader, function(currentColHeader) {
@@ -755,24 +759,38 @@ GridElementsDD = function() {
 				Ext.get(copyHeaderIcon).removeClass('t3-icon-document-new');
 				Ext.get(copyHeaderIcon).addClass('t3-icon-document-paste-after');
 				Ext.get(copyHeaderIcon).addClass('t3-icon-dd-paste-copy-into');
-				Ext.get(pasteCopyHeaderLink).set({
-					href: '#',
-					onclick: "GridElementsDD.ajaxThenReload('" + top.pasteTpl.replace('DD_REFYN', '0&DDcopy=1').replace('DD_DRAG_UID', copyItemUid).replace('DD_DROP_UID', dropZoneID) + "'); return false;"
-				});
+
+				if(top.DDclipboardfilled == 'move') {
+
+					Ext.get(pasteCopyHeaderLink).set({
+						href: '#',
+						onclick: "GridElementsDD.ajaxThenReload('" + top.moveURL.replace('DD_DRAG_UID', clipboardItemUid).replace('DD_DROP_UID', dropZoneID) + "&CB[paste]=tt_content%7C-" + clipboardItemUid + "&CB[pad]=normal'); return false;"
+					});
+
+				}
+
+				if(top.DDclipboardfilled == 'copy') {
+
+					Ext.get(pasteCopyHeaderLink).set({
+						href: '#',
+						onclick: "GridElementsDD.ajaxThenReload('" + top.pasteTpl.replace('DD_REFYN', '0&DDcopy=1').replace('DD_DRAG_UID', clipboardItemUid).replace('DD_DROP_UID', dropZoneID) + "'); return false;"
+					});
+
+					// customize ref icon
+					pasteRefHeaderLink.title = GridElementsDD.getLL('en', 'tx_gridelements_js.pasteref');
+					refHeaderIcon = Ext.get(pasteRefHeaderLink).select('span:first').elements[0];
+					Ext.get(refHeaderIcon).removeClass('t3-icon-document-new');
+					Ext.get(refHeaderIcon).addClass('t3-icon-document-paste-after');
+					Ext.get(refHeaderIcon).addClass('t3-icon-dd-paste-reference-into');
+					Ext.get(pasteRefHeaderLink).set({
+						href: '#',
+						onclick: "GridElementsDD.ajaxThenReload('" + top.pasteTpl.replace('DD_REFYN', 1).replace('DD_DRAG_UID', clipboardItemUid).replace('DD_DROP_UID', dropZoneID) + "'); return false;"
+					});
 				
-				// customize ref icon
-				pasteRefHeaderLink.title = GridElementsDD.getLL('en', 'tx_gridelements_js.pasteref');
-				refHeaderIcon = Ext.get(pasteRefHeaderLink).select('span:first').elements[0];
-				Ext.get(refHeaderIcon).removeClass('t3-icon-document-new');
-				Ext.get(refHeaderIcon).addClass('t3-icon-document-paste-after');
-				Ext.get(refHeaderIcon).addClass('t3-icon-dd-paste-reference-into');
-				Ext.get(pasteRefHeaderLink).set({
-					href: '#',
-					onclick: "GridElementsDD.ajaxThenReload('" + top.pasteTpl.replace('DD_REFYN', 1).replace('DD_DRAG_UID', copyItemUid).replace('DD_DROP_UID', dropZoneID) + "'); return false;"
-				});
-				
-				// insert both links
-				Ext.get(pasteRefHeaderLink).insertAfter(lastColHeaderLink);
+					// insert both links
+					Ext.get(pasteRefHeaderLink).insertAfter(lastColHeaderLink);
+		        }
+
 				Ext.get(pasteCopyHeaderLink).insertAfter(lastColHeaderLink);
 				
 			});
@@ -786,7 +804,7 @@ GridElementsDD = function() {
 			Ext.Ajax.request({
 				url: actionURL,
 				success: function(result, request) {
-					if(GridElementsDD.baseConf.doReloadsAfterDrops){
+					if(GridElementsDD.baseConf.doReloadsAfterDrops) {
 						// reload page to verify/show updates
 						self.location.reload();
 					}else{
@@ -795,7 +813,7 @@ GridElementsDD = function() {
 					}
 				},
 				failure: function(result, request) {
-					if(GridElementsDD.baseConf.doReloadsAfterDrops){
+					if(GridElementsDD.baseConf.doReloadsAfterDrops) {
 						// reload page to verify/show updates
 						self.location.reload();
 					}else{
@@ -806,7 +824,7 @@ GridElementsDD = function() {
 			});
 		},
 		
-		getPasteLinkForItem: function(itemUID, isReference){
+		getPasteLinkForItem: function(itemUID, isReference) {
 			if(typeof isReference === 'undefined') {
 				isReference = 0;
 			}

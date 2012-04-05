@@ -69,6 +69,7 @@ $TCA['tx_gridelements_backend_layout'] = array(
 				'type' => 'select',
 				'items' => array(
 					array('LLL:EXT:gridelements/locallang_db.xml:tx_gridelements_backend_layout.frame.I.0', '0'),
+					array('LLL:EXT:gridelements/locallang_db.xml:tx_gridelements_backend_layout.frame.I.-1', '-1'),
 					array('LLL:EXT:gridelements/locallang_db.xml:tx_gridelements_backend_layout.frame.I.1', '1'),
 					array('LLL:EXT:gridelements/locallang_db.xml:tx_gridelements_backend_layout.frame.I.2', '2'),
 					array('LLL:EXT:gridelements/locallang_db.xml:tx_gridelements_backend_layout.frame.I.3', '3'),

@@ -30,81 +30,84 @@ class tx_gridelements_TCEmainHook {
 	 */
 	public function processDatamap_preProcessFieldArray(&$fieldArray, $table, $id, &$parentObj) {
 
-        $this->layoutSetup = t3lib_div::makeInstance('tx_gridelements_layoutsetup', $id);
+        if ($table == 'tt_content' || $table == 'pages') {
 
-        $checkFieldArray = $fieldArray;
-        unset($checkFieldArray['pi_flexform']);
+	        $this->layoutSetup = t3lib_div::makeInstance('tx_gridelements_layoutsetup', $id);
 
-		$changedFieldArray = $parentObj->compareFieldArrayWithCurrentAndUnset($table, $id, $checkFieldArray);
+	        $checkFieldArray = $fieldArray;
+            unset($checkFieldArray['pi_flexform']);
 
-		if ((isset($changedFieldArray['tx_gridelements_backend_layout']) && $table == 'tt_content') || (isset($changedFieldArray['backend_layout']) && $table == 'pages') || (isset($changedFieldArray['backend_layout_next_level']) && $table == 'pages')) {
-			$this->setUnusedElements($table, $id, $changedFieldArray);
-		}
+            $changedFieldArray = $parentObj->compareFieldArrayWithCurrentAndUnset($table, $id, $checkFieldArray);
 
-		if ($table == 'tt_content') {
-			$pid = intval(t3lib_div::_GET('DDinsertNew'));
+            if ((isset($changedFieldArray['tx_gridelements_backend_layout']) && $table == 'tt_content') || (isset($changedFieldArray['backend_layout']) && $table == 'pages') || (isset($changedFieldArray['backend_layout_next_level']) && $table == 'pages')) {
+                $this->setUnusedElements($table, $id, $changedFieldArray);
+            }
 
-			if ($pid > 0) {
-				if (count($fieldArray) && strpos($fieldArray['pid'], 'x') !== false) {
-					$target = t3lib_div::trimExplode('x', $fieldArray['pid']);
-					$fieldArray['pid'] = $pid;
-					$targetUid = abs(intval($target[0]));
+            if ($table == 'tt_content') {
+                $pid = intval(t3lib_div::_GET('DDinsertNew'));
 
-					if ($targetUid != $id) {
-						$fieldArray['colPos'] = -1;
-						$fieldArray['sorting'] = 0;
-						$fieldArray['tx_gridelements_container'] = $targetUid;
-						$fieldArray['tx_gridelements_columns'] = intval($target[1]);
-						$containerUpdateArray[] = $targetUid;
-					} else {
-						$fieldArray['colPos'] = intval($target[1]);
-						$fieldArray['sorting'] = 0;
-						$fieldArray['tx_gridelements_container'] = 0;
-						$fieldArray['tx_gridelements_columns'] = 0;
-					}
+                if ($pid > 0) {
+                    if (count($fieldArray) && strpos($fieldArray['pid'], 'x') !== false) {
+                        $target = t3lib_div::trimExplode('x', $fieldArray['pid']);
+                        $fieldArray['pid'] = $pid;
+                        $targetUid = abs(intval($target[0]));
 
-					$this->doGridContainerUpdate($containerUpdateArray, $parentObj, 1);
-				} else {
-					$targetElement = $GLOBALS['TYPO3_DB']->exec_SELECTgetSingleRow(
-						'*',
-						'tt_content',
-						'uid=' . abs($fieldArray['pid'])
-					);
-					if ($targetElement['uid']) {
-						if ($targetElement['tx_gridelements_container'] > 0) {
-							$containerUpdateArray[] = $targetElement['tx_gridelements_container'];
-							$this->doGridContainerUpdate($containerUpdateArray, $parentObj, 1);
-							$fieldArray['tx_gridelements_container'] = $targetElement['tx_gridelements_container'];
-							$fieldArray['tx_gridelements_columns'] = $targetElement['tx_gridelements_columns'];
-							$fieldArray['colPos'] = -1;
-						}
-						$fieldArray['colPos'] = $targetElement['colPos'];
-						$fieldArray['sorting'] = $targetElement['sorting'] + 2;
-					}
-				}
+                        if ($targetUid != $id) {
+                            $fieldArray['colPos'] = -1;
+                            $fieldArray['sorting'] = 0;
+                            $fieldArray['tx_gridelements_container'] = $targetUid;
+                            $fieldArray['tx_gridelements_columns'] = intval($target[1]);
+                            $containerUpdateArray[] = $targetUid;
+                        } else {
+                            $fieldArray['colPos'] = intval($target[1]);
+                            $fieldArray['sorting'] = 0;
+                            $fieldArray['tx_gridelements_container'] = 0;
+                            $fieldArray['tx_gridelements_columns'] = 0;
+                        }
 
-			} else if (intval($fieldArray['tx_gridelements_container']) > 0 && strpos(key($parentObj->datamap['tt_content']), 'NEW') !== false) {
-				$containerUpdateArray[] = intval($fieldArray['tx_gridelements_container']);
-				$this->doGridContainerUpdate($containerUpdateArray, $parentObj, 1);
-			}
+                        $this->doGridContainerUpdate($containerUpdateArray, $parentObj, 1);
+                    } else {
+                        $targetElement = $GLOBALS['TYPO3_DB']->exec_SELECTgetSingleRow(
+                            '*',
+                            'tt_content',
+                            'uid=' . abs($fieldArray['pid'])
+                        );
+                        if ($targetElement['uid']) {
+                            if ($targetElement['tx_gridelements_container'] > 0) {
+                                $containerUpdateArray[] = $targetElement['tx_gridelements_container'];
+                                $this->doGridContainerUpdate($containerUpdateArray, $parentObj, 1);
+                                $fieldArray['tx_gridelements_container'] = $targetElement['tx_gridelements_container'];
+                                $fieldArray['tx_gridelements_columns'] = $targetElement['tx_gridelements_columns'];
+                                $fieldArray['colPos'] = -1;
+                            }
+                            $fieldArray['colPos'] = $targetElement['colPos'];
+                            $fieldArray['sorting'] = $targetElement['sorting'] + 2;
+                        }
+                    }
 
-			if (intval($fieldArray['tx_gridelements_container']) > 0 && intval($fieldArray['colPos']) != -1) {
-				$fieldArray['colPos'] = -1;
-				$fieldArray['tx_gridelements_columns'] = 0;
-			} else if (isset($fieldArray['tx_gridelements_container']) && intval($fieldArray['tx_gridelements_container']) === 0 && intval($fieldArray['colPos']) === -1) {
-				$originalContainer = $GLOBALS['TYPO3_DB']->exec_SELECTgetSingleRow(
-					'tx_gridelements_container',
-					'tt_content',
-					'uid=' . $id
-				);
-				$containerUpdateArray[] = $originalContainer['tx_gridelements_container'];
-				$this->doGridContainerUpdate($containerUpdateArray, $parentObj, -1);
+                } else if (intval($fieldArray['tx_gridelements_container']) > 0 && strpos(key($parentObj->datamap['tt_content']), 'NEW') !== false) {
+                    $containerUpdateArray[] = intval($fieldArray['tx_gridelements_container']);
+                    $this->doGridContainerUpdate($containerUpdateArray, $parentObj, 1);
+                }
 
-				$fieldArray['colPos'] = $this->checkForRootColumn(intval($id));
-				$fieldArray['tx_gridelements_columns'] = 0;
-			}
+                if (intval($fieldArray['tx_gridelements_container']) > 0 && intval($fieldArray['colPos']) != -1) {
+                    $fieldArray['colPos'] = -1;
+                    $fieldArray['tx_gridelements_columns'] = 0;
+                } else if (isset($fieldArray['tx_gridelements_container']) && intval($fieldArray['tx_gridelements_container']) === 0 && intval($fieldArray['colPos']) === -1) {
+                    $originalContainer = $GLOBALS['TYPO3_DB']->exec_SELECTgetSingleRow(
+                        'tx_gridelements_container',
+                        'tt_content',
+                        'uid=' . $id
+                    );
+                    $containerUpdateArray[] = $originalContainer['tx_gridelements_container'];
+                    $this->doGridContainerUpdate($containerUpdateArray, $parentObj, -1);
 
-		}
+                    $fieldArray['colPos'] = $this->checkForRootColumn(intval($id));
+                    $fieldArray['tx_gridelements_columns'] = 0;
+                }
+
+            }
+        }
 
 	}
 
@@ -201,7 +204,7 @@ class tx_gridelements_TCEmainHook {
 				$target = t3lib_div::trimExplode('x', $cmd['tt_content'][$uid]['move']);
 				$targetUid = abs(intval($target[0]));
 
-				if ($targetUid != $uid) {
+				if ($targetUid != $uid && intval($target[0]) < 0) {
 					$containerUpdateArray[] = $targetUid;
 					$column = intval($target[1]);
 					$updateArray = array(
@@ -217,6 +220,9 @@ class tx_gridelements_TCEmainHook {
 						'tx_gridelements_container' => 0,
 						'tx_gridelements_columns' => 0
 					);
+					if($targetUid != $uid) {
+						$updateArray['pid'] = intval($target[0]);
+					}
 				}
 
 				$destPid = -$uid;
@@ -240,16 +246,10 @@ class tx_gridelements_TCEmainHook {
 	public function doGridContainerUpdate($containerUpdateArray = array(), &$parentObj, $newElement = 0) {
 
 		foreach ($containerUpdateArray as $containerUid) {
-			$containerChildren = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows(
-				'uid',
-				'tt_content',
-				'NOT tx_gridelements_columns = -2
-					AND tx_gridelements_container=' . $containerUid
-			);
 			$fieldArray = array(
-				'tx_gridelements_children' => count($containerChildren) + $newElement
+				'tx_gridelements_children' => 'tx_gridelements_children + ' . $newElement
 			);
-			$parentObj->updateDB('tt_content', $containerUid, $fieldArray);
+			$GLOBALS['TYPO3_DB']->exec_UPDATEquery('tt_content', 'uid=' . $containerUid, $fieldArray, 'tx_gridelements_children');
 		}
 
 	}
@@ -409,6 +409,7 @@ class tx_gridelements_TCEmainHook {
 
 		if ($layout && $table == 'tt_content') {
 			$tcaColumns = $this->layoutSetup->getLayoutColumns($layout);
+			$tcaColumns = $tcaColumns['CSV'];
 		} else if ($table == 'pages') {
 			$tsConfig = t3lib_BEfunc::getModTSconfig($id, 'TCEFORM.tt_content.colPos');
 			$tcaConfig = $GLOBALS['TCA']['tt_content']['columns']['colPos']['config'];
@@ -421,7 +422,7 @@ class tx_gridelements_TCEmainHook {
 			if (isset($tcaConfig['itemsProcFunc']) && $tcaConfig['itemsProcFunc']) {
 				$backendLayoutColumns = $this->getBackendLayoutColumns($layout, 'backend_layout');
 				if (count($backendLayoutColumns)) {
-					$tcaColumns = $backendLayoutColumns;
+					$tcaColumns = $backendLayoutColumns['CSV'];
 				}
 			}
 
@@ -438,7 +439,7 @@ class tx_gridelements_TCEmainHook {
 			foreach($_tcaColumns as $item) {
 				$tcaColumns[] = $item[1];
 			}
-			$tcaColumns = '-2,-1' . implode(',', $tcaColumns);
+			$tcaColumns = '-2,-1,' . implode(',', $tcaColumns);
 		}
 
 		return $tcaColumns;

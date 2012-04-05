@@ -14,10 +14,11 @@
 			<label index="tx_gridelements_backend_layout.icon">Icon</label>
 			<label index="tx_gridelements_backend_layout.frame">Frame</label>
 			<label index="tx_gridelements_backend_layout.frame.I.0">-</label>
+			<label index="tx_gridelements_backend_layout.frame.I.-1">Neutral</label>
 			<label index="tx_gridelements_backend_layout.frame.I.1">Red</label>
 			<label index="tx_gridelements_backend_layout.frame.I.2">Green</label>
 			<label index="tx_gridelements_backend_layout.frame.I.3">Blue</label>
-			<label index="tx_gridelements_backend_layout.div.configuartion">Configuartion</label>
+			<label index="tx_gridelements_backend_layout.div.configuartion">Configuration</label>
 			<label index="tx_gridelements_backend_layout.config">Grid Configuration</label>
 			<label index="tx_gridelements_backend_layout.pi_flexform_ds">Flexform Configuration</label>
 			<label index="tx_gridelements_backend_layout.top_level_layout">Top Level Layout</label>
@@ -49,6 +50,7 @@
 			<label index="tx_gridelements_backend_layout.frame">Rahmen</label>
 			<label index="tx_gridelements_backend_layout.icon">Icon</label>
 			<label index="tx_gridelements_backend_layout.frame.I.0">-</label>
+			<label index="tx_gridelements_backend_layout.frame.I.-1">Neutral</label>
 			<label index="tx_gridelements_backend_layout.frame.I.1">Rot</label>
 			<label index="tx_gridelements_backend_layout.frame.I.2">Grün</label>
 			<label index="tx_gridelements_backend_layout.frame.I.3">Blau</label>
@@ -70,7 +72,7 @@
 			<label index="dragAndDropHideNewElementWizardInfoOverlay">Info-Overlays beim Drag-In-Wizard für neue Inhaltselemente ausblenden.</label>
 			<label index="hideColumnHeaders">Spaltenüberschriften ausblenden.</label>
 			<label index="tx_gridelements_clickmenu_pastereference">Verknüpfung danach einfügen</label>
-			
+
 			<label index="tx_gridelements_js.pastecopy">Kopie hier einfügen</label>
 			<label index="tx_gridelements_js.pasteref">Referenz hier einfügen</label>
 			

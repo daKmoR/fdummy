@@ -69,7 +69,7 @@ class tx_gridelements_pi1 extends tslib_pibase {
 		$layoutSetup = t3lib_div::makeInstance('tx_gridelements_layoutsetup', $this->cObj->data['pid'], $conf);
 
 		$availableColumns = $layoutSetup->getLayoutColumns($layout);
-		$children = $this->getChildren($element, $availableColumns);
+		$children = $this->getChildren($element, $availableColumns['CSV']);
 
 		// and we have to determine the frontend setup related to the backend layout record which is assigned to this container
 		$setup = $layoutSetup->getTypoScriptSetup($layout);
@@ -79,9 +79,9 @@ class tx_gridelements_pi1 extends tslib_pibase {
 			// we need a sorting columns array to make sure that the columns are rendered in the order
 			// that they have been created in the grid wizard but still be able to get all children
 			// within just one SELECT query
-			$sortColumns = t3lib_div::trimExplode(',', $availableColumns);
+			$sortColumns = t3lib_div::trimExplode(',', $availableColumns['CSV']);
 
-			$columns = $this->renderChildren($children, $setup, $sortColumns);
+			$columns = $this->renderChildren($children, $setup, $sortColumns, $availableColumns);
 
 			// if there are any columns available, we can go on with the render process
 			if (count($columns)) {
@@ -165,13 +165,15 @@ class tx_gridelements_pi1 extends tslib_pibase {
 				'sorting ASC'
 			);
 
-			if (is_array($rawChildren) && count($rawChildren) >= 1) {
-				foreach ($rawChildren as $child) {
-					$GLOBALS['TSFE']->sys_page->versionOL('tt_content', $child);
-					$children[] = $this->languageOverlay($child);
-				}
-			}
-		}
+            if (is_array($rawChildren) && count($rawChildren) >= 1) {
+                foreach ($rawChildren as $child) {
+                    $GLOBALS['TSFE']->sys_page->versionOL('tt_content', $child);
+                    if ($overlay = $this->languageOverlay($child)) {
+                        $children[] = $overlay;
+                    }
+                }
+            }
+        }
 
 		return $children;
 
@@ -262,10 +264,11 @@ class tx_gridelements_pi1 extends tslib_pibase {
 	 * @param   array   $children: The children available for the grid container
 	 * @param   array   $setup: The adjusted setup for the grid container
 	 * @param   array   $sortColumns: An Array of column positions within the grid container in the order they got in the grid setup
+	 * @param   array   $availablColumns: A CSV list of available columns together with the allowed elements for each of them
 	 * @return  array   $columns: The columns of the grid container containing the HTML output of their children
 	 *
 	 */
-	public function renderChildren($children = array(), $setup = array(), $sortColumns = array()) {
+	public function renderChildren($children = array(), $setup = array(), $sortColumns = array(), $availableColumns = array()) {
 
 		$columns = array();
 
@@ -306,10 +309,15 @@ class tx_gridelements_pi1 extends tslib_pibase {
 				$setupColumn = $column;
 			}
 
-			$columns[$column] .= $this->cObj->cObjGetSingle(
-				$setup['columns.'][$setupColumn]['renderObj'],
-				$setup['columns.'][$setupColumn]['renderObj.']
-			);
+//			if(
+//				t3lib_div::inList($availableColumns[$column], $this->cObj->data['CType']) ||
+//				$availableColumns[$column] == '*'
+//			) {
+				$columns[$column] .= $this->cObj->cObjGetSingle(
+					$setup['columns.'][$setupColumn]['renderObj'],
+					$setup['columns.'][$setupColumn]['renderObj.']
+				);
+//			}
 
 		}
 

@@ -249,6 +249,10 @@ if(typeof GridElementsDD === "undefined"){
 		// init DD library
 		GridElementsDD.initAll();
 		
+		if(top.DDclipboardfilled && top.DDclipboardElId) {
+			GridElementsDD.addPasteAndRefIcons(top.DDclipboardElId);
+		}
+
 		// bend Clickmenu.callURL() to our liking (only once)
 		if(typeof Clickmenu !== 'undefined' && !GridElementsDD.originalClickmenucallURL){
 			GridElementsDD.originalClickmenucallURL = Clickmenu.callURL;
@@ -264,14 +268,9 @@ if(typeof GridElementsDD === "undefined"){
 							var response = xhr.responseXML;
 							
 							// patching starts here
-							var copyItemUID = params.match(/&uid=(\d+)&/)[1];
-							// are we "listening" on this item (we clicked on an actual "copy" link for it before)
-							if(
-								typeof GridElementsDD.copyItemUids !== 'undefined' && 
-								typeof GridElementsDD.copyItemUids[copyItemUID] !== 'undefined' && 
-								GridElementsDD.copyItemUids[copyItemUID] === true
-							) {
-								GridElementsDD.handleCopyItem(copyItemUID);
+							var clipboardItemUID = params.match(/&uid=(\d+)&/)[1];
+							if(params.search(/&CB.+/) != -1) {
+								GridElementsDD.handleClipboardItem(clipboardItemUID, params);
 							}
 							// patch ends
 							

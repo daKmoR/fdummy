@@ -102,6 +102,11 @@
 	margin: 0px;
 }
 
+#x-dd-draggablecontainer .typo3-dyntabmenu-divs a.x-dd-draggableitem img {
+	width: 24px;
+	height: 24px;
+}
+
 #x-dd-draggablecontainer .typo3-dyntabmenu-divs .c-tablayer div {
 	cursor: pointer;
 }

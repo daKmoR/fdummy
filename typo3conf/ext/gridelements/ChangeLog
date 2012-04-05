@@ -1,3 +1,48 @@
+1.3.6	2012-03-30 Jo Hasenau  <info@cybercraft.de>
+
+	*	fixed problems with Grid Container column being "not allowed" in case people were using no backend layout but their own TSconfig for colPos items
+
+1.3.5	2012-03-28 Jo Hasenau  <info@cybercraft.de>
+
+	*	fixed problems while moving records introduced with the last fix
+
+1.3.4	2012-03-23 Jo Hasenau  <info@cybercraft.de>
+
+	*	fixed problems while moving records
+	*	fixed problems while moving records between pages
+
+1.3.3	2012-03-13 Rocco Georgi  <rocco@pavingways.com>, Jo Hasenau  <info@cybercraft.de>
+
+	* 	fixed issue #34934 Does not scroll during drag
+	* 	fixed issue #34719 Removed TS for non existing HTML template
+	* 	fixed issue #34785 user setting (hideColumnheaders) does not work
+	* 	fixed issue #34868 wrong tabindex of wizard input fields
+	* 	fixed issue #34810 copy/cut/paste problems with multiple clicks on the copy/cut links of the same element
+	* 	fixed issue #34810 copy/paste problem across pages (insert on copy source page)
+	*	some trailing whitespace cleanup
+
+1.3.2	2012-03-06 Jo Hasenau  <info@cybercraft.de>
+
+	*	fixed missing class instantiation
+
+1.3.1	2012-03-06 Jo Hasenau  <info@cybercraft.de>
+
+	*	Removed console log and debug output
+
+1.3.0	2012-03-05 Jo Hasenau  <info@cybercraft.de>
+
+	*	Fixed Bug #34045 Bug when no translation exists
+	*	Fixed Bug #34109 PHP Warning: strcmp() expects parameter 1 to be string
+	*	Fixed Bug #33364 Drag and drop initiation breaks with "cannot call hasClass on null"
+	*	Fixed Bug #34045 Bug when no translation exists
+	*	Feature #32354 Show Grid Layout
+	*	Fixed Bug #32355 Grid Columns lost
+	*	Fixed Bug #33388 Drop zone - sorting related
+	*	Fixed Bug #32388 Sorting of CE
+	*	Feature #33389 Add new content element within container
+	*	Fixed Bug #33490 Attribute name of "icon(s)" in class.tx_gridelements_layoutsetup.php
+	*	Fixed Bug #33402 Column layout broken if page languages overview is selected
+
 1.2.3	Jo Hasenau  <info@cybercraft.de>
 
 	* Fixed: Issue #33319 by reverting the particular file to version 1.1.0

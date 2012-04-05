@@ -30,6 +30,8 @@ class tx_gridelements_dbListHook {
 
 			if ($TSconfig['TCEFORM.']['tt_content.']['tx_gridelements_backend_layout.']['removeChildrenFromList']) {
 				$queryParts['WHERE'] .= ' AND colPos != -1';
+			} else {
+				$queryParts['ORDERBY'] = 'tx_gridelements_container, colPos, tx_gridelements_columns, sorting, '. $queryParts['ORDERBY'];
 			}
 
 		}
