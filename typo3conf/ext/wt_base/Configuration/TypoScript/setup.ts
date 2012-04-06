@@ -28,9 +28,7 @@ config {
 
 ## Header ##########################################################################################
 config {
-	xmlprologue = none
-	doctype = html5
-	xhtmlDoctype = xhtml_strict
+	doctype = html_5
 	removeDefaultJS = external
 	concatenateCss = 1
 	# compressCss = 1
@@ -211,7 +209,7 @@ tt_content.image.20.1.imageLinkWrap {
 	height = 540m
 }
 
-<INCLUDE_TYPOSCRIPT: source="FILE: fileadmin/templates/common/ts/menus.ts">
+<INCLUDE_TYPOSCRIPT: source="FILE: EXT:wt_base/Configuration/TypoScript/menus.ts">
 
 ## Cache & Debug ###################################################################################
 # disable cache and concatenate if any typo3 be-user is logged in, otherwise remove debug-comments
