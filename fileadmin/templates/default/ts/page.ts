@@ -1,4 +1,4 @@
-<INCLUDE_TYPOSCRIPT: source="FILE: fileadmin/templates/common/ts/page.ts">
+<INCLUDE_TYPOSCRIPT: source="FILE: EXT:wt_base/Configuration/TypoScript/page.ts">
 
 RTE.default {
 	loadConfig = EXT:tinymce_rte/static/standard.ts

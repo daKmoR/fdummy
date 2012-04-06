@@ -1,1 +1,1 @@
-<INCLUDE_TYPOSCRIPT: source="FILE: fileadmin/templates/common/ts/user.ts">
+<INCLUDE_TYPOSCRIPT: source="FILE: EXT:wt_base/Configuration/TypoScript/user.ts">

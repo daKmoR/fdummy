@@ -1,4 +1,4 @@
-<INCLUDE_TYPOSCRIPT: source="FILE: fileadmin/templates/common/ts/constants.ts">
+<INCLUDE_TYPOSCRIPT: source="FILE: EXT:wt_base/Configuration/TypoScript/constants.ts">
 
 ## baseUrl for RealURL #############################################################################
 baseUrl = http://fdummy.webteam.at/
