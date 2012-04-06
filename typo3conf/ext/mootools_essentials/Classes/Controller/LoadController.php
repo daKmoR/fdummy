@@ -87,7 +87,7 @@ class Tx_MootoolsEssentials_Controller_LoadController extends Tx_Extbase_MVC_Con
 			}
 		}
 
-		if ($settings['language'] !== 'en-US' && $settings['language'] !== '') {
+		if ($settings['language'] !== 'en-US' && $settings['language'] !== '' && $this->hasPackage('More/Locale', $files)) {
 			$renderer->addJsFooterInlineCode('mootoolsLanguage', "Locale.use('" . $settings['language'] . "');");
 		}
 
