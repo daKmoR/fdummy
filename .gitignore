@@ -10,6 +10,11 @@ typo3temp/*.*
 typo3temp/**/*
 !typo3temp/*/index.html
 !typo3temp/**/index.html
+fileadmin
+!fileadmin/templates/
+!fileadmin/user_upload/index.html
+!fileadmin/_temp_/index.html
+!fileadmin/_temp_/.htaccess
 
 /awstats-icon
 /icon

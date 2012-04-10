@@ -4,21 +4,6 @@
 # if english is your second language (most common case) uncomment the following line
 <INCLUDE_TYPOSCRIPT: source="FILE: EXT:wt_base/Configuration/TypoScript/setup.english.ts">
 
-## Page Layout #####################################################################################
-page.includeCSS {
-	base = fileadmin/templates/default/css/base.css
-	screen = fileadmin/templates/default/css/screen.css
-}
-
-#	<link rel="stylesheet" href="css/base.css" type="text/css" media="screen" />
-#	<link rel="stylesheet" href="css/screen.css" type="text/css" media="screen" />
-#	<!--[if IE 8]> <link rel="stylesheet" href="css/screen_ie8.css" type="text/css" media="screen" /> <![endif]-->
-#	<!--[if IE 7]> <link rel="stylesheet" href="css/screen_ie7.css" type="text/css" media="screen" /> <![endif]-->
-
-#content.currentWrap.9.value = <div class="content"><!--TYPO3SEARCH_begin-->
-#content.currentWrap.200 = TEXT
-#content.currentWrap.200.value = <!--TYPO3SEARCH_end--></div>
-
 ## Header ##########################################################################################
 lib.header = COA
 lib.header {
@@ -30,65 +15,36 @@ lib.header {
 			ATagParams = id="homeLink"
 		}
 	}
-	
-	20 < menus.footer
-	20.special.value = 1
-	20.2 >
-	20.3 >
-	20.wrap = <div id="headerMenu">|</div>
-	
-	50 < styles.content.get
-	50.select.where = colPos = 4
 }
+
+lib.headerMenu < menus.nestedList
+lib.headerMenu.1.wrap = <ul class="nav lvl1">|</ul>
+lib.headerMenu.2 >
 
 ## Left Content ####################################################################################
-# Menu: default nested ul/li list
-lib.contentLeft = COA
-lib.contentLeft {
-	10 < menus.nestedList
-	10.entryLevel = 1
-	10.1.wrap = <ul id="menu">|</ul>
-	50 < styles.content.get
-	50.select.where = colPos = 2
-	# get first content from parentpage up to rootpage # use additional slide.collect = -1 to get all content
-	50.slide = -1
-}
+# get first content from parentpage up to rootpage # use additional slide.collect = -1 to get all content
+lib.leftContent.50.slide = -1
 
-lib.contentLeft.110 = TEXT
-lib.contentLeft.110.value = &#xA0;
+# Menu: default nested ul/li list
+lib.leftMenu < menus.nestedList
+lib.leftMenu.entryLevel = 1
+lib.leftMenu.1.wrap = <ul class="nav nav-list lvl1">|</ul>
+lib.leftMenu.2 >
 
 ## Content #########################################################################################
-lib.content = COA
-lib.content {
-	50 < styles.content.get
-	50.select.where = colPos = 1
-}
-
-lib.content.110 = TEXT
-lib.content.110.value = &#xA0;
+# so far nothing defined
 
 ## Right Content ###################################################################################
-lib.contentRight = COA
-lib.contentRight {
-	50 < styles.content.get
-	50.select.where = colPos = 3
-}
-lib.contentRight.110 = TEXT
-lib.contentRight.110.value = &#xA0;
+# so far nothing defined
 
 ## Footer ##########################################################################################
-lib.footer = COA
 lib.footer {
 	5 = TEXT
-	5.value = <div id="footerText">WEBTEAM GmbH - Münzgrabenstrasse 36 - 8010 Graz - <a href="mailto:office@webteam.at">office@webteam.at</a></div>
-	10 < menus.footer
-	10.special.value = 4
-	10.wrap = <div id="footerMenu">|</div>
-	20 = TEXT
-	20.value = <br class="clear" />
-	50 < styles.content.get
-	50.select.where = colPos = 5
+	5.value = WEBTEAM GmbH - Münzgrabenstrasse 36 - 8010 Graz - <a href="mailto:office@webteam.at">office@webteam.at</a>
 }
+
+lib.footerMenu < menus.footer
+lib.footerMenu.special.value = 4
 
 ####################################################################################################
 ## Special page options ############################################################################
@@ -99,12 +55,11 @@ lib.footer {
 # options for subpages only (list possible)
 # [PIDupinRootline = 13,37]
 
-
-
-##
-## DEVELOPMENT #####################################################################################
-##
-plugin.tx_mootoolspackager_pi1 {
-	mergeFiles = 0
-	mergeFiles.cache = 0
-}
+[globalVar = TSFE:id = 6]
+	<INCLUDE_TYPOSCRIPT: source="FILE: EXT:xform/Configuration/TypoScript/setup.txt">
+	plugin.tx_xform {
+		view {
+			#templateRootPath = fileadmin/templates/default/xform/
+		}
+	}
+[global]

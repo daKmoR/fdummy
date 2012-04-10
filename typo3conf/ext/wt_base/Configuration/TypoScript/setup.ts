@@ -61,6 +61,22 @@ page.meta {
 	description.override.field = description
 }
 
+## Default CSS #####################################################################################
+page.includeCSS {
+	bootstrap = EXT:wt_base/Resources/Public/Bootstrap/css/bootstrap.css
+	# the responsive css is disabled by default
+	#bootstrapResponsive = EXT:wt_base/Resources/Public/Bootstrap/css/bootstrap-responsive.css
+	screen = fileadmin/templates/default/css/screen.css
+}
+
+page.headerData {
+	50 = TEXT
+	50.value (
+		<!--[if IE 7]> <link rel="stylesheet" href="fileadmin/templates/default/css/screen_ie7.css" type="text/css" media="screen" /> <![endif]-->
+		<!--[if IE 8]> <link rel="stylesheet" href="fileadmin/templates/default/css/screen_ie8.css" type="text/css" media="screen" /> <![endif]-->
+	)
+}
+
 ## RealUrl #########################################################################################
 config {
 	baseURL = {$baseUrl}
@@ -184,6 +200,39 @@ page {
 			4.value = fileadmin/templates/default/TwoColumns.html
 		}
 	}
+}
+
+## set default loadings ############################################################################
+lib.header = COA
+lib.header {
+	50 < styles.content.get
+	50.select.where = colPos = 4
+}
+
+lib.leftContent = COA
+lib.leftContent {
+	50 < styles.content.get
+	50.select.where = colPos = 2
+}
+
+lib.content = COA
+lib.content {
+	50 < styles.content.get
+	50.select.where = colPos = 1
+	110 = TEXT
+	110.value = &#xA0;
+}
+
+lib.rightContent = COA
+lib.rightContent {
+	50 < styles.content.get
+	50.select.where = colPos = 3
+}
+
+lib.footer = COA
+lib.footer {
+	50 < styles.content.get
+	50.select.where = colPos = 5
 }
 
 ## FE display ######################################################################################
