@@ -32,6 +32,30 @@
  *
  */
 class Tx_MootoolsEssentials_Controller_BeActionController extends Tx_Extbase_MVC_Controller_ActionController {
+	
+	/**
+	 * mimics some basic features of the frontend ts template
+	 * for now it just supports a basic includeCSS
+	 *
+	 * @param array $settings
+	 */
+	protected function mimicBasicTsTemplate($settings) {
+		if (is_array($settings['includeCSS'])) {
+			foreach($settings['includeCSS'] as $key => $file) {
+				$file = trim($file);
+				if (substr($file, 0, 4) === 'EXT:') {
+					list($extKey, $script) = explode('/', substr($file, 4), 2);
+					if ($extKey && t3lib_extMgm::isLoaded($extKey)) {
+						$extPath = t3lib_extMgm::extPath($extKey);
+						$newFile = substr($extPath, strlen(PATH_site)) . $script;
+					}
+					if (@is_file(PATH_site . $newFile)) {
+						$this->template->getPageRenderer()->addCssFile('../' . $newFile);
+					}
+				}
+			}
+		}
+	}
 
 	/**
 	 * Before every ActionMethod create a proper template so you can use the pageRenderer
@@ -42,6 +66,8 @@ class Tx_MootoolsEssentials_Controller_BeActionController extends Tx_Extbase_MVC
 	protected function callActionMethod() {
 		if (TYPO3_MODE === 'BE') {
 			$this->template = t3lib_div::makeInstance('template');
+			$this->mimicBasicTsTemplate($this->settings);
+
 			$this->template->endJS = false;
 			$this->template->getPageRenderer();
 
@@ -55,7 +81,7 @@ class Tx_MootoolsEssentials_Controller_BeActionController extends Tx_Extbase_MVC
 			$loader = t3lib_div::makeInstance('Tx_MootoolsEssentials_Controller_LoadController');
 			$loader->load($this->settings);
 
-			// calling the loader after parent::callActionMethod won't allow for addJsFooter Stuff; before only allow addJsFooter Stuff :/
+			// calling the loader after $this->template->startpage won't allow for addJsFooter Stuff in the controller; before only allow addJsFooter Stuff :/
 			// so let's call it before and after :/
 			$pageHeader = $this->template->startpage('title', false);
 

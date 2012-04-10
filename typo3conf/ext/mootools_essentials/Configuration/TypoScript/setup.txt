@@ -29,6 +29,12 @@ module.tx_mootoolsessentials {
 		layoutRootPath = EXT:mootools_essentials/Resources/Private/Backend/Layouts/
 	}
 	settings < plugin.tx_mootoolsessentials.settings
+	settings {
+		includeCSS {
+			bootstrap = EXT:wt_base/Resources/Public/Bootstrap/css/bootstrap.css
+			bootstrapResponsive = EXT:wt_base/Resources/Public/Bootstrap/css/bootstrap-responsive.css
+		}
+	}
 }
 
 page.483 = USER

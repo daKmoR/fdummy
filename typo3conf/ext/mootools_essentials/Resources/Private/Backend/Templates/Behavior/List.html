@@ -7,33 +7,41 @@
 <f:flashMessages />
 
 <div class="packages">
-	<f:for each="{packages}" as="package">
-		<div class="package">
-			<h3><a href="{package.path}">{package.key}</a></h3>
-			<p class="author">by <a href="{package.authorUrl}">{package.author}</a></p>
-			<p class="description">{package.description}</p>
-		</div>
-	</f:for>
-	<br style="clear: both;" />
+	<div class="row">
+		<f:for each="{packages}" as="package" iteration="packageIterator">
+			<f:if condition="{packageIterator.index} % 3">
+				<f:then></f:then>
+				<f:else></div><div class="row"></f:else>
+			</f:if>
+			<div class="span4 package">
+				<h4><a href="{package.path}">{package.key}</a></h4>
+				<p class="author">by <a href="{package.authorUrl}">{package.author}</a></p>
+				<p class="description">{package.description}</p>
+			</div>
+		</f:for>
+	</div>
 </div>
 
 <br />
 <br />
 <br />
-<div>
-	<h2>Usage is always pretty much the same:</h2>
-	<ol>
-		<li>load the needed files (you just need to define the actual file/package you actually need, dependences will be resolved automatically)
-			<ul>
-				<li>in fluid*: <f:escape><![CDATA[<m:load file="More-Behaviors/Behavior.OverText" />]]></f:escape></li>
-				<li>with ts**: plugin.tx_mootoolsessentials.settings.load.files.10 = More-Behaviors/Behavior.OverText</li>
-			</ul>
-		</li>
-		<li>use the behavior with HTML5 <f:escape><input type="text" data-behavior="OverText" title="someText" /></f:escape></li>
-	</ol>
-	
-	<p>*: you will need to define the namespace "m" with {<![CDATA[namespace m=Tx_MootoolsEssentials_ViewHelpers]]>}</p>
-	<p>**: the "name" like in this example 10 is completely irrelevant as long as it's unique. We sugguested you use the name of the behavior e.g. .files.OverText = More-Behaviors/Behavior.OverText</p>
+
+<div class="row">
+	<div class="span12">
+		<h2>Usage is always pretty much the same:</h2>
+		<ol>
+			<li>load the needed files (you just need to define the actual file/package you actually need, dependences will be resolved automatically)
+				<ul>
+					<li>in fluid*: <f:escape><![CDATA[<m:load file="More-Behaviors/Behavior.OverText" />]]></f:escape></li>
+					<li>with ts**: plugin.tx_mootoolsessentials.settings.load.files.10 = More-Behaviors/Behavior.OverText</li>
+				</ul>
+			</li>
+			<li>use the behavior with HTML5 <f:escape><input type="text" data-behavior="OverText" title="someText" /></f:escape></li>
+		</ol>
+
+		<p>*: you will need to define the namespace "m" with {<![CDATA[namespace m=Tx_MootoolsEssentials_ViewHelpers]]>}</p>
+		<p>**: the "name" like in this example 10 is completely irrelevant as long as it's unique. We sugguested you use the name of the behavior e.g. .files.OverText = More-Behaviors/Behavior.OverText</p>
+	</div>
 </div>
 
 </f:section>
