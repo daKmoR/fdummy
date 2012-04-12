@@ -91,11 +91,16 @@ class Tx_MootoolsEssentials_Controller_LoadController extends Tx_Extbase_MVC_Con
 			$renderer->addJsFooterInlineCode('mootoolsLanguage', "Locale.use('" . $settings['language'] . "');");
 		}
 
+		$behaviorCode = 'var myBehavior = new Behavior()';
+		if (count($settings['behavior']) > 0) {
+			$behaviorCode = 'var myBehavior = new Behavior(' . $this->tsArray2json($settings['behavior']) . ')';
+		}
+
 		if ($this->hasPackage('Behavior/Behavior', $files)) {
 			if ($this->hasPackage('Behavior/Delegator', $files)) {
-				$renderer->addJsFooterInlineCode('behaviorAndDelegatorAtBottom', "var myBehavior = new Behavior().apply(document.body);	var myDelegator = new Delegator({getBehavior: function(){ return myBehavior; }}).attach(document.body);");
+				$renderer->addJsFooterInlineCode('behaviorAndDelegatorAtBottom', $behaviorCode . ".apply(document.body);	var myDelegator = new Delegator({getBehavior: function(){ return myBehavior; }}).attach(document.body);");
 			} else {
-				$renderer->addJsFooterInlineCode('behaviorAtBottom', "var myBehavior = new Behavior().apply(document.body);");
+				$renderer->addJsFooterInlineCode('behaviorAtBottom', $behaviorCode . ".apply(document.body);");
 			}
 		} else {
 			if ($this->hasPackage('Behavior/Delegator', $files)) {
@@ -116,6 +121,31 @@ class Tx_MootoolsEssentials_Controller_LoadController extends Tx_Extbase_MVC_Con
 			}
 		}
 		return FALSE;
+	}
+
+	/**
+	 * converts an tsArray to json, while NOT wraping valuestrings with "" or '' so you can use real true, false in ts
+	 * formats the output with proper indention
+	 *
+	 * @param	array array to convert
+	 * @param	string current indent value
+	 * @param	string newline caracter
+	 * @param	string with each step increase the indent value with this indent base value
+	 * @return string resolve to relative path
+	 */
+	function tsArray2json($array, $indent = '    ', $newLine = "\n", $indentBase = '  ' ) {
+		$json = '';
+
+		foreach ($array as $option => $value ) {
+			if ($json !== '') {
+				$json .= ',' . $newLine . $indent;
+			} else if (!is_array($value)) {
+				$json .= "'" . $option . "': " . $value;
+			} else {
+				$json .= "'" . substr($option, 0, -1) . "': " . $this->array2json($value, $indent . $indentBase);
+			}
+		}
+		return '{' . $newLine . $indent . $json . $newLine . substr($indent, 2) . '}';
 	}
 
 }

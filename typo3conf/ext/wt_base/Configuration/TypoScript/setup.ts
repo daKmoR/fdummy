@@ -270,6 +270,7 @@ tt_content.image.20.1.imageLinkWrap {
 		concatenateJs = 0
 		# compressJs = 0
 	}
+	plugin.tx_mootoolsessentials.settings.behavior.breakOnErrors = true
 [else]
 	config.disablePrefixComment = 1
 [global]
