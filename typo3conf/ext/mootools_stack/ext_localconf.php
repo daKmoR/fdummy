@@ -7,6 +7,7 @@ plugin.tx_mootoolsessentials {
 		manifests {
 			Stack = EXT:mootools_stack/Resources/Public/Manifests/Stack/
 			MooTools-DatePicker = EXT:mootools_stack/Resources/Public/Manifests/MootoolsDatepicker/
+			Bootstrap = EXT:mootools_stack/Resources/Public/Manifests/Bootstrap/
 		}
 	}
 }
