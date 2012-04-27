@@ -14,6 +14,7 @@ requires:
  - /CSSEvents
  - More/Element.Position
  - Behavior/Behavior
+ - More/Element.Shortcuts
 
 provides: [Bootstrap.Twipsy, Bootstrap.Tooltip]
 
