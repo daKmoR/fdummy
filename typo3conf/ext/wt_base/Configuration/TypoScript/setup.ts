@@ -28,7 +28,7 @@ config {
 
 ## Header ##########################################################################################
 config {
-	doctype = html_5
+	doctype = html5
 	removeDefaultJS = external
 	concatenateCss = 1
 	# compressCss = 1

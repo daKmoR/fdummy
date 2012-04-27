@@ -37,7 +37,7 @@ $TYPO3_CONF_VARS['BE']['disable_exec_function'] = '0';
 $TYPO3_CONF_VARS['BE']['allowDonateWindow'] = FALSE;
 
 // set required extensions
-$TYPO3_CONF_VARS['EXT']['requiredExt'] = 'css_styled_content,realurl,openid';
+$TYPO3_CONF_VARS['EXT']['requiredExt'] = 'css_styled_content,realurl,openid,wt_base';
 	
 ## Additional page settings for development-mode ###################################################
 if (is_file(PATH_typo3conf . 'ENABLE_INSTALL_TOOL')) {
