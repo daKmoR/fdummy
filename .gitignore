@@ -5,6 +5,7 @@ index.php
 typo3temp
 
 typo3conf/*CACHED*
+typo3conf/hostconf.php
 typo3conf/ENABLE_INSTALL_TOOL
 
 uploads/*.*
@@ -12,8 +13,9 @@ uploads/**/*
 !uploads/*/index.html
 !uploads/**/index.html
 
-fileadmin
-!fileadmin/templates/
+fileadmin/*.*
+fileadmin/**
+!fileadmin/templates
 !fileadmin/user_upload/index.html
 !fileadmin/_temp_/index.html
 !fileadmin/_temp_/.htaccess
