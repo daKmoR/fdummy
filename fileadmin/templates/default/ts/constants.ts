@@ -2,8 +2,15 @@
 
 ## baseUrl for RealURL #############################################################################
 baseUrl = http://fdummy.clients.webteam.at/
+[globalString = _SERVER|HTTPS = on]
+  baseUrl = https://fdummy.clients.webteam.at/
+[global]
+
 [globalString = ENV:HTTP_HOST = local.fdummy.clients.webteam.at]
   baseUrl = http://local.fdummy.clients.webteam.at/
+[global]
+[globalString = ENV:HTTP_HOST = dev.fdummy.clients.webteam.at]
+  baseUrl = http://dev.fdummy.clients.webteam.at/
 [global]
 
 ## default description & keywords ##################################################################

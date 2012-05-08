@@ -3,7 +3,7 @@
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2012 
+ *  (c) 2012
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -64,7 +64,7 @@ class Tx_MootoolsEssentials_Controller_LoadController extends Tx_Extbase_MVC_Con
 
 		$this->packager->addManifests($settings['manifests']);
 	}
-	
+
 	/**
 	 * @param array $settings
 	 */
@@ -96,19 +96,29 @@ class Tx_MootoolsEssentials_Controller_LoadController extends Tx_Extbase_MVC_Con
 			$behaviorCode = 'var myBehavior = new Behavior(' . $this->tsArray2json($settings['behavior']) . ')';
 		}
 
+
+		$delegatorCode = 'var myDelegator = new Delegator()';
+		if ($this->hasPackage('Behavior/Behavior', $files) && $this->hasPackage('Behavior/Delegator', $files)) {
+			$settings['delegator']['getBehavior'] = 'function() { return myBehavior; }';
+		}
+		if (count($settings['delegator']) > 0) {
+			$delegatorCode = 'var myDelegator = new Delegator(' . $this->tsArray2json($settings['delegator']) . ')';
+		}
+
+
 		if ($this->hasPackage('Behavior/Behavior', $files)) {
 			if ($this->hasPackage('Behavior/Delegator', $files)) {
-				$renderer->addJsFooterInlineCode('behaviorAndDelegatorAtBottom', $behaviorCode . ".apply(document.body);	var myDelegator = new Delegator({getBehavior: function(){ return myBehavior; }}).attach(document.body);");
+				$renderer->addJsFooterInlineCode('behaviorAndDelegatorAtBottom', $behaviorCode . '.apply(document.body);' . PHP_EOL . $delegatorCode . '.attach(document.body);');
 			} else {
 				$renderer->addJsFooterInlineCode('behaviorAtBottom', $behaviorCode . ".apply(document.body);");
 			}
 		} else {
 			if ($this->hasPackage('Behavior/Delegator', $files)) {
-				$renderer->addJsFooterInlineCode('delegatorAtBottom', "var myDelegator = new Delegator().attach(document.body);");
+				$renderer->addJsFooterInlineCode('delegatorAtBottom', $delegatorCode . ".attach(document.body);");
 			}
 		}
 	}
-	
+
 	/**
 	 * @param string $search
 	 * @param array $packages
@@ -127,22 +137,22 @@ class Tx_MootoolsEssentials_Controller_LoadController extends Tx_Extbase_MVC_Con
 	 * converts an tsArray to json, while NOT wraping valuestrings with "" or '' so you can use real true, false in ts
 	 * formats the output with proper indention
 	 *
-	 * @param	array array to convert
-	 * @param	string current indent value
-	 * @param	string newline caracter
-	 * @param	string with each step increase the indent value with this indent base value
+	 * @param array $array tsArray to convert
+	 * @param string $indent current indent value
+	 * @param string $newLine
+	 * @param string $indentBase with each step increase the indent value with this indent base value
 	 * @return string resolve to relative path
 	 */
-	function tsArray2json($array, $indent = '    ', $newLine = "\n", $indentBase = '  ' ) {
+	function tsArray2json($array, $indent = '    ', $newLine = PHP_EOL, $indentBase = '  ' ) {
 		$json = '';
-
 		foreach ($array as $option => $value ) {
 			if ($json !== '') {
 				$json .= ',' . $newLine . $indent;
-			} else if (!is_array($value)) {
+			}
+			if (!is_array($value)) {
 				$json .= "'" . $option . "': " . $value;
 			} else {
-				$json .= "'" . substr($option, 0, -1) . "': " . $this->array2json($value, $indent . $indentBase);
+				$json .= "'" . substr($option, 0, -1) . "': " . $this->tsArray2json($value, $indent . $indentBase);
 			}
 		}
 		return '{' . $newLine . $indent . $json . $newLine . substr($indent, 2) . '}';

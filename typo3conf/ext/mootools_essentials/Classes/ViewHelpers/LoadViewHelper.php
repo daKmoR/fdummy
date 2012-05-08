@@ -25,10 +25,10 @@
  * = Examples =
  *
  * <code title="Defaults">
- * <m:loadJs file="Core/Request" />
+ *   <m:load file="Core/Request" />
  * </code>
  * <output>
- * // loads the Core/Request File and all it's dependences
+ *   // loads the Core/Request File and all it's dependences
  * </output>
  *
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
@@ -40,12 +40,12 @@ class Tx_MootoolsEssentials_ViewHelpers_LoadViewHelper extends Tx_Fluid_Core_Vie
 	 *
 	 * @param string $file
 	 * @author Thomas Allmer <at@delusionworld.com>
+	 * @return void
 	 */
 	public function render($file = NULL) {
 		$packager = t3lib_div::makeInstance('Tx_MootoolsEssentials_Domain_Model_Packager');
 		$packager->addFile($file);
-		return '';
 	}
-	
+
 }
 ?>
