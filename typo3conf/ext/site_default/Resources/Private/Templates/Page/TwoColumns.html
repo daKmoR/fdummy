@@ -1,3 +1,4 @@
+{namespace m=Tx_MootoolsEssentials_ViewHelpers}
 	<div id="wrap" class="container">
 
 		<header>
@@ -15,6 +16,8 @@
 			<div class="span4">
 				<f:cObject typoscriptObjectPath="lib.leftMenu" />
 				<f:cObject typoscriptObjectPath="lib.leftContent" />
+				<m:load file="Bootstrap/Behavior.BS.Tooltip" />
+				<span data-behavior="BS.Tooltip" title="asdf: asdf">more</span>
 			</div>
 
 			<div class="span8">

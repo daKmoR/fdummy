@@ -9,7 +9,7 @@ lib.header = COA
 lib.header {
 	10 = IMAGE
 	10 {
-		file = fileadmin/templates/default/css/images/logo.png
+		file = EXT:site_default/Resources/Public/Css/Images/logo.png
 		stdWrap.typolink {
 			parameter = 1
 			ATagParams = id="homeLink"

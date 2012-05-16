@@ -66,7 +66,7 @@ page.includeCSS {
 	bootstrap = EXT:wt_base/Resources/Public/Bootstrap/css/bootstrap.css
 	# the responsive css is disabled by default
 	#bootstrapResponsive = EXT:wt_base/Resources/Public/Bootstrap/css/bootstrap-responsive.css
-	screen = fileadmin/templates/default/css/screen.css
+	screen = EXT:site_default/Resources/Public/Css/screen.css
 }
 
 page.headerData {
@@ -190,14 +190,14 @@ page {
 			key.override.field = backend_layout
 			# default template file
 			default = TEXT
-			default.value = fileadmin/templates/default/TwoColumns.html
+			default.value = EXT:site_default/Resources/Private/Templates/Page/TwoColumns.html
 			# template file for backend-layout with ID 2
 			2 = TEXT
-			2.value = fileadmin/templates/default/ThreeColumns.html
+			2.value = EXT:site_default/Resources/Private/Templates/Page/ThreeColumns.html
 			3 = TEXT
-			3.value = fileadmin/templates/default/OneColumn.html
+			3.value = EXT:site_default/Resources/Private/Templates/Page/OneColumn.html
 			4 = TEXT
-			4.value = fileadmin/templates/default/TwoColumns.html
+			4.value = EXT:site_default/Resources/Private/Templates/Page/TwoColumns.html
 		}
 	}
 }
