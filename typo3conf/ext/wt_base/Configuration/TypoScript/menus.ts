@@ -271,6 +271,42 @@ menus.language {
 	}
 }
 
+## DropDown Language Menu ###################################################################################
+# Language switch with Dropdown (Select)
+menus.language_switch = HMENU
+menus.language_switch {
+	wrap = <select id="language">|</select>
+	special = language
+	special.value = 0,1,3
+	special.normalWhenNoLanguage = 0
+	1 = TMENU
+	1 {
+		noBlur = 1
+		# Standard Sprachen
+		NO = 1
+		NO {
+			# remove default link as there would be no GET params
+			doNotLinkIt = 1
+			# create new link with current GET params
+			stdWrap.typolink {
+				parameter.data = page:uid
+				additionalParams = &L=0 || &L=1
+				addQueryString = 1
+				addQueryString.exclude = L,id,cHash,no_cache
+				addQueryString.method = GET
+				no_cache = 0
+				returnLast = url
+			}
+			stdWrap.wrap = <option value="|">German</option> || <option value="|">English</option> || <option value="|">Spanisch</option>
+		}
+		ACT < .NO
+		ACT = 1
+		ACT {
+			stdWrap.wrap = <option selected="selected" value="|">German</option> || <option selected="selected" value="|">English</option> || <option selected="selected" value="|">Spanisch</option>
+		}
+	}
+}
+
 ## customImageMenu #################################################################################
 # customImageMenu: allows you to define images for each page, which will be displayed instead
 #   of the name; 1st picture = default; 2nd = rollover; 3rd = active, current;
