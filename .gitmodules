@@ -1,0 +1,6 @@
+[submodule "typo3_src"]
+	path = typo3_src
+	url = git://git.typo3.org/TYPO3v4/Core.git
+[submodule "typo3conf/ext/tinymce_rte"]
+	path = typo3conf/ext/tinymce_rte
+	url = git@github.com:daKmoR/TYPO3-tinymce_rte.git
