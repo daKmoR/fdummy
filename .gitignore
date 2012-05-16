@@ -15,7 +15,6 @@ uploads/**/*
 
 fileadmin/*.*
 fileadmin/**
-!fileadmin/templates
 !fileadmin/user_upload/index.html
 !fileadmin/_temp_/index.html
 !fileadmin/_temp_/.htaccess
