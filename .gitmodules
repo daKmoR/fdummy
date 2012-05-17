@@ -4,3 +4,6 @@
 [submodule "typo3conf/ext/tinymce_rte"]
 	path = typo3conf/ext/tinymce_rte
 	url = git@github.com:daKmoR/TYPO3-tinymce_rte.git
+[submodule "typo3conf/ext/mootools_stack"]
+	path = typo3conf/ext/mootools_stack
+	url = git@github.com:daKmoR/TYPO3-mootools_stack.git
