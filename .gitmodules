@@ -7,3 +7,6 @@
 [submodule "typo3conf/ext/mootools_stack"]
 	path = typo3conf/ext/mootools_stack
 	url = git@github.com:daKmoR/TYPO3-mootools_stack.git
+[submodule "typo3conf/ext/mootools_essentials"]
+	path = typo3conf/ext/mootools_essentials
+	url = git@github.com:daKmoR/TYPO3-mootools_essentials.git
