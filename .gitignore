@@ -2,27 +2,15 @@ t3lib
 typo3
 index.php
 typo3temp
+fileadmin
+uploads
 
 typo3conf/*CACHED*
 typo3conf/hostconf.php
 typo3conf/ENABLE_INSTALL_TOOL
-
-uploads/*.*
-uploads/**/*
-!uploads/*/index.html
-!uploads/**/index.html
-
-fileadmin/*.*
-fileadmin/**
-!fileadmin/user_upload/index.html
-!fileadmin/_temp_/index.html
-!fileadmin/_temp_/.htaccess
-
-
 
 awstats-icon
 icon
 php5.fcgi
 stats
 .idea
-.rsync_cache
