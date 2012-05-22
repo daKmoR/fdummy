@@ -1,33 +1,43 @@
-	<div id="wrap">
+	<div id="wrap" class="container">
 
-		<div id="header">
+		<header>
 			<f:cObject typoscriptObjectPath="lib.header" />
-		</div>
-		
-		<div class="colmask equal layout3cols">
-			
-			<div class="col1">
-				<div class="content">
-					<f:cObject typoscriptObjectPath="lib.contentLeft" />
+			<div class="navbar">
+				<div class="navbar-inner">
+					<div class="container">
+						<f:cObject typoscriptObjectPath="lib.headerMenu" />
+					</div>
 				</div>
 			</div>
-			
-			<div class="col2">
-				<div class="content" id="contentMain">
+		</header>
+		
+		<div class="row">
+			<div class="span2">
+				<f:cObject typoscriptObjectPath="lib.leftMenu" />
+				<f:cObject typoscriptObjectPath="lib.leftContent" />
+			</div>
+
+			<div class="span8">
+				<div id="content">
 					<f:cObject typoscriptObjectPath="lib.content" />
 				</div>
 			</div>
 			
-			<div class="col3">
-				<div class="content">
-					<f:cObject typoscriptObjectPath="lib.contentRight" />
-				</div>
+			<div class="span2">
+				<f:cObject typoscriptObjectPath="lib.rightContent" />
 			</div>
-			
 		</div>
 		
-		<div id="footer">
-			<f:cObject typoscriptObjectPath="lib.footer" />
+		
+		<div id="footer" class="container">
+			<div class="row">
+				<div class="span9">
+					<f:cObject typoscriptObjectPath="lib.footer" />
+				</div>
+				<div id="footerRight" class="span3">
+					<f:cObject typoscriptObjectPath="lib.footerMenu" />
+				</div>
+			</div>
 		</div>
 		
 	</div> <!-- /wrap -->
