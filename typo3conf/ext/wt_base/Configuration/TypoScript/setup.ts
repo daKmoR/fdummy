@@ -63,17 +63,17 @@ page.meta {
 
 ## Default CSS #####################################################################################
 page.includeCSS {
-	bootstrap = EXT:wt_base/Resources/Public/Bootstrap/css/bootstrap.css
+	bootstrap = EXT:wt_base/Resources/Public/Bootstrap/Css/bootstrap.css
 	# the responsive css is disabled by default
-	#bootstrapResponsive = EXT:wt_base/Resources/Public/Bootstrap/css/bootstrap-responsive.css
+	#bootstrapResponsive = EXT:wt_base/Resources/Public/Bootstrap/Css/bootstrap-responsive.css
 	screen = EXT:site_default/Resources/Public/Css/screen.css
 }
 
 page.headerData {
 	50 = TEXT
 	50.value (
-		<!--[if IE 7]> <link rel="stylesheet" href="fileadmin/templates/default/css/screen_ie7.css" type="text/css" media="screen" /> <![endif]-->
-		<!--[if IE 8]> <link rel="stylesheet" href="fileadmin/templates/default/css/screen_ie8.css" type="text/css" media="screen" /> <![endif]-->
+		<!--[if IE 7]> <link rel="stylesheet" href="typo3conf/ext/site_default/Resources/Public/Css/screen_ie7.css" type="text/css" media="screen" /> <![endif]-->
+		<!--[if IE 8]> <link rel="stylesheet" href="typo3conf/ext/site_default/Resources/Public/Css/screen_ie8.css" type="text/css" media="screen" /> <![endif]-->
 	)
 }
 
