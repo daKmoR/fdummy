@@ -10,3 +10,6 @@
 [submodule "typo3conf/ext/mootools_essentials"]
 	path = typo3conf/ext/mootools_essentials
 	url = git@github.com:daKmoR/TYPO3-mootools_essentials.git
+[submodule "typo3conf/ext/wt_base"]
+	path = typo3conf/ext/wt_base
+	url = git@github.com:daKmoR/TYPO3-wt_base.git
