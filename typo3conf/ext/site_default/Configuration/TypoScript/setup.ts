@@ -1,8 +1,10 @@
 <INCLUDE_TYPOSCRIPT: source="FILE: EXT:wt_base/Configuration/TypoScript/setup.ts">
+# if you use TemplaVoila uncomment the following line
+# <INCLUDE_TYPOSCRIPT: source="FILE: EXT:wt_base/Configuration/TypoScript/TemplaVoila/setup.templaVoila.ts">
 # if you need multilanguage uncomment the following line
-<INCLUDE_TYPOSCRIPT: source="FILE: EXT:wt_base/Configuration/TypoScript/setup.multilanguage.ts">
+# <INCLUDE_TYPOSCRIPT: source="FILE: EXT:wt_base/Configuration/TypoScript/setup.multilanguage.ts">
 # if english is your second language (most common case) uncomment the following line
-<INCLUDE_TYPOSCRIPT: source="FILE: EXT:wt_base/Configuration/TypoScript/setup.english.ts">
+# <INCLUDE_TYPOSCRIPT: source="FILE: EXT:wt_base/Configuration/TypoScript/setup.english.ts">
 
 ## Header ##########################################################################################
 lib.header = COA
