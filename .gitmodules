@@ -3,13 +3,13 @@
 	url = git://git.typo3.org/TYPO3v4/Core.git
 [submodule "typo3conf/ext/tinymce_rte"]
 	path = typo3conf/ext/tinymce_rte
-	url = git@github.com:daKmoR/TYPO3-tinymce_rte.git
+	url = https://github.com/daKmoR/TYPO3-tinymce_rte.git
 [submodule "typo3conf/ext/mootools_stack"]
 	path = typo3conf/ext/mootools_stack
-	url = git@github.com:daKmoR/TYPO3-mootools_stack.git
+	url = https://github.com/daKmoR/TYPO3-mootools_stack.git
 [submodule "typo3conf/ext/mootools_essentials"]
 	path = typo3conf/ext/mootools_essentials
-	url = git@github.com:daKmoR/TYPO3-mootools_essentials.git
+	url = https://github.com/daKmoR/TYPO3-mootools_essentials.git
 [submodule "typo3conf/ext/wt_base"]
 	path = typo3conf/ext/wt_base
-	url = git@github.com:daKmoR/TYPO3-wt_base.git
+	url = https://github.com/daKmoR/TYPO3-wt_base.git
