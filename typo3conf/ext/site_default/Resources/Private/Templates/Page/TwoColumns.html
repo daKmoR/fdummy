@@ -1,6 +1,11 @@
+{namespace m=Tx_MootoolsEssentials_ViewHelpers}
+
 	<div id="wrap" class="container">
 
-		<header>
+		<div id="header">
+			<f:link.page pageUid="1">
+				<img id="homeLink" src="typo3conf/ext/site_default/Resources/Public/Css/Images/logo.png" alt="WEBTEAM GmbH" />
+			</f:link.page>
 			<f:cObject typoscriptObjectPath="lib.header" />
 			<div class="navbar">
 				<div class="navbar-inner">
@@ -9,8 +14,8 @@
 					</div>
 				</div>
 			</div>
-		</header>
-		
+		</div>
+
 		<div class="row">
 			<div class="span4">
 				<f:cObject typoscriptObjectPath="lib.leftMenu" />
@@ -34,5 +39,5 @@
 				</div>
 			</div>
 		</div>
-		
+
 	</div> <!-- /wrap -->
