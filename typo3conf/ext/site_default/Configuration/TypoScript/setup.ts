@@ -46,3 +46,30 @@ lib.footerMenu.special.value = 4
 # [PIDinRootline = 13]
 # options for subpages only (list possible)
 # [PIDupinRootline = 13,37]
+
+
+
+
+
+
+
+
+
+
+
+## Dev Mode ########################################################################################
+# if you want to always use it - not only if you logged in (usefull for example if testing multiple
+# browser you just have to use the [else] (remove the # in front of it) recomment once done
+[globalVar = TSFE:id = 0]
+#[else]
+	config {
+		no_cache = 1
+		concatenateCss = 0
+		concatenateJs = 0
+	}
+	plugin.tx_mootoolsessentials.settings.behavior.breakOnErrors = true
+	plugin.tx_mootoolsessentials.settings.delegator.breakOnErrors = true
+[global]
+
+## include some post setup ts ######################################################################
+<INCLUDE_TYPOSCRIPT: source="FILE: EXT:wt_base/Configuration/TypoScript/setup.post.ts">
