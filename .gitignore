@@ -9,6 +9,12 @@ typo3conf/*CACHED*
 typo3conf/hostconf.php
 typo3conf/ENABLE_INSTALL_TOOL
 
+deployToClients.sh
+getDb.sh
+newTYPO3v6.sh
+pushDb.sh
+submodulesToMaster.sh
+
 awstats-icon
 icon
 php5.fcgi
