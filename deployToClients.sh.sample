@@ -1,0 +1,1 @@
+ssh -t deploy@clients.webteam.at "cd public_html/ &&  ./flow3 surf:deploy fdummyClientsWebteamAt"
