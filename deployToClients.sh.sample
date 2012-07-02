@@ -1,1 +1,4 @@
-ssh -t deploy@clients.webteam.at "cd public_html/ &&  ./flow3 surf:deploy fdummyClientsWebteamAt"
+ssh -t deploy@clients.webteam.at "cd public_html/ &&  ./flow3 surf:deploy <domain>ClientsWebteamAt"
+
+## EXAMPLE: 
+# ssh -t deploy@clients.webteam.at "cd public_html/ &&  ./flow3 surf:deploy fdummyClientsWebteamAt"
