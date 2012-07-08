@@ -1,24 +1,15 @@
-	<div id="wrap" class="container">
+<div id="wrap" class="container">
 
-		<header>
-			<f:cObject typoscriptObjectPath="lib.header" />
-			<div class="navbar">
-				<div class="navbar-inner">
-					<div class="container">
-						<f:cObject typoscriptObjectPath="lib.headerMenu" />
-					</div>
-				</div>
-			</div>
-		</header>
+	<f:render partial="Header" />
 
-		<div class="row">
-			<div class="span12">
-				<div id="content">
-					<f:cObject typoscriptObjectPath="lib.content" />
-				</div>
+	<div class="row">
+		<div class="span12">
+			<div id="content">
+				<f:cObject typoscriptObjectPath="lib.content" />
 			</div>
 		</div>
+	</div>
 
-		<f:render partial="Footer" />
+	<f:render partial="Footer" />
 
-	</div> <!-- /wrap -->
+</div> <!-- /wrap -->

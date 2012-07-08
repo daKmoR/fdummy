@@ -10,6 +10,10 @@
 # the Bootstrap responsive css is disabled by default
 page.includeCSS.bootstrapResponsive >
 
+# allow HTML in the header of an element
+# lib.stdheader.10.setCurrent.htmlSpecialChars = 0
+
+
 ## Language ########################################################################################
 
 ## Header ##########################################################################################
@@ -25,6 +29,11 @@ lib.leftMenu.1.wrap = <ul class="nav nav-list lvl1">|</ul>
 lib.leftMenu.2 >
 
 ## lib.content #####################################################################################
+lib.content {
+	10 = TEXT
+	10.data = page:title
+	10.wrap = <header><h1>|</h1></header>
+}
 
 ## lib.rightContent ################################################################################
 
@@ -41,8 +50,10 @@ lib.footerMenu.special.value = 4
 # options for subpages only (list possible)
 # [PIDupinRootline = 13,37]
 
-
-
+# Home
+[globalVar = TSFE:id = 1]
+	lib.content.10 >
+[global]
 
 
 
@@ -53,9 +64,8 @@ lib.footerMenu.special.value = 4
 
 ## Dev Mode ########################################################################################
 # if you want to always use it - not only if you logged in (usefull for example if testing multiple
-# browser you just have to use the [else] (remove the # in front of it) recomment once done
-[globalVar = TSFE:id = 0]
-#[else]
+# browser you just have comment the first line
+[globalVar = TSFE:id = -1]
 	config {
 		no_cache = 1
 		concatenateCss = 0
