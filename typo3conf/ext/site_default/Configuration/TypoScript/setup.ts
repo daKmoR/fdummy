@@ -30,11 +30,6 @@ lib.leftMenu.2 >
 ## lib.rightContent ################################################################################
 
 ## lib.footer ######################################################################################
-lib.footer {
-	5 = TEXT
-	5.value = WEBTEAM GmbH - Münzgrabenstrasse 36 - 8010 Graz - <a href="mailto:office@webteam.at">office@webteam.at</a>
-}
-
 lib.footerMenu < menus.footer
 lib.footerMenu.special.value = 4
 

@@ -2,11 +2,11 @@
 		a:hover { color: #bd1919; text-decoration: underline; }
 
 	header { margin-bottom: 10px; }
-	
+
 	#homeLink { display: block; text-decoration: none; }
-	
-	#footer  { padding: 9px 0; margin: 10px 0; border-top: 1px solid #000; border-bottom: 1px solid #000; }
-		#footerRight { text-align: right; }
+
+	footer  { padding: 9px 0; margin: 10px 0; border-top: 1px solid #000; border-bottom: 1px solid #000; }
+		footer .row div:last-child { text-align: right; }
 
 	.breadcrumb { border-top: 1px solid #dcdcdc; padding: 1px 0 0 10px; font-size: 11px; color: #aaa; margin-top: 5px; }
 		.breadcrumb a { color: #aaa; text-decoration: none; }
