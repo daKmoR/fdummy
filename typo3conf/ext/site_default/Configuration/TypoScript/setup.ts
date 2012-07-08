@@ -14,7 +14,6 @@ page.includeCSS.bootstrapResponsive >
 
 ## Header ##########################################################################################
 lib.headerMenu < menus.nestedList
-lib.headerMenu.1.wrap = <ul class="nav lvl1">|</ul>
 lib.headerMenu.2 >
 
 ## lib.leftContent #################################################################################
