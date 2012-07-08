@@ -8,7 +8,7 @@
 
 ## Global ##########################################################################################
 # the Bootstrap responsive css is disabled by default
-# page.includeCSS.bootstrapResponsive >
+page.includeCSS.bootstrapResponsive >
 
 ## Language ########################################################################################
 
