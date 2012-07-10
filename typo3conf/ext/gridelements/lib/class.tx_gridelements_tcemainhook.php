@@ -30,7 +30,7 @@ class tx_gridelements_TCEmainHook {
 	 */
 	public function processDatamap_preProcessFieldArray(&$fieldArray, $table, $id, &$parentObj) {
 
-        if ($table == 'tt_content' || $table == 'pages') {
+        if (($table == 'tt_content' || $table == 'pages') && !$parentObj->isImporting) {
 
 	        $this->layoutSetup = t3lib_div::makeInstance('tx_gridelements_layoutsetup', $id);
 
@@ -132,7 +132,8 @@ class tx_gridelements_TCEmainHook {
 		if(count($cmd) &&
 				key($cmd) == 'tt_content' &&
 				$status == 'new' &&
-				strpos($cmd['tt_content'][key($cmd['tt_content'])]['copy'], 'x') !== FALSE
+				strpos($cmd['tt_content'][key($cmd['tt_content'])]['copy'], 'x') !== FALSE &&
+				!$parentObj->isImporting
 		) {
 			$positionArray = t3lib_div::trimexplode('x', $cmd['tt_content'][key($cmd['tt_content'])]['copy']);
 			if($positionArray[0] < 0) {
@@ -191,14 +192,15 @@ class tx_gridelements_TCEmainHook {
 	 */
 	public function moveRecord($table, $uid, &$destPid, &$propArr, &$moveRec, $resolvedPid, &$recordWasMoved, &$parentObj) {
 
-		if ($table == 'tt_content') {
+		if ($table == 'tt_content' && !$parentObj->isImporting) {
 			$cmd = t3lib_div::_GET('cmd');
-			$originalContainer = $GLOBALS['TYPO3_DB']->exec_SELECTgetSingleRow(
-				'tx_gridelements_container',
+			$originalElement = $GLOBALS['TYPO3_DB']->exec_SELECTgetSingleRow(
+				'*',
 				'tt_content',
 				'uid=' . $uid
 			);
-			$containerUpdateArray[] = $originalContainer['tx_gridelements_container'];
+
+			$containerUpdateArray[] = $originalElement['tx_gridelements_container'];
 
 			if (strpos($cmd['tt_content'][$uid]['move'], 'x') !== false) {
 				$target = t3lib_div::trimExplode('x', $cmd['tt_content'][$uid]['move']);
@@ -226,6 +228,27 @@ class tx_gridelements_TCEmainHook {
 				}
 
 				$destPid = -$uid;
+				$parentObj->updateDB('tt_content', $uid, $updateArray);
+				$this->doGridContainerUpdate($containerUpdateArray, $parentObj);
+			} else if($cmd['tt_content'][$uid]['move']) {
+				// to be done: handle moving with the up and down arrows via list module correctly
+
+				/* $destPid = -$uid;
+				$parentObj->updateDB('tt_content', $uid, $updateArray);
+				$this->doGridContainerUpdate($containerUpdateArray, $parentObj);*/
+			} else if(!count($cmd) && !$parentObj->moveChildren) {
+				// pasting into the page via list module without knowing the desired column
+
+				if($originalElement['CType'] == 'gridelements_pi1') {
+					$parentObj->moveChildren = true;
+				}
+
+				$updateArray = array(
+					'colPos' => 0,
+					'sorting' => 0,
+					'tx_gridelements_container' => 0,
+					'tx_gridelements_columns' => 0
+				);
 				$parentObj->updateDB('tt_content', $uid, $updateArray);
 				$this->doGridContainerUpdate($containerUpdateArray, $parentObj);
 			}
@@ -510,7 +533,8 @@ class tx_gridelements_TCEmainHook {
 		if ($command == 'copy' &&
 		    ($DDcopy == 1 || $reference == 1) &&
 		    !$commandIsProcessed &&
-		    $table == 'tt_content'
+		    $table == 'tt_content' &&
+		    !$parentObj->isImporting
 		) {
 
 			$overrideArray = array();

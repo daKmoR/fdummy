@@ -9,11 +9,11 @@ GridElementsDD = function() {
 		// set when initAll() has finished
 		isInitialized = false,
 		
-		// default draggable template
-		defaultTemplate = '<div class="x-dd-defaulttpl">Missing Content Template</div>',
+		// default draggable template - filled on initAll
+		defaultTemplate = '',
 		
 		// basic setup for all drag elements (existing content elements that can be dragged around)
-
+		
 		dragBehaviorDragelements = {
 			// the current class
 			dragClass: null,
@@ -28,11 +28,11 @@ GridElementsDD = function() {
 			b4StartDrag: function() {
 				
 				Ext.dd.ScrollManager.register('typo3-docbody');
-
+				
 				Ext.dd.ScrollManager.frequency = 50;
 				Ext.dd.ScrollManager.increment = 20;
 				Ext.dd.ScrollManager.animate = false;
-
+				
 				// reset all top. properties set below
 				top.originalfirstDroptarget = null;
 				top.originalPositionDropTargetId = null;
@@ -50,10 +50,10 @@ GridElementsDD = function() {
 				if(!this.scrollBody) {
 					this.scrollBody = Ext.get('typo3-docbody');
 				}
-
+				
 				top.startScrollTop = this.scrollBody.dom.scrollTop;
 				top.startScrollLeft = this.scrollBody.dom.scrollLeft;
-
+				
 				// is this a new or an existing element?
 				var dragEl = Ext.get(this.el);
 				if(dragEl.select('div.t3-page-ce-type a span').elements.length > 0) {
@@ -371,7 +371,7 @@ GridElementsDD = function() {
 		
 		// copy dragBehaviorDragelements onto dragBehaviorDraggables
 		dragBehaviorDraggables = Ext.apply({}, dragBehaviorDragelements);
-	
+		
 	// end var
 	
 	// overwrite dragBehaviorDraggables specials
@@ -398,7 +398,7 @@ GridElementsDD = function() {
 				scroll: false,
 				maintainOffset: false
 			});
-
+			
 			/*
 			// assign an ID to contained H4
 			var tempH4El = Ext.get(extNewEl.select('h4').elements[0]);
@@ -519,25 +519,16 @@ GridElementsDD = function() {
 		// stores the UIDs of copied items
 		copyItemUids: {},
 		
-		// stores localized strings
-		llStrings: {
-			'en': {
-				'tx_gridelements_js.pastecopy': 'Paste copy into',
-				'tx_gridelements_js.pasteref': 'Paste reference into'
-			},
-			'de': {
-				'tx_gridelements_js.pastecopy': 'Kopie hier einfügen',
-				'tx_gridelements_js.pasteref': 'Referenz hier einfügen'
-			}
-		},
-		
-		// retrieves a localized string with llId for given langId
-		getLL: function(langId, llId) {
-			return GridElementsDD.llStrings[langId][llId];
+		// retrieves a localized string from the TYPO3.lang global
+		// llId is a key from locallang_db.xml w/o the "tx_gridelements_js." part
+		getLL: function(llId) {
+			return TYPO3.lang["tx_gridelements_js." + llId];
 		},
 		
 		// initialize this lib
 		initAll: function() {
+			
+			this.defaultTemplate = '<div class="x-dd-defaulttpl">' + TYPO3.l10n.localize('tx_gridelements_js.missingcontenttemplate') + '</div>';
 			
 			// check, if this.baseConf.pageRenderTime has been str_replaced by onReady script
 			if(this.baseConf.pageRenderTime === 'insert_server_time_here') {
@@ -572,7 +563,7 @@ GridElementsDD = function() {
 							scroll: false,
 							maintainOffset: false
 						});
-
+						
 						// restrict drag handle to h4 within
 						dragElementNow.setHandleElId(Ext.get(extElNow.select('h4').elements[0]).id);
 						
@@ -679,7 +670,7 @@ GridElementsDD = function() {
 						scroll: false,
 						maintainOffset: false
 					});
-
+					
 					// apply the overrides object to the newly created instance of DD
 					dragBehaviorDraggables.dragClass = matchingClass;
 					Ext.apply(draggerNow, dragBehaviorDraggables);
@@ -694,16 +685,16 @@ GridElementsDD = function() {
 		},
 		
 		handleClipboardItem: function(clipboardItemUid, params) {
-
+			
 			// set top vars so they're instantly available in reloaded frames
 			if(params.search(/setCopyMode.+/) != -1) {
 				top.DDclipboardfilled = (top.DDclipboardfilled == "copy" && top.DDclipboardElId == clipboardItemUid) ? "" : "copy";
 			} else {
 				top.DDclipboardfilled = (top.DDclipboardfilled == "move" && top.DDclipboardElId == clipboardItemUid) ? "" : "move";
 			}
-
+			
 			top.DDclipboardElId = top.DDclipboardfilled ? clipboardItemUid : 0;
-
+			
 			// remove and re-add insert icons
 			GridElementsDD.removePasteAndRefIcons();
 			if(top.DDclipboardfilled) {
@@ -754,30 +745,29 @@ GridElementsDD = function() {
 					lastColHeaderLink = Ext.get(currentColHeader).select('.t3-page-colHeader-icons a:last').elements[0];
 				
 				// customize copy icon
-				pasteCopyHeaderLink.title = GridElementsDD.getLL('de', 'tx_gridelements_js.pastecopy');
+				pasteCopyHeaderLink.title = TYPO3.l10n.localize('tx_gridelements_js.pastecopy');
 				copyHeaderIcon = Ext.get(pasteCopyHeaderLink).select('span:first').elements[0];
 				Ext.get(copyHeaderIcon).removeClass('t3-icon-document-new');
 				Ext.get(copyHeaderIcon).addClass('t3-icon-document-paste-after');
 				Ext.get(copyHeaderIcon).addClass('t3-icon-dd-paste-copy-into');
-
+				
 				if(top.DDclipboardfilled == 'move') {
-
+					
 					Ext.get(pasteCopyHeaderLink).set({
 						href: '#',
 						onclick: "GridElementsDD.ajaxThenReload('" + top.moveURL.replace('DD_DRAG_UID', clipboardItemUid).replace('DD_DROP_UID', dropZoneID) + "&CB[paste]=tt_content%7C-" + clipboardItemUid + "&CB[pad]=normal'); return false;"
 					});
-
 				}
-
+				
 				if(top.DDclipboardfilled == 'copy') {
-
+					
 					Ext.get(pasteCopyHeaderLink).set({
 						href: '#',
 						onclick: "GridElementsDD.ajaxThenReload('" + top.pasteTpl.replace('DD_REFYN', '0&DDcopy=1').replace('DD_DRAG_UID', clipboardItemUid).replace('DD_DROP_UID', dropZoneID) + "'); return false;"
 					});
-
+					
 					// customize ref icon
-					pasteRefHeaderLink.title = GridElementsDD.getLL('en', 'tx_gridelements_js.pasteref');
+					pasteRefHeaderLink.title = TYPO3.l10n.localize('tx_gridelements_js.pasteref');
 					refHeaderIcon = Ext.get(pasteRefHeaderLink).select('span:first').elements[0];
 					Ext.get(refHeaderIcon).removeClass('t3-icon-document-new');
 					Ext.get(refHeaderIcon).addClass('t3-icon-document-paste-after');
@@ -789,8 +779,8 @@ GridElementsDD = function() {
 				
 					// insert both links
 					Ext.get(pasteRefHeaderLink).insertAfter(lastColHeaderLink);
-		        }
-
+				}
+				
 				Ext.get(pasteCopyHeaderLink).insertAfter(lastColHeaderLink);
 				
 			});

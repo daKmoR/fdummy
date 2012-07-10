@@ -39,6 +39,8 @@
 			
 			<label index="tx_gridelements_js.pastecopy">Paste copy into</label>
 			<label index="tx_gridelements_js.pasteref">Paste reference into</label>
+			<label index="tx_gridelements_js.drophere">Drop Here</label>
+			<label index="tx_gridelements_js.missingcontenttemplate">Missing Content Template</label>
 			
 		</languageKey>
 		<languageKey index="de" type="array">
@@ -75,6 +77,8 @@
 
 			<label index="tx_gridelements_js.pastecopy">Kopie hier einfügen</label>
 			<label index="tx_gridelements_js.pasteref">Referenz hier einfügen</label>
+			<label index="tx_gridelements_js.drophere">Hier einfügen</label>
+			<label index="tx_gridelements_js.missingcontenttemplate">Kein Content Template gefunden</label>
 			
 		</languageKey>
 	</data>

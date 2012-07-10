@@ -8,7 +8,7 @@ if(typeof GridElementsDD === "undefined"){
 	if(Ext.get('ext-cms-layout-db-layout-php')) {
 		
 		// add top dropzones after t3-page-colHeader elements
-		var dropZoneTpl = '<div class="x-dd-droptargetarea">Drop Here</div>',
+		var dropZoneTpl = '<div class="x-dd-droptargetarea">' + TYPO3.l10n.localize('tx_gridelements_js.drophere') + '</div>',
 			dropZonePar = Ext.select('.t3-page-colHeader').elements;
 		Ext.each(dropZonePar, function(currentColHeader){
 			var 

@@ -81,7 +81,7 @@ class tx_gridelements_drawItemHook implements tx_cms_layout_tt_content_drawItemH
 
 				// Due to the pid being "NOT USED" in makeQueryArray we have to set pidSelect here
 				$originalPidSelect = $parentObject->pidSelect;
-				$parentObject->pidSelect = $row['pid'];
+				$parentObject->pidSelect = 'pid = ' . $row['pid'];
 
 				$queryParts = $parentObject->makeQueryArray(
 					'tt_content',
@@ -111,7 +111,7 @@ class tx_gridelements_drawItemHook implements tx_cms_layout_tt_content_drawItemH
 
 						// Due to the pid being "NOT USED" in makeQueryArray we have to set pidSelect here
 						$originalPidSelect = $parentObject->pidSelect;
-						$parentObject->pidSelect = $row['pid'];
+						$parentObject->pidSelect = 'pid = ' . $row['pid'];
 
 						$queryParts = $parentObject->makeQueryArray(
 							'tt_content',

@@ -56,17 +56,32 @@ class tx_gridelements_addjavascript {
 					$pageRenderer->setCharSet($GLOBALS['LANG']->charSet ? $GLOBALS['LANG']->charSet : 'utf-8');
 				}
 				
-				$pageRenderer->addInlineLanguageLabelFile('EXT:gridelements/locallang_db.xml');
-				
 				if(is_array($clipObj->clipData['normal']['el'])) {
 				    $arrCBKeys = array_keys($clipObj->clipData['normal']['el']);
 				    $intFirstCBEl = str_replace('tt_content|', '', $arrCBKeys[0]);
 				}
 				
+				# pull locallang_db.xml to JS side - only the tx_gridelements_js-prefixed keys
+				$pageRenderer->addInlineLanguageLabelFile('EXT:gridelements/locallang_db.xml', 'tx_gridelements_js');
+				
+				# add l10n support to TYPO3 global - 4.6.x brings this, for 4.5 we fake it
+				if(TYPO3_branch != '4.5'){
+					$pageRenderer->addJsFile(t3lib_extMgm::extRelPath('lang') . 'res/js/be/typo3lang.js');
+					$pRaddExtOnReadyCode = "";
+				} else {
+					$pRaddExtOnReadyCode = "
+						TYPO3.l10n = {
+							localize: function(langKey){
+								return TYPO3.lang[langKey];
+							}
+						}
+					";
+				}
+				
 				// add Ext.onReady() code from file
 				$pageRenderer->addExtOnReadyCode(
 					// add some more JS here
-					"
+					$pRaddExtOnReadyCode . "
 						top.pasteURL = '" . $pasteURL . "';
 						top.moveURL = '" . $moveURL . "';
 						top.copyURL = '" . $copyURL . "';
@@ -98,9 +113,7 @@ class tx_gridelements_addjavascript {
 						file_get_contents(
 							t3lib_extMgm::extPath('gridelements') . 'res/js/GridElementsDD_onReady.js'
 						)
-					)
-					
-,
+					),
 					true
 				);
 			}
