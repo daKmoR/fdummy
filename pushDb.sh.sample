@@ -1,0 +1,14 @@
+#!/bin/bash
+
+domain=<yourdomain>;
+password=<yourpassword>;
+
+mysqldump --user=root $domain > dump.sql
+gzip dump.sql
+
+scp dump.sql.gz $domain@clients.webteam.at:dump.sql.gz
+
+ssh -t $domain@clients.webteam.at "gunzip dump.sql.gz && mysql --user=$domain --password=$password $domain < dump.sql && rm dump.sql"
+
+# remove local files
+rm dump.sql.gz
