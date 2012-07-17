@@ -9,11 +9,17 @@ typo3conf/*CACHED*
 typo3conf/hostconf.php
 typo3conf/ENABLE_INSTALL_TOOL
 
-deployToClients.sh
+deploy.sh
 getDb.sh
-newTYPO3v6.sh
 pushDb.sh
+
+deployToClients.sh
+getDbClients.sh
+pushDbClients.sh
+
+newTYPO3v6.sh
 submodulesToMaster.sh
+
 
 awstats-icon
 icon
