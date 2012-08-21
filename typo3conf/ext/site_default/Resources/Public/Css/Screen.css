@@ -1,3 +1,6 @@
+
+body { background:#b7cdde url(Images/bg.jpg) repeat-x left top; }
+
 	a { color: #fe3b01; text-decoration: none; }
 		a:hover { color: #bd1919; text-decoration: underline; }
 
@@ -11,3 +14,14 @@
 	.breadcrumb { border-top: 1px solid #dcdcdc; padding: 1px 0 0 10px; font-size: 11px; color: #aaa; margin-top: 5px; }
 		.breadcrumb a { color: #aaa; text-decoration: none; }
 		.breadcrumb a:hover { color: #000; text-decoration: underline; }
+		
+		
+		.row div { background:#fff; }
+		
+		
+/*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*/
+
+.navbar { margin-top:16px; }
+	.navbar .navbar-inner { background:transparent; box-shadow:none; padding:0px; }
+	.navbar .nav > li { margin-right:10px; }
+	#ibs .navbar .nav > li > a { height:49px; line-height:49px; padding:0px; }
