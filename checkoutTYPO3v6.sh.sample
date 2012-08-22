@@ -6,6 +6,12 @@ name=$1;
 nameLowerCase=${1,,};
 password=$2;
 
+if [ "$name" = "" ] || [ "$password" = "" ]
+then
+	echo "Provide a name & password (foldername to checkout into, password for mysql). Example: ./checkoutTYPO3v6.sh shopCom h5hk3j3"
+	exit
+fi
+
 ## CLONE & FOLDERS #################################################################################
 git clone git@git.webteam.at:clients/$nameLowerCase.git $name
 

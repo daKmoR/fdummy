@@ -1,10 +1,20 @@
 #!/bin/bash
 
-# usage ./newTYPO3v6.sh shopCom
-
 name=$1;
 nameLowerCase=${1,,};
-fdummyPassword=<yourpassword>
+fdummyPassword=yourpassword
+
+if [ "$name" = "" ]
+then
+	echo Provide a name for the folder to checkout into. Example: ./newTYPO3v6.sh shopCom
+	exit
+fi
+
+if [ "$fdummyPassword" = "yourpassword" ]
+then
+	echo You have to edit the line 5 of this script and provide the password for the fdummy server. Example: fdummyPassword=5kl2jkd
+	exit
+fi
 
 ## CLONE & FOLDERS #################################################################################
 git clone git@git.webteam.at:webteam-interne-projekte/fdummy.git $name
