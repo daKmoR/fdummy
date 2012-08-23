@@ -19,4 +19,4 @@ git submodule update --init --recursive
 
 cd ..
 git add typo3_src
-git commit -m 'Raise Submodule Pointer of typo3_src to $version'
+git commit -m '[TASK] Raise Submodule Pointer of typo3_src to $version'
