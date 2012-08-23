@@ -1,7 +1,19 @@
 #!/bin/bash
 
-domain=<yourdomain>;
-password=<yourpassword>;
+domain=yourdomain;
+password=yourpassword;
+
+if [ "$domain" = "yourddomain" ]
+then
+	echo You have to edit the line 3 of this script and provide the domain (= mysql user) in all lowercase. Example: domain=fdummy
+	exit
+fi
+
+if [ "$fdummyPassword" = "yourpassword" ]
+then
+	echo You have to edit the line 4 of this script and provide the mysql password. Example: password=5kl2jkd
+	exit
+fi
 
 ssh -t $domain@clients.webteam.at "mysqldump --user=$domain --password=$password $domain > dump.sql && gzip dump.sql"
 
