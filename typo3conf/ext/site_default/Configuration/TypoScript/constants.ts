@@ -1,7 +1,7 @@
 <INCLUDE_TYPOSCRIPT: source="FILE: EXT:wt_base/Configuration/TypoScript/constants.ts">
 
 ## baseUrl for RealURL #############################################################################
-baseUrl = http://localhost/582_leeb/
+baseUrl = http://fdummy.clients.webteam.at/
 [globalString = _SERVER|HTTPS = on]
   baseUrl = https://fdummy.clients.webteam.at/
 [global]
