@@ -1,6 +1,3 @@
-
-body { background:#b7cdde url(Images/bg.jpg) repeat-x left top; }
-
 	a { color: #fe3b01; text-decoration: none; }
 		a:hover { color: #bd1919; text-decoration: underline; }
 
@@ -14,47 +11,3 @@ body { background:#b7cdde url(Images/bg.jpg) repeat-x left top; }
 	.breadcrumb { border-top: 1px solid #dcdcdc; padding: 1px 0 0 10px; font-size: 11px; color: #aaa; margin-top: 5px; }
 		.breadcrumb a { color: #aaa; text-decoration: none; }
 		.breadcrumb a:hover { color: #000; text-decoration: underline; }
-		
-		
-		.row div { background:#fff; }
-		
-/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
-/*%%    DEFAULT CSS ABOVE    %%*/
-/*%%    EDIT BELOW           %%*/
-/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
-		
-/*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*/
-/* this css-file is combined with bootstrap                                             */
-/* visit http://twitter.github.com/bootstrap/ for further information                   */
-/* use #ibs to easily overwrite bootstrap-rules                                         */
-/*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*//*/*/
-
-/* ‾‾‾‾‾ INCLUDE GOOGLE FONTS ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ */
-@import url(http://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic);
-/* ____________________________________________________________________________________ */
-
-#header { margin-bottom:500px; }
-
-
-/* ‾‾‾‾‾ NAVIGATION ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ */
-/* BASIC NAVIGATION SETTINGS */
-.navbar { margin-top:16px; }
-  .navbar .navbar-inner { background:transparent; box-shadow:none; padding:0px; }
-  #ibs .navbar .nav { float:none; }
-  #ibs .navbar a { text-shadow:none; }
-/* LEVEL 1 */
-.navbar .lvl1 > li { margin-right:10px; }
-#ibs .navbar .lvl1 > li > a { height:49px; line-height:49px; padding:0px; text-transform:uppercase; font-family: 'Lato', sans-serif; font-size:17px; color:#4a4439; }
-#ibs .navbar .lvl1 > li:hover > .lvl2 { left:0px; }
-
-/* LEVEL 2 */
-#ibs .navbar .lvl2 { position:absolute; left:-9999px; width:690px; height:315px; background:rgba(255,255,255,0.5); padding:5px; }
-.navbar .lvl2 > li { margin:0 10px; }
-#ibs .navbar .lvl2 > li > a { height:25px; line-height:25px; width:135px; padding:0px; text-align:center; text-transform:uppercase; font-family: 'Lato', sans-serif; font-size:15px; color:#fff; background:#ef8c34; margin:16px 0; }
-
-/* LEVEL 3 */
-#ibs .navbar ul.lvl3 { list-style:square url("images/lilvl3.png"); }
-#ibs .navbar .lvl3 > li { float:none; }
-#ibs .navbar .lvl3 > li > a { padding:6px 0 6px 10px; }
-	
-/* ____________________________________________________________________________________ */
