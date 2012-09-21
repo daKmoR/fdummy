@@ -1,0 +1,4 @@
+These files are just templates. You have to copy them to the deploy server.
+
+Host:   deploy.clients.webteam.at
+Folder: /home/deploy/public_html/Build/Surf
