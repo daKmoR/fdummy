@@ -1,0 +1,293 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2011-10-17T20:22:37Z" product-name="workspaces" target-language="de">
+    <header/>
+    <body>
+      <trans-unit id="legend.label" xml:space="preserve" approved="yes">
+        <source>Legend:</source>
+      <target state="translated">Legende:</target><alt-trans xml:space="preserve" origin="hugoist"><target>Legende:</target></alt-trans></trans-unit>
+      <trans-unit id="legend.edited" xml:space="preserve" approved="yes">
+        <source>edited</source>
+      <target state="translated">bearbeitet</target><alt-trans xml:space="preserve" origin="hugoist"><target>bearbeitet</target></alt-trans></trans-unit>
+      <trans-unit id="legend.moved" xml:space="preserve" approved="yes">
+        <source>moved</source>
+      <target state="translated">verschoben</target><alt-trans xml:space="preserve" origin="hugoist"><target>verschoben</target></alt-trans></trans-unit>
+      <trans-unit id="legend.deleted" xml:space="preserve" approved="yes">
+        <source>deleted</source>
+      <target state="translated">gelöscht</target><alt-trans xml:space="preserve" origin="hugoist"><target>gelöscht</target></alt-trans></trans-unit>
+      <trans-unit id="legend.new" xml:space="preserve" approved="yes">
+        <source>created</source>
+      <target state="translated">erstellt</target><alt-trans xml:space="preserve" origin="hugoist"><target>erstellt</target></alt-trans></trans-unit>
+      <trans-unit id="legend.hidden" xml:space="preserve" approved="yes">
+        <source>hidden</source>
+      <target state="translated">verborgen</target><alt-trans xml:space="preserve" origin="hugoist"><target>versteckt</target></alt-trans></trans-unit>
+      <trans-unit id="title" xml:space="preserve" approved="yes">
+        <source>Workspaces</source>
+      <target state="translated">Arbeitsumgebungen</target><alt-trans xml:space="preserve" origin="thomasjbj"><target>Arbeitsumgebungen</target></alt-trans><alt-trans xml:space="preserve" origin="hugoist"><target>Workspaces</target></alt-trans></trans-unit>
+      <trans-unit id="ok" xml:space="preserve" approved="yes">
+        <source>ok</source>
+      <target state="translated">OK</target><alt-trans xml:space="preserve" origin="hugoist"><target>OK</target></alt-trans></trans-unit>
+      <trans-unit id="cancel" xml:space="preserve" approved="yes">
+        <source>cancel</source>
+      <target state="translated">abbrechen</target><alt-trans xml:space="preserve" origin="hugoist"><target>abbrechen</target></alt-trans></trans-unit>
+      <trans-unit id="chooseMassAction" xml:space="preserve" approved="yes">
+        <source>choose Mass Action</source>
+      <target state="translated">Stapelverarbeitung auswählen</target><alt-trans xml:space="preserve" origin="ruthschwarzenbach"><target>Aktion für alle</target></alt-trans><alt-trans xml:space="preserve" origin="schoofy"><target>wähle Stapelverarbeitung</target></alt-trans><alt-trans xml:space="preserve" origin="joekolade"><target>Aktion für alle auswählen</target></alt-trans></trans-unit>
+      <trans-unit id="chooseAction" xml:space="preserve" approved="yes">
+        <source>choose Action</source>
+      <target state="translated">Aktion auswählen</target><alt-trans xml:space="preserve" origin="hugoist"><target>Aktion wählen</target></alt-trans><alt-trans xml:space="preserve" origin="ruthschwarzenbach"><target>Aktion</target></alt-trans></trans-unit>
+      <trans-unit id="item" xml:space="preserve" approved="yes">
+        <source>item</source>
+      <target state="translated">Element</target><alt-trans xml:space="preserve" origin="hugoist"><target>Element</target></alt-trans></trans-unit>
+      <trans-unit id="items" xml:space="preserve" approved="yes">
+        <source>items</source>
+      <target state="translated">Elemente</target><alt-trans xml:space="preserve" origin="hugoist"><target>Elemente</target></alt-trans></trans-unit>
+      <trans-unit id="recordsToDisplay" xml:space="preserve" approved="yes">
+        <source>Records to display</source>
+      <target state="translated">Datensätze anzeigen</target><alt-trans xml:space="preserve" origin="hugoist"><target>Datensätze anzeigen</target></alt-trans><alt-trans xml:space="preserve" origin="joekolade"><target>Einträge anzeigen</target></alt-trans></trans-unit>
+      <trans-unit id="reviewandpublish" xml:space="preserve" approved="yes">
+        <source>review and publish</source>
+      <target state="translated">prüfen und veröffentlichen</target><alt-trans xml:space="preserve" origin="joekolade"><target>überprüfen und veröffentlichen</target></alt-trans><alt-trans xml:space="preserve" origin="hugoist"><target>prüfen und veröffentlichen</target></alt-trans></trans-unit>
+      <trans-unit id="workspacelist" xml:space="preserve" approved="yes">
+        <source>Workspace List</source>
+      <target state="translated">Liste der Arbeitsumgebungen</target><alt-trans xml:space="preserve" origin="hugoist"><target>Liste der Arbeitsumgebungen</target></alt-trans></trans-unit>
+      <trans-unit id="editorInLive" xml:space="preserve" approved="yes">
+        <source>You are in LIVE workspace. You have to select a draft workspace before you can review and
+					publish changes.
+				</source>
+      <target state="translated">Sie befinden sich in der LIVE-Arbeitsumgebung. Wählen Sie eine Entwurfs-Arbeitsumgebung aus um Änderungen
+ 	 	 	 	 	 überprüfen und veröffentlichen können.
+	 	 	 	</target><alt-trans xml:space="preserve" origin="joekolade"><target>Sie befinden sich in der LIVE-Arbeitsumgebung. Wählen Sie eine Entwurfs-Arbeitsumgebung aus um Änderungen
+ 	 	 	 	 	 überprüfen und veröffentlichen können.
+	 	 	 	</target></alt-trans></trans-unit>
+      <trans-unit id="actionSendToStage" xml:space="preserve" approved="yes">
+        <source>Send to stage</source>
+      <target state="translated">An Stufe senden</target><alt-trans xml:space="preserve" origin="joekolade"><target>Sende an Stufe</target></alt-trans></trans-unit>
+      <trans-unit id="publish_execute_action_option" xml:space="preserve" approved="yes">
+        <source>Publish to LIVE</source>
+      <target state="translated">LIVE veröffentlichen</target><alt-trans xml:space="preserve" origin="hugoist"><target>LIVE veröffentlichen</target></alt-trans></trans-unit>
+      <trans-unit id="close" xml:space="preserve" approved="yes">
+        <source>Close</source>
+      <target state="translated">Schließen</target><alt-trans xml:space="preserve" origin="hugoist"><target>schließen</target></alt-trans></trans-unit>
+      <trans-unit id="runMassAction.done" xml:space="preserve" approved="yes">
+        <source>Done processing %d elements</source>
+      <target state="translated">%d Elemente erfolgreich verarbeitet</target><alt-trans xml:space="preserve" origin="joekolade"><target>%d Elemente erfolgreich bearbeitet</target></alt-trans></trans-unit>
+      <trans-unit id="runMassAction.init" xml:space="preserve" approved="yes">
+        <source>init</source>
+      <target state="translated">Initialisieren</target></trans-unit>
+      <trans-unit id="tooltip.publishAll" xml:space="preserve" approved="yes">
+        <source>Really publish entire workspace?</source>
+      <target state="translated">Die gesamte Arbeitsumgebung tatsächlich veröffentlichen?</target><alt-trans xml:space="preserve" origin="hugoist"><target>Wirklich die gesamte Arbeitsumgebung veröffentlichen?</target></alt-trans></trans-unit>
+      <trans-unit id="tooltip.swapAll" xml:space="preserve" approved="yes">
+        <source>Really swap entire workspace?</source>
+      <target state="translated">Die gesamte Arbeitsumgebung tatsächlich tauschen?</target><alt-trans xml:space="preserve" origin="hugoist"><target>Wirklich die gesamte Arbeitsumgebung tauschen?</target></alt-trans></trans-unit>
+      <trans-unit id="tooltip.discardAll" xml:space="preserve" approved="yes">
+        <source>Do you really want to discard changes from the whole workspace?</source>
+      <target state="translated">Sämtliche Änderungen in der Arbeitsumgebung tatsächlich verwerfen?</target><alt-trans xml:space="preserve" origin="joekolade"><target>Wollen Sie Wirklich alle Änderungen der gesamten Arbeitsumgebung verwerfen?</target></alt-trans></trans-unit>
+      <trans-unit id="tooltip.affectWholeWorkspace" xml:space="preserve" approved="yes">
+        <source>Please note that this will affect all changes in the current workspace, which may be more than
+					you are currently seeing on your screen.
+				</source>
+      <target state="translated">Bitte beachten Sie, dass das alle Änderungen in der aktuellen Arbeitsumgebung betrifft.
+					Das können mehr sein, als im Moment angezeigt werden!
+				</target><alt-trans xml:space="preserve" origin="joekolade"><target>Bitte beachten Sie, dass das alle Änderungen in der aktuellen Arbeitsumgebung betrifft.\n					Das können mehr sein, als Ihnen im Moment angezeigt werden!
+				</target></alt-trans></trans-unit>
+      <trans-unit id="tooltip.generatePagePreview" xml:space="preserve" approved="yes">
+        <source>Generate page preview</source>
+      <target state="translated">Seitenvorschau erstellen</target><alt-trans xml:space="preserve" origin="joekolade"><target>Seitenvorschau erstellen</target></alt-trans></trans-unit>
+      <trans-unit id="previewLink" xml:space="preserve" approved="yes">
+        <source>Preview Link</source>
+      <target state="translated">Vorschau-Link</target><alt-trans xml:space="preserve" origin="hugoist"><target>Vorschau-Link</target></alt-trans></trans-unit>
+      <trans-unit id="error.noResponse" xml:space="preserve" approved="yes">
+        <source>The server did not send any response whether the action was successful.</source>
+      <target state="translated">Der Server hat keine Rückmeldung gesendet, ob die Aktion erfolgreich war.</target><alt-trans xml:space="preserve" origin="joekolade"><target>Der Server hat keine Rückmeldung gesendet, ob die Aktion erfolgreich war.</target></alt-trans><alt-trans xml:space="preserve" origin="hugoist"><target>Der Server hat auf keine Rückmeldung gesendet, ob die Aktion erfolgreich war.</target></alt-trans></trans-unit>
+      <trans-unit id="rowDetails" xml:space="preserve" approved="yes">
+        <source>Row details...</source>
+      <target state="translated">Zeilendetails...</target><alt-trans xml:space="preserve" origin="joekolade"><target>Zeilen Details...</target></alt-trans></trans-unit>
+      <trans-unit id="column.difference" xml:space="preserve" approved="yes">
+        <source>Difference</source>
+      <target state="translated">Unterschied</target><alt-trans xml:space="preserve" origin="hugoist"><target>Unterschied</target></alt-trans></trans-unit>
+      <trans-unit id="column.changeDate" xml:space="preserve" approved="yes">
+        <source>Modification</source>
+      <target state="translated">Änderung</target><alt-trans xml:space="preserve" origin="joekolade"><target>Änderung</target></alt-trans><alt-trans xml:space="preserve" origin="hugoist"><target>Modifikation</target></alt-trans></trans-unit>
+      <trans-unit id="column.stage" xml:space="preserve" approved="yes">
+        <source>Current Stage</source>
+      <target state="translated">Aktuelle Stufe</target><alt-trans xml:space="preserve" origin="joekolade"><target>Aktuelle Stufe</target></alt-trans><alt-trans xml:space="preserve" origin="hugoist"><target>Aktuelle Phase</target></alt-trans></trans-unit>
+      <trans-unit id="column.actions" xml:space="preserve" approved="yes">
+        <source>Actions</source>
+      <target state="translated">Aktionen</target><alt-trans xml:space="preserve" origin="hugoist"><target>Aktionen</target></alt-trans></trans-unit>
+      <trans-unit id="column.wsPath" xml:space="preserve" approved="yes">
+        <source>Path</source>
+      <target state="translated">Pfad</target><alt-trans xml:space="preserve" origin="hugoist"><target>Pfad</target></alt-trans></trans-unit>
+      <trans-unit id="column.wsTitle" xml:space="preserve" approved="yes">
+        <source>Changed</source>
+      <target state="translated">Geändert</target><alt-trans xml:space="preserve" origin="hugoist"><target>geändert</target></alt-trans></trans-unit>
+      <trans-unit id="column.uid" xml:space="preserve" approved="yes">
+        <source>WS-Id</source>
+      <target state="translated">Arbeitsumgebungs-ID</target><alt-trans xml:space="preserve" origin="joekolade"><target>Arbeitsumgebungs-ID</target></alt-trans></trans-unit>
+      <trans-unit id="column.oid" xml:space="preserve" approved="yes">
+        <source>Live-Id</source>
+      <target state="translated">Live-ID</target><alt-trans xml:space="preserve" origin="joekolade"><target>Live-ID</target></alt-trans></trans-unit>
+      <trans-unit id="column.workspaceName" xml:space="preserve" approved="yes">
+        <source>Workspace</source>
+      <target state="translated">Arbeitsumgebung</target><alt-trans xml:space="preserve" origin="hugoist"><target>Arbeitsumgebung</target></alt-trans></trans-unit>
+      <trans-unit id="column.livePath" xml:space="preserve" approved="yes">
+        <source>Live-Path</source>
+      <target state="translated">Live-Pfad</target><alt-trans xml:space="preserve" origin="hugoist"><target>Live-Pfad</target></alt-trans></trans-unit>
+      <trans-unit id="column.liveTitle" xml:space="preserve" approved="yes">
+        <source>Live-Title</source>
+      <target state="translated">Live-Titel</target><alt-trans xml:space="preserve" origin="hugoist"><target>Live-Titel</target></alt-trans></trans-unit>
+      <trans-unit id="column.wsSwapColumn" xml:space="preserve" approved="yes">
+        <source>Swap workspace</source>
+      <target state="translated">Arbeitsumgebung austauschen</target><alt-trans xml:space="preserve" origin="joekolade"><target>Arbeitsumgebung austauschen</target></alt-trans><alt-trans xml:space="preserve" origin="hugoist"><target>Arbeitsumgebung tauschen</target></alt-trans></trans-unit>
+      <trans-unit id="tooltip.viewElementAction" xml:space="preserve" approved="yes">
+        <source>Preview element</source>
+      <target state="translated">Elementvorschau</target><alt-trans xml:space="preserve" origin="hugoist"><target>Element-Vorschau</target></alt-trans></trans-unit>
+      <trans-unit id="tooltip.editElementAction" xml:space="preserve" approved="yes">
+        <source>Edit element</source>
+      <target state="translated">Element bearbeiten</target><alt-trans xml:space="preserve" origin="hugoist"><target>Element bearbeiten</target></alt-trans></trans-unit>
+      <trans-unit id="tooltip.openPage" xml:space="preserve" approved="yes">
+        <source>Open version of page</source>
+      <target state="translated">Seitenversion öffnen</target><alt-trans xml:space="preserve" origin="hugoist"><target>Seitenversion öffnen</target></alt-trans></trans-unit>
+      <trans-unit id="tooltip.sendToPrevStage" xml:space="preserve" approved="yes">
+        <source>Send record to previous Stage</source>
+      <target state="translated">Datensatz an vorherige Stufe senden</target><alt-trans xml:space="preserve" origin="joekolade"><target>Datensatz an die vorherige Stufe senden</target></alt-trans></trans-unit>
+      <trans-unit id="tooltip.sendToNextStage" xml:space="preserve" approved="yes">
+        <source>Send record to next Stage</source>
+      <target state="translated">Datensatz an nächste Stufe senden</target><alt-trans xml:space="preserve" origin="joekolade"><target>Datensatz an die nächste Stufe senden</target></alt-trans></trans-unit>
+      <trans-unit id="tooltip.discardVersion" xml:space="preserve" approved="yes">
+        <source>Discard workspace version of record.</source>
+      <target state="translated">Entwurfversion des Datensatzes verwerfen.</target><alt-trans xml:space="preserve" origin="joekolade"><target>Version dieses Datensatzes verwerfen.</target></alt-trans></trans-unit>
+      <trans-unit id="tooltip.swap" xml:space="preserve" approved="yes">
+        <source>Swap live and workspace versions of record</source>
+      <target state="translated">Live- und Arbeitsumgebungsversion austauschen</target><alt-trans xml:space="preserve" origin="hugoist"><target>Live und Arbeitsumgebungsversion tauschen</target></alt-trans></trans-unit>
+      <trans-unit id="window.discard.title" xml:space="preserve" approved="yes">
+        <source>Discard workspace version of record.</source>
+      <target state="translated">Entwurfversion des Datensatzes verwerfen.</target></trans-unit>
+      <trans-unit id="window.discardAll.title" xml:space="preserve" approved="yes">
+        <source>Discard all workspace version of current page.</source>
+      <target state="translated">Alle Entwurfsversionen der aktuellen Seite verwerfen.</target></trans-unit>
+      <trans-unit id="window.discard.message" xml:space="preserve" approved="yes">
+        <source>Do you really want to discard this version from workspace?</source>
+      <target state="translated">Diese Version tatsächlich aus der Arbeitsumgebung verwerfen?</target><alt-trans xml:space="preserve" origin="hugoist"><target>Wollen Sie diese Version aus der Arbeitsumgebung entfernen?</target></alt-trans></trans-unit>
+      <trans-unit id="window.discardAll.message" xml:space="preserve" approved="yes">
+        <source>Do you really want to discard all versions from page?</source>
+      <target state="translated">Tatsächlich alle Versionen von dieser Seite verwerfen?</target></trans-unit>
+      <trans-unit id="window.swap.title" xml:space="preserve" approved="yes">
+        <source>Swap version</source>
+      <target state="translated">Version austauschen</target><alt-trans xml:space="preserve" origin="hugoist"><target>Version tauschen</target></alt-trans></trans-unit>
+      <trans-unit id="window.swap.message" xml:space="preserve" approved="yes">
+        <source>Do you really want to swap this version?</source>
+      <target state="translated">Diese Version tatsächlich austauschen?</target><alt-trans xml:space="preserve" origin="hugoist"><target>Wollen Sie die Version wirklich tauschen?</target></alt-trans></trans-unit>
+      <trans-unit id="window.massAction.title" xml:space="preserve" approved="yes">
+        <source>Prepare to start mass action</source>
+      <target state="translated">Stapelverarbeitung ausführen</target></trans-unit>
+      <trans-unit id="error.stageId.integer" xml:space="preserve" approved="yes">
+        <source>StageId is supposed to be an integer</source>
+      <target state="translated">Die Arbeitsumgebungs-ID sollte eine Ganzzahl sein</target></trans-unit>
+      <trans-unit id="error.stageId.invalid" xml:space="preserve" approved="yes">
+        <source>The stage to be used seems to be invalid and cannot be used. Please consider to use the update
+					wizard in the install tool to fix this.
+				</source>
+      <target state="translated">Die ausgewählte Stufe scheint unültig zu sein und kann nicht genutzt werden. Bitte verwenden Sie den
+					 Update-Assistenten im Install Tool um dies zu reparieren.
+				</target></trans-unit>
+      <trans-unit id="error.sendToNextStage.noRecordFound" xml:space="preserve" approved="yes">
+        <source>The record element could not be found.</source>
+      <target state="translated">Das Element konnte nicht gefunden werden.</target><alt-trans xml:space="preserve" origin="hugoist"><target>Das gespeicherte Element konnte nicht gefunden werden.</target></alt-trans></trans-unit>
+      <trans-unit id="error.sendToPrevStage.noPreviousStage" xml:space="preserve" approved="yes">
+        <source>The record element is already in editing stage, there is no previous stage.</source>
+      <target state="translated">Das Element befindet sich bereits in der Stufe Bearbeiten. Es existiert keine vorherige Stufe.</target></trans-unit>
+      <trans-unit id="window.sendToNextStageWindow.itemsWillBeSentTo" xml:space="preserve" approved="yes">
+        <source>The selected element(s) will be sent to</source>
+      <target state="translated">Die ausgewählten Elemente werden an folgende Stufe gesandt:</target></trans-unit>
+      <trans-unit id="window.sendToNextStageWindow.sendMailTo" xml:space="preserve" approved="yes">
+        <source>Send mail to</source>
+      <target state="translated">E-Mail senden an</target><alt-trans xml:space="preserve" origin="hugoist"><target>Sende E-Mail an</target></alt-trans></trans-unit>
+      <trans-unit id="window.sendToNextStageWindow.additionalRecipients" xml:space="preserve" approved="yes">
+        <source>Additional recipients</source>
+      <target state="translated">Weitere Empfänger</target></trans-unit>
+      <trans-unit id="window.sendToNextStageWindow.comments" xml:space="preserve" approved="yes">
+        <source>Comments</source>
+      <target state="translated">Kommentare</target><alt-trans xml:space="preserve" origin="hugoist"><target>Kommentare</target></alt-trans></trans-unit>
+      <trans-unit id="error.getStageTitle.stageNotFound" xml:space="preserve" approved="yes">
+        <source>Stage not found</source>
+      <target state="translated">Stufe nicht gefunden</target></trans-unit>
+      <trans-unit id="warning.oldStyleWorkspaceInUser" xml:space="preserve" approved="yes">
+        <source>It seems that you're still using old-style workspace. Please use the update scripts in the TYPO3
+					Install Tool to run the necessary updates. If you continue using this module without migrating your
+					workspace you might loose data.
+				</source>
+      <target state="translated">Scheinbar verwenden Sie eine veraltete Version der Arbeitsumgebungen. Bitte nutzen Sie den Update-Assistenten
+					im Install Tool um dieses Problem zu beheben. Wenn Sie mit der veralteten Version fortfahren zu arbeiten
+					könnte dies zu Datenverlust führen.
+				</target></trans-unit>
+      <trans-unit id="info.newpage" xml:space="preserve" approved="yes">
+        <source>New Page!</source>
+      <target state="translated">Neue Seite!</target><alt-trans xml:space="preserve" origin="hugoist"><target>Neue Seite!</target></alt-trans></trans-unit>
+      <trans-unit id="info.newpage.detail" xml:space="preserve" approved="yes">
+        <source>The previewed page has been created in a workspace and has no live counterpart.</source>
+      <target state="translated">Die Vorschauseite wurde in einer Arbeitsumgebung erstellt und hat kein Live-Pendant.</target><alt-trans xml:space="preserve" origin="hugoist"><target>Die Vorschau-Seite wurde in einer Arbeitsumgebung erstellt und hat keinen Live Gegenpart.</target></alt-trans></trans-unit>
+      <trans-unit id="preview.visualPreview" xml:space="preserve" approved="yes">
+        <source>Visual preview</source>
+      <target state="translated">Visuelle Vorschau</target><alt-trans xml:space="preserve" origin="hugoist"><target>Visuelle Vorschau</target></alt-trans></trans-unit>
+      <trans-unit id="preview.listView" xml:space="preserve" approved="yes">
+        <source>List view</source>
+      <target state="translated">Listenansicht</target><alt-trans xml:space="preserve" origin="hugoist"><target>Listen-Anzeige</target></alt-trans></trans-unit>
+      <trans-unit id="preview.livePreview" xml:space="preserve" approved="yes">
+        <source>Live</source>
+      <target state="translated">Live</target><alt-trans xml:space="preserve" origin="hugoist"><target>Live</target></alt-trans></trans-unit>
+      <trans-unit id="preview.livePreviewDetail" xml:space="preserve" approved="yes">
+        <source>Click this element to hide the workspace version and see the live version of the page.</source>
+      <target state="translated">Dieses Element anklicken, um die Entwurfsversion zu verbergen und die Live-Version der Seite zu sehen.</target><alt-trans xml:space="preserve" origin="hugoist"><target>Klicken Sie auf das Element, um die Arbeitsumgebung auszublenden und die Live-Version der Seite zu sehen.</target></alt-trans><alt-trans xml:space="preserve" origin="tantebootsy"><target>Klicken Sie dieses Element an, um die Arbeitsumgebung zu verbergen und die Live-Version der Seite zu sehen.</target></alt-trans></trans-unit>
+      <trans-unit id="preview.workspacePreview" xml:space="preserve" approved="yes">
+        <source>Workspace</source>
+      <target state="translated">Arbeitsumgebung</target><alt-trans xml:space="preserve" origin="hugoist"><target>Arbeitsumgebung</target></alt-trans></trans-unit>
+      <trans-unit id="preview.workspacePreviewDetail" xml:space="preserve" approved="yes">
+        <source>Click this element to hide the live version and see the workspace version of the page.</source>
+      <target state="translated">Dieses Element anklicken, um die Live-Version zu verbergen und die Entwurfsversion der Seite zu sehen.</target><alt-trans xml:space="preserve" origin="tantebootsy"><target>Klicken Sie dieses Element an, um die Live-Version zu vergeben und die Arbeitsumgebungs-Version der Seite zu sehen.</target></alt-trans></trans-unit>
+      <trans-unit id="preview.modeSlider" xml:space="preserve" approved="yes">
+        <source>Slider</source>
+      <target state="translated">Schieberegler</target><alt-trans xml:space="preserve" origin="hugoist"><target>Schieberegler</target></alt-trans></trans-unit>
+      <trans-unit id="preview.modeVbox" xml:space="preserve" approved="yes">
+        <source>Vertical</source>
+      <target state="translated">Vertikal</target><alt-trans xml:space="preserve" origin="hugoist"><target>Vertikal</target></alt-trans></trans-unit>
+      <trans-unit id="preview.modeHbox" xml:space="preserve" approved="yes">
+        <source>Horizontal</source>
+      <target state="translated">Horizontal</target><alt-trans xml:space="preserve" origin="hugoist"><target>Horizontal</target></alt-trans></trans-unit>
+      <trans-unit id="label_doaction_publish" xml:space="preserve" approved="yes">
+        <source>Publish</source>
+      <target state="translated">Veröffentlichen</target><alt-trans xml:space="preserve" origin="hugoist"><target>Veröffentlichen</target></alt-trans></trans-unit>
+      <trans-unit id="label_doaction_swap" xml:space="preserve" approved="yes">
+        <source>Swap</source>
+      <target state="translated">Austauschen</target><alt-trans xml:space="preserve" origin="hugoist"><target>Tauschen</target></alt-trans></trans-unit>
+      <trans-unit id="label_doaction_discard" xml:space="preserve" approved="yes">
+        <source>Discard</source>
+      <target state="translated">Verwerfen</target><alt-trans xml:space="preserve" origin="hugoist"><target>Verwerfen</target></alt-trans></trans-unit>
+      <trans-unit id="label_doaction_generatePreviewLink" xml:space="preserve" approved="yes">
+        <source>Generate Workspace Preview Link</source>
+      <target state="translated">Vorschau-Link für Arbeitsumgebung erzeugen</target><alt-trans xml:space="preserve" origin="tantebootsy"><target>Vorschau-Link erstellen</target></alt-trans></trans-unit>
+      <trans-unit id="info.elementAlreadyModified" xml:space="preserve" approved="yes">
+        <source>Element is in workspace stage "%s", modifications will send it back to "%s".</source>
+      <target state="translated">Element ist in der Arbeitsumgebungsstufe "%s", Änderungen werden zurückgesandt zur Stufe "%s".</target></trans-unit>
+      <trans-unit id="live_workspace" xml:space="preserve" approved="yes">
+        <source>Live Workspace</source>
+      <target state="translated">Live-Arbeitsumgebung</target><alt-trans xml:space="preserve" origin="hugoist"><target>Live-Arbeitsumgebung</target></alt-trans></trans-unit>
+      <trans-unit id="workspace_version" xml:space="preserve" approved="yes">
+        <source>Workspace version</source>
+      <target state="translated">Entwurfsversion</target><alt-trans xml:space="preserve" origin="hugoist"><target>Arbeitsumgebungs-Version</target></alt-trans></trans-unit>
+      <trans-unit id="current_step" xml:space="preserve" approved="yes">
+        <source><![CDATA[<b>Current stage step</b>: {0} (<b>{1}</b>/{2})]]></source>
+      <target state="translated">&lt;b&gt;Aktueller Schritt in derzeitiger Stufe&lt;/b&gt;: {0} (&lt;b&gt;{1}&lt;/b&gt;/{2})</target></trans-unit>
+      <trans-unit id="path" xml:space="preserve" approved="yes">
+        <source><![CDATA[<b>Path</b>: {0}]]></source>
+      <target state="translated">&lt;b&gt;Pfad&lt;/b&gt;: {0}</target></trans-unit>
+      <trans-unit id="stage" xml:space="preserve" approved="yes">
+        <source>Stage {0}</source>
+      <target state="translated">Stufe {0}</target></trans-unit>
+      <trans-unit id="comments" xml:space="preserve" approved="yes">
+        <source><![CDATA[User comments for <b>step {0} of stage</b> "{1}"]]></source>
+      <target state="translated">Benutzerkommentare für &lt;b&gt;Schritt {0} von Stufe&lt;/b&gt; "{1}"</target></trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -41,5 +41,6 @@ $TYPO3_CONF_VARS['INSTALL']['wizardDone']['tx_coreupdates_installsysexts'] = '1'
 // Updated by TYPO3 Extension Manager 16-05-12 15:59:30
 $TYPO3_CONF_VARS['INSTALL']['wizardDone']['tx_coreupdates_installnewsysexts'] = '1';	//  Modified or inserted by TYPO3 Upgrade Wizard.
 // Updated by TYPO3 Upgrade Wizard 16-05-12 15:59:31
-// Updated by TYPO3 Extension Manager 21-05-12 12:28:26
+$TYPO3_CONF_VARS['EXT']['extConf']['em'] = 'a:1:{s:17:"selectedLanguages";s:2:"de";}';	//  Modified or inserted by TYPO3 Extension Manager.
+// Updated by TYPO3 Extension Manager 21-09-12 12:26:00
 ?>
