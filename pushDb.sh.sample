@@ -1,17 +1,17 @@
 #!/bin/bash
 
 domain=yourdomain;
-password=yourpassword;
+password='yourpassword';
 
 if [ "$domain" = "yourddomain" ]
 then
-	echo You have to edit the line 3 of this script and provide the domain (= mysql user) in all lowercase. Example: domain=fdummy
+	echo "You have to edit the line 3 of this script and provide the domain (= mysql user) in all lowercase. Example: domain=fdummy"
 	exit
 fi
 
 if [ "$fdummyPassword" = "yourpassword" ]
 then
-	echo You have to edit the line 4 of this script and provide the mysql password. Example: password=5kl2jkd
+	echo "You have to edit the line 4 of this script and provide the mysql password. Example: password=5kl2jkd"
 	exit
 fi
 
@@ -20,7 +20,7 @@ gzip dump.sql
 
 scp dump.sql.gz $domain@clients.webteam.at:dump.sql.gz
 
-ssh -t $domain@clients.webteam.at "gunzip dump.sql.gz && mysql --user=$domain --password=$password $domain < dump.sql && rm dump.sql"
+ssh -t $domain@clients.webteam.at "gunzip dump.sql.gz && mysql --user=$domain --password='$password' $domain < dump.sql && rm dump.sql"
 
 # remove local files
 rm dump.sql.gz

@@ -34,7 +34,7 @@ ln -s typo3_src/t3lib
 ln -s typo3_src/index.php
 
 ## DATABASE ########################################################################################
-ssh -t $nameLowerCase@clients.webteam.at "mysqldump --user=$nameLowerCase --password=$password $nameLowerCase > dump.sql && gzip dump.sql"
+ssh -t $nameLowerCase@clients.webteam.at "mysqldump --user=$nameLowerCase --password='$password' $nameLowerCase > dump.sql && gzip dump.sql"
 
 scp $nameLowerCase@clients.webteam.at:dump.sql.gz dump.sql.gz
 

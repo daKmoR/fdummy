@@ -2,7 +2,7 @@
 
 name=$1;
 nameLowerCase=${1,,};
-fdummyPassword=yourpassword
+fdummyPassword='yourpassword'
 
 if [ "$name" = "" ]
 then
@@ -12,7 +12,7 @@ fi
 
 if [ "$fdummyPassword" = "yourpassword" ]
 then
-	echo You have to edit the line 5 of this script and provide the password for the fdummy server. Example: fdummyPassword=5kl2jkd
+	echo "You have to edit the line 5 of this script and provide the password for the fdummy server. Example: fdummyPassword=5kl2jkd"
 	exit
 fi
 
@@ -42,7 +42,7 @@ git remote rename origin fdummy
 git remote add origin git@git.webteam.at:clients/$nameLowerCase.git
 
 ## DATABASE ########################################################################################
-ssh -t fdummy@clients.webteam.at "mysqldump --user=fdummy --password=$fdummyPassword fdummy > dump.sql && gzip dump.sql"
+ssh -t fdummy@clients.webteam.at "mysqldump --user=fdummy --password='$fdummyPassword' fdummy > dump.sql && gzip dump.sql"
 
 scp fdummy@clients.webteam.at:dump.sql.gz dump.sql.gz
 
