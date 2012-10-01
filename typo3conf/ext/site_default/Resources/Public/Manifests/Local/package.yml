@@ -1,0 +1,11 @@
+name: "Local"
+exports: "mootools-local.js"
+web: "[webteam.at](http://webteam.at)"
+description: "Local MooTools"
+license: "[MIT License](http://mootools.net/license.txt)"
+copyright: "&copy; [WEBTEAM GmbH](http://webteam.at)"
+authors: "[WEBTEAM GmbH](http://webteam.at)"
+
+sources:
+  - Source/Behaviors/Behavior.Example.js
+  - Source/Example.js
