@@ -9,7 +9,7 @@ then
 	exit
 fi
 
-if [ "$fdummyPassword" = "yourpassword" ]
+if [ "$password" = "yourpassword" ]
 then
 	echo "You have to edit the line 4 of this script and provide the mysql password. Example: password=5kl2jkd"
 	exit
