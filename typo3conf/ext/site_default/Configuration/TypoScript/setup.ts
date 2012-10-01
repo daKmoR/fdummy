@@ -10,9 +10,11 @@
 # the Bootstrap responsive css is disabled by default
 page.includeCSS.bootstrapResponsive >
 
+# uses a custom bootstrap with [...] example: @gridGutterWidth: 8px; @gridColumns: 4; @gridColumnWidth: 187px;
+# page.includeCSS.bootstrap = EXT:site_default/Resources/Public/Css/bootstrap.min.css
+
 # allow HTML in the header of an element
 # lib.stdheader.10.setCurrent.htmlSpecialChars = 0
-
 
 ## Language ########################################################################################
 
