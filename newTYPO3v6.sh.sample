@@ -2,7 +2,7 @@
 
 name=$1;
 nameLowerCase=${1,,};
-fdummyPassword='yourpassword'
+fdummyPassword='jaVZvNvy'
 
 if [ "$name" = "" ]
 then
