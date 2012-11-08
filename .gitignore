@@ -1,27 +1,27 @@
-t3lib
-typo3
-index.php
-typo3temp
-fileadmin
-uploads
+/t3lib
+/typo3
+/index.php
+/typo3temp
+/fileadmin
+/uploads
 
-typo3conf/*CACHED*
-typo3conf/hostconf.php
-typo3conf/ENABLE_INSTALL_TOOL
+/typo3conf/*CACHED*
+/typo3conf/hostconf.php
+/typo3conf/ENABLE_INSTALL_TOOL
 
-deployFdummy.sh
+/deployFdummy.sh
 
-getDb.sh
-pushDb.sh
-getDbClients.sh
-pushDbClients.sh
+/getDb.sh
+/pushDb.sh
+/getDbClients.sh
+/pushDbClients.sh
 
-newTYPO3v6.sh
-submodulesToMaster.sh
+/newTYPO3v6.sh
+/submodulesToMaster.sh
 
-awstats-icon
-icon
-php5.fcgi
-stats
-.idea
-.DS_Store
+/awstats-icon
+/icon
+/php5.fcgi
+/stats
+/.idea
+/.DS_Store
