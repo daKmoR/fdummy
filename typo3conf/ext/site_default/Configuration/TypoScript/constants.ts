@@ -1,16 +1,16 @@
 <INCLUDE_TYPOSCRIPT: source="FILE: EXT:wt_base/Configuration/TypoScript/constants.ts">
 
 ## baseUrl for RealURL #############################################################################
-baseUrl = http://fdummy.clients.webteam.at/
+baseUrl = http://demo.fdummy.com/
 [globalString = _SERVER|HTTPS = on]
-  baseUrl = https://fdummy.clients.webteam.at/
+  baseUrl = https://demo.fdummy.com/
 [global]
 
-[globalString = ENV:HTTP_HOST = local.fdummy.clients.webteam.at]
-  baseUrl = http://local.fdummy.clients.webteam.at/
+[globalString = ENV:HTTP_HOST = local.demo.fdummy.com]
+  baseUrl = http://local.demo.fdummy.com/
 [global]
-[globalString = ENV:HTTP_HOST = dev.fdummy.clients.webteam.at]
-  baseUrl = http://dev.fdummy.clients.webteam.at/
+[globalString = ENV:HTTP_HOST = demofdummycom.clients.moodley.at]
+  baseUrl = http://demofdummycom.clients.moodley.at/
 [global]
 
 ## default description & keywords ##################################################################
