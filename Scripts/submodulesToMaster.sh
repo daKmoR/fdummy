@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd ..
+
 cd typo3conf/ext/mootools_essentials
 git checkout master
 git fetch

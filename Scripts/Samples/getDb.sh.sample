@@ -15,12 +15,15 @@ then
 	exit
 fi
 
-mysqldump --user=root $domain > dump.sql
-gzip dump.sql
+ssh -t $domain@clients.moodley.at "mysqldump --user=$domain --password='$password' $domain > dump.sql && gzip dump.sql"
 
-scp dump.sql.gz $domain@clients.webteam.at:dump.sql.gz
+scp $domain@clients.moodley.at:dump.sql.gz dump.sql.gz
 
-ssh -t $domain@clients.webteam.at "gunzip dump.sql.gz && mysql --user=$domain --password='$password' $domain < dump.sql && rm dump.sql"
+gunzip dump.sql.gz
+mysql --user=root $domain < dump.sql
 
-# remove local files
-rm dump.sql.gz
+# remove files
+rm dump.sql
+
+# remove remote files
+ssh -t $domain@clients.moodley.at "rm dump.sql.gz"

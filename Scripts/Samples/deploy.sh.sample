@@ -1,0 +1,4 @@
+ssh -t deploy@moodley.webteam.at "cd public_html/ &&  ./flow3 surf:deploy <domain>ClientsMoodleyAt"
+
+## EXAMPLE: 
+# ssh -t deploy@moodley.webteam.at "cd public_html/ &&  ./flow3 surf:deploy fdummyClientsMoodleyAt"

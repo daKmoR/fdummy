@@ -9,16 +9,6 @@
 /typo3conf/hostconf.php
 /typo3conf/ENABLE_INSTALL_TOOL
 
-/deployFdummy.sh
-
-/getDb.sh
-/pushDb.sh
-/getDbClients.sh
-/pushDbClients.sh
-
-/newTYPO3v6.sh
-/submodulesToMaster.sh
-
 /awstats-icon
 /icon
 /php5.fcgi

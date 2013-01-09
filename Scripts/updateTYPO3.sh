@@ -11,12 +11,11 @@ then
 	exit
 fi
 
+cd ..
 cd typo3_src
 git fetch
 git fetch --tags
 git checkout tags/TYPO3_$version
 git submodule update --init --recursive
 
-cd ..
 git add typo3_src
-git commit -m "[TASK] Raise Submodule Pointer of typo3_src to $version"

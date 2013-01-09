@@ -1,10 +1,10 @@
 <?php
 /*
-	$typo_db_username = '<user>';
-	$typo_db_password = '<password>';
-	$typo_db_host = 'localhost';
-	$typo_db = '<database>';
+	$GLOBALS['TYPO3_CONF_VARS']['DB']['username'] = '<user>';
+	$GLOBALS['TYPO3_CONF_VARS']['DB']['password'] = '<password>';
+	$GLOBALS['TYPO3_CONF_VARS']['DB']['host'] = 'localhost';
+	$GLOBALS['TYPO3_CONF_VARS']['DB']['database'] = '<database>';
 	
-	$TYPO3_CONF_VARS['GFX']['im_path'] = '/usr/bin/';
+	$GLOBALS['TYPO3_CONF_VARS']['GFX']['im_path'] = '/usr/bin/';
 	// ...
 */

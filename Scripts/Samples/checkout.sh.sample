@@ -13,7 +13,8 @@ then
 fi
 
 ## CLONE & FOLDERS #################################################################################
-git clone git@git.webteam.at:clients/$nameLowerCase.git $name
+cd ..
+git clone git@github.com:moodley/$nameLowerCase.git $name
 
 cd $name
 git submodule update --init --recursive
@@ -34,9 +35,9 @@ ln -s typo3_src/t3lib
 ln -s typo3_src/index.php
 
 ## DATABASE ########################################################################################
-ssh -t $nameLowerCase@clients.webteam.at "mysqldump --user=$nameLowerCase --password='$password' $nameLowerCase > dump.sql && gzip dump.sql"
+ssh -t $nameLowerCase@clients.moodley.at "mysqldump --user=$nameLowerCase --password='$password' $nameLowerCase > dump.sql && gzip dump.sql"
 
-scp $nameLowerCase@clients.webteam.at:dump.sql.gz dump.sql.gz
+scp $nameLowerCase@clients.moodley.at:dump.sql.gz dump.sql.gz
 
 gunzip dump.sql.gz
 
@@ -48,4 +49,4 @@ mysql --user=root $nameLowerCase < dump.sql
 rm dump.sql
 
 # remove remote files
-ssh -t $nameLowerCase@clients.webteam.at "rm dump.sql.gz"
+ssh -t $nameLowerCase@clients.moodley.at "rm dump.sql.gz"

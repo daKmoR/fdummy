@@ -2,7 +2,7 @@
 
 name=$1;
 nameLowerCase=${1,,};
-fdummyPassword='jaVZvNvy'
+fdummyPassword='yourpassword'
 
 if [ "$name" = "" ]
 then
@@ -17,7 +17,8 @@ then
 fi
 
 ## CLONE & FOLDERS #################################################################################
-git clone git@git.webteam.at:webteam-interne-projekte/fdummy.git $name
+cd ..
+git clone https://github.com/moodley/fdummy.git $name
 
 cd $name
 git submodule update --init --recursive
@@ -37,14 +38,12 @@ ln -s typo3_src/typo3
 ln -s typo3_src/t3lib
 ln -s typo3_src/index.php
 
-# change git remote
-git remote rename origin fdummy
-git remote add origin git@git.webteam.at:clients/$nameLowerCase.git
+git remote add origin git@github.com:moodley/$nameLowerCase.git
 
 ## DATABASE ########################################################################################
-ssh -t fdummy@clients.webteam.at "mysqldump --user=fdummy --password='$fdummyPassword' fdummy > dump.sql && gzip dump.sql"
+ssh -t fdummy@clients.moodley.at "mysqldump --user=fdummy --password='$fdummyPassword' fdummy > dump.sql && gzip dump.sql"
 
-scp fdummy@clients.webteam.at:dump.sql.gz dump.sql.gz
+scp fdummy@clients.moodley.at:dump.sql.gz dump.sql.gz
 
 gunzip dump.sql.gz
 
@@ -56,4 +55,4 @@ mysql --user=root $nameLowerCase < dump.sql
 rm dump.sql
 
 # remove remote files
-ssh -t fdummy@clients.webteam.at "rm dump.sql.gz"
+ssh -t fdummy@clients.moodley.at "rm dump.sql.gz"
