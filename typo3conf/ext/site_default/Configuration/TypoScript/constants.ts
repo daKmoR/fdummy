@@ -6,11 +6,11 @@ baseUrl = http://demo.fdummy.com/
   baseUrl = https://demo.fdummy.com/
 [global]
 
-[globalString = ENV:HTTP_HOST = local.demo.fdummy.com]
-  baseUrl = http://local.demo.fdummy.com/
+[globalString = ENV:HTTP_HOST = fdummy]
+  baseUrl = http://fdummy/
 [global]
-[globalString = ENV:HTTP_HOST = demofdummycom.clients.moodley.at]
-  baseUrl = http://demofdummycom.clients.moodley.at/
+[globalString = ENV:HTTP_HOST = fdummy.clients.moodley.at]
+  baseUrl = http://fdummy.clients.moodley.at/
 [global]
 
 ## default description & keywords ##################################################################

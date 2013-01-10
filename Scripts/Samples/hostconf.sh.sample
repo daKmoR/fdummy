@@ -1,0 +1,6 @@
+#!/bin/bash
+
+username='username';
+password='password';
+host='localhost';
+database='database';

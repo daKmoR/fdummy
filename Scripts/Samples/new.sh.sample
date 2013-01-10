@@ -1,24 +1,18 @@
 #!/bin/bash
 
+source hostconf.sh
+
 name=$1;
-nameLowerCase=${1,,};
-fdummyPassword='yourpassword'
+nameLowerCase=`echo "$1" | tr '[A-Z]' '[a-z]'`;
 
 if [ "$name" = "" ]
 then
-	echo Provide a name for the folder to checkout into. Example: ./newTYPO3v6.sh shopCom
-	exit
-fi
-
-if [ "$fdummyPassword" = "yourpassword" ]
-then
-	echo "You have to edit the line 5 of this script and provide the password for the fdummy server. Example: fdummyPassword=5kl2jkd"
+	echo Provide a name (UpperCamelCase) for the folder to checkout into. Example: ./newTYPO3v6.sh ShopCom
 	exit
 fi
 
 ## CLONE & FOLDERS #################################################################################
-cd ..
-git clone https://github.com/moodley/fdummy.git $name
+git clone git@github.com:moodley/fdummy.git $name
 
 cd $name
 git submodule update --init --recursive
@@ -38,21 +32,16 @@ ln -s typo3_src/typo3
 ln -s typo3_src/t3lib
 ln -s typo3_src/index.php
 
-git remote add origin git@github.com:moodley/$nameLowerCase.git
+# change git remote
+git remote set-url origin git@github.com:moodley/$name.git
 
 ## DATABASE ########################################################################################
-ssh -t fdummy@clients.moodley.at "mysqldump --user=fdummy --password='$fdummyPassword' fdummy > dump.sql && gzip dump.sql"
+cd Script
+gunzip -c dump.sql.gz
 
-scp fdummy@clients.moodley.at:dump.sql.gz dump.sql.gz
+mysql --user=$username --password=$password -e "CREATE DATABASE $nameLowerCase"
+mysql --user=$username --password=$password -e "ALTER DATABASE $nameLowerCase DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci"
+mysql --user=$username --password=$password $nameLowerCase < dump.sql
 
-gunzip dump.sql.gz
-
-mysql --user=root -e "CREATE DATABASE $nameLowerCase"
-mysql --user=root -e "ALTER DATABASE $nameLowerCase DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci"
-mysql --user=root $nameLowerCase < dump.sql
-
-# remove files
 rm dump.sql
-
-# remove remote files
-ssh -t fdummy@clients.moodley.at "rm dump.sql.gz"
+cd ..

@@ -3,6 +3,8 @@
 #set -o nounset
 #set -o errexit
 
+source global.sh
+
 version=$1;
 
 if [ "$version" = "" ]

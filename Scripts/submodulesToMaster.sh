@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source global.sh
+
 cd ..
 
 cd typo3conf/ext/mootools_essentials
