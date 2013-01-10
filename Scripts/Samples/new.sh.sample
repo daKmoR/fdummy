@@ -7,7 +7,7 @@ nameLowerCase=`echo "$1" | tr '[A-Z]' '[a-z]'`;
 
 if [ "$name" = "" ]
 then
-	echo Provide a name (UpperCamelCase) for the folder to checkout into. Example: ./newTYPO3v6.sh ShopCom
+	echo "Provide a name (UpperCamelCase) for the folder to checkout into. Example: ./newTYPO3v6.sh ShopCom"
 	exit
 fi
 
@@ -36,8 +36,8 @@ ln -s typo3_src/index.php
 git remote set-url origin git@github.com:moodley/$name.git
 
 ## DATABASE ########################################################################################
-cd Script
-gunzip -c dump.sql.gz
+cd Scripts
+gunzip -c dump.sql.gz > dump.sql
 
 mysql --user=$username --password=$password -e "CREATE DATABASE $nameLowerCase"
 mysql --user=$username --password=$password -e "ALTER DATABASE $nameLowerCase DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci"
